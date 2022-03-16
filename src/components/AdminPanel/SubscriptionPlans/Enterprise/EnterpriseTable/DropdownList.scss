@@ -1,0 +1,26 @@
+@import 'src/styles/colors';
+
+.dropdown-list {
+	.dropdown-item {
+		padding: 10px;
+		color: $darkblue-70;
+		box-sizing: border-box;
+	}
+
+	.slider {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+
+		.slider-checkbox-container {
+			margin-left: 10px;
+
+			.custom-checkbox-slider {
+				& + input {
+					top: -11px;
+				}
+			}
+		}
+	}
+}

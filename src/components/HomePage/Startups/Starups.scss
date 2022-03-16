@@ -1,0 +1,64 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.homepage-startups-container {
+	@include container(1575px);
+	padding-left: 75px;
+
+	.text-darkblue {
+		color: $darkblue-70;
+	}
+
+	.navbar-section {
+		width: 100%;
+		display: inline-flex;
+		flex-direction: row;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -10px;
+			height: 2px;
+			width: 100%;
+			background: $gray-20;
+		}
+
+		& > *:not(:last-child) {
+			margin-right: 30px;
+		}
+
+		.menu-item-style {
+			@include textStyle(20px, $darkblue-70, 24px);
+
+			cursor: pointer;
+			flex: 1;
+		}
+
+		.green-underline {
+			color: $grass-50;
+			position: relative;
+
+			&::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -10px;
+				height: 4px;
+				width: 100%;
+				background: $grass-50;
+				z-index: 1;
+			}
+		}
+	}
+
+	.startups-section {
+		position: relative;
+		padding-top: 50px;
+	}
+
+	.text-gray {
+		color: $gray-40;
+	}
+}

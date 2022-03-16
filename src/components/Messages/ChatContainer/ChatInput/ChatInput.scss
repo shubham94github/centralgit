@@ -1,0 +1,74 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.chat-input {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	position: relative;
+	max-height: 500px;
+	margin: 25px 30px;
+
+	.actions-container {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+	}
+
+	.RichEditor-root {
+		background: none;
+
+		.editor-controls-icon {
+			bottom: 15px;
+		}
+
+		.chat-editor-input {
+			max-width: 513px;
+			background: $white;
+			border-radius: 8px;
+			margin-left: 45px;
+			margin-right: 10px;
+		}
+
+		.ql-toolbar {
+			position: relative;
+		}
+
+		.ql-editor {
+			min-height: 50px;
+			max-height: 279px;
+
+			p {
+				@include textStyle(12px, $black, 16px);
+
+				margin-top: 5px;
+			}
+		}
+
+		.quill > .ql-container > .ql-editor.ql-blank::before{
+			@include textStyle(12px, $gray-40, 16px);
+
+			margin-top: 5px;
+		}
+	}
+
+	.editor-controls-icon {
+		position: absolute;
+		bottom: 2px;
+		left: 10px;
+		z-index: 10;
+		cursor: pointer;
+
+		svg {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	.send-button {
+		width: 88px;
+		height: 50px;
+		border-radius: 8px;
+	}
+}

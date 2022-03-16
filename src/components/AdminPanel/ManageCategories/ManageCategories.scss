@@ -1,0 +1,52 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.manage-categories {
+	.second-level-table, .third-level-table {
+		.table-header {
+			display: none;
+		}
+	}
+
+	.main-table {
+		> div {
+			> div {
+				width: auto;
+			}
+		}
+
+		.rdt_Table {
+			.rdt_TableRow {
+				.rdt_TableCell {
+					width: 100% !important;
+
+					.link {
+						@include textStyle(14px, $blue-50, 20px);
+
+						width: 100%;
+						cursor: pointer;
+						text-decoration: underline;
+					}
+
+					.center {
+						width: 100%;
+						text-align: center;
+					}
+				}
+			}
+
+			.rdt_TableRow > div:first-child {
+				flex: none;
+				width: 48px;
+
+				button {
+					width: 48px;
+
+					&:disabled {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

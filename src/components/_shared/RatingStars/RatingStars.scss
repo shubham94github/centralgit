@@ -1,0 +1,48 @@
+.flex-for-star {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.rating-stars-container {
+	@extend .flex-for-star;
+
+	position: relative;
+
+	> div:not(:last-child) {
+		padding-right: 8px;
+	}
+
+	.clickable {
+		@extend .flex-for-star;
+
+		position: absolute;
+		z-index: 1;
+		left: 0;
+
+		> label {
+			cursor: pointer;
+		}
+
+		> label:not(:last-child) {
+			padding-right: 8px;
+		}
+
+		&.z-2 {
+			z-index: 2;
+		}
+	}
+
+	.no-clickable {
+		@extend .flex-for-star;
+
+		position: absolute;
+		z-index: 2;
+		left: 0;
+
+		> div:not(:last-child) {
+			padding-right: 8px;
+		}
+	}
+}

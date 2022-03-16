@@ -1,0 +1,140 @@
+@import '/src/styles/colors';
+@import 'src/styles/mixins';
+
+.member-card {
+	width: 288px;
+	padding: 30px;
+	background: $white;
+	margin-right: 20px;
+	border-radius: 8px;
+	border: 1px solid $darkblue-20;
+
+	.actions {
+		display: flex;
+		justify-content: flex-end;
+
+		.dropdown {
+			cursor: pointer;
+
+			.dropdown-menu {
+				padding: 0;
+
+				.menu-list__item {
+					padding: 6px;
+					box-sizing: border-box;
+					color: $darkblue-70;
+
+					&:hover {
+						color: $white;
+						background: $grass-50;
+					}
+				}
+			}
+		}
+	}
+
+	.avatar-and-name {
+		display: flex;
+		flex-direction: row;
+		margin-top: 5px;
+
+		.icon-person {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+
+			img {
+				border-radius: 50%;
+				width: 60px;
+				height: 60px;
+			}
+
+			.icon-person__text {
+				color: $white;
+			}
+		}
+
+		.name-and-status {
+			margin-left: 15px;
+
+			.full-name {
+				@include truncate-text(2);
+
+				word-break: break-word;
+			}
+
+			.status {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: flex-start;
+				margin-top: 15px;
+
+				.slider-checkbox-container {
+					margin-left: 5px;
+
+					.custom-checkbox-slider {
+						& + input {
+							top: -15px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.about {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		margin-top: 15px;
+
+		.email, .location {
+			@include truncate-text(1);
+		}
+
+		.p14 {
+			&:nth-child(n+2) {
+				margin-top: 5px;
+			}
+
+			svg {
+				margin-right: 5px;
+			}
+		}
+	}
+
+	.activity {
+		margin-top: 15px;
+
+		.last-seen, .created {
+			.p12 {
+				@include textStyle(12px, $darkblue-50, 16px);
+			}
+		}
+
+		.created {
+			margin-top: 5px;
+		}
+
+		.p14 {
+			margin-top: 5px;
+		}
+	}
+
+	.notes {
+		margin-top: 10px;
+
+		.text-toggle-for-height-container {
+			.text-content {
+				&.hide-text {
+					max-height: 85px;
+				}
+			}
+		}
+	}
+}

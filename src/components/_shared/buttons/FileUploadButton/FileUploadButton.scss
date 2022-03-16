@@ -1,0 +1,101 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.upload-btn-container {
+	display: flex;
+	align-items: center;
+
+	.file-upload-btn-admin {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		width: 76px;
+		height: 70px;
+		margin-top: 5px;
+		margin-right: 10px;
+		margin-bottom: 5px;
+		border-radius: 8px;
+		cursor: pointer;
+		background: $darkblue-20;
+
+		&.gallery-upload-button {
+			width: 115px;
+			height: 84px;
+			background: transparent;
+
+			span {
+				@include textStyle(16px, $darkblue-70, 20px);
+			}
+
+			svg {
+				width: 40px;
+				height: 40px;
+			}
+		}
+
+		span {
+			@include textStyle(12px, $white, 16px);
+			white-space: nowrap;
+			padding-top: 5px;
+		}
+
+		input {
+			display: none;
+		}
+	}
+
+	.file-upload-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: nowrap;
+		max-width: 120px;
+		padding: 13px;
+		background: $darkblue-40;
+		border-radius: 8px;
+		cursor: pointer;
+		margin-right: 30px;
+
+		span {
+			color: $white;
+			white-space: nowrap;
+		}
+
+		input {
+			display: none;
+		}
+	}
+
+	.files {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+
+		.file-name {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: nowrap;
+			margin-right: 30px;
+			margin-bottom: 10px;
+
+			.link {
+				max-width: 150px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-decoration: underline;
+			}
+
+			.close-icon {
+				cursor: pointer;
+			}
+		}
+	}
+
+	.black-tooltip {
+		color: $black;
+	}
+}

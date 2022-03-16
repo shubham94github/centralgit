@@ -1,0 +1,157 @@
+@import 'src/styles/mixins';
+@import 'src/styles/colors';
+
+.textarea-container {
+	position: relative;
+	border-top-right-radius: 8px;
+
+	.with-top-placeholder {
+		position: relative;
+		background: $white;
+		border-radius: 8px;
+		padding-top: 10px;
+
+		label {
+			@include textStyle(16px, $gray-40, 24px);
+			@include animatePlaceholder;
+
+			position: absolute;
+			z-index: auto;
+			top: 15px;
+			left: 10px;
+			transition: opacity, transform 150ms linear;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.textarea {
+			padding-top: 0px;
+		}
+	}
+
+	&.with-border {
+		border-radius: 8px;
+
+		.RichEditor-root {
+			border: 1px solid $darkblue-20;
+
+			.controls-header {
+				border: 1px solid $darkblue-20;
+			}
+		}
+	}
+
+	.RichEditor-root {
+		@include textStyle(16px, $darkblue-70, 24px);
+
+		max-height: 500px;
+		min-height: 70px;
+		overflow-y: auto;
+		border-radius: 8px;
+		resize: none;
+		margin-top: 8px;
+		cursor: text;
+
+		.DraftEditor-editorContainer {
+			padding-right: 40px;
+			padding-left: 10px;
+		}
+
+		&.controls-opened {
+			padding-top: 30px;
+
+			&.with-border {
+				border-bottom:1px solid $darkblue-10;
+			}
+
+			.RichEditor-editor {
+				margin-top: 35px;
+			}
+		}
+
+		.controls-header {
+			display: flex;
+			position: absolute;
+			top: -1px;
+			left: 0;
+			width: 100%;
+			border-radius: 8px 8px 0 0;
+			padding-left: 10px;
+			background: $white;
+			z-index: 2;
+		}
+
+		.editor-controls-icon {
+			position: absolute;
+			right: 8px;
+			top: 2px;
+			z-index: 3;
+			cursor: pointer;
+
+			svg {
+				height: 18px;
+				width: 18px;
+			}
+		}
+
+		.public-DraftEditor-content {
+			padding-bottom: 10px;
+			border-bottom: none;
+		}
+
+		.RichEditor-activeButton {
+			font-weight: bold;
+		}
+
+		.public-DraftEditorPlaceholder-root, .RichEditor-editor .public-DraftEditor-content {
+			margin: 0;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.public-DraftEditorPlaceholder-root {
+			padding-left: 10px;
+			padding-right: 20px;
+		}
+
+		.RichEditor-styleButton {
+			color: $darkblue-70;
+		}
+
+		.RichEditor-editor.RichEditor-hidePlaceholder {
+			border-top: 1px solid $darkblue-10;
+			color: $darkblue-70;
+		}
+	}
+
+	textarea.textarea {
+		@include textStyle(16px, $darkblue-70, 24px);
+
+		border: none;
+		border-radius: 8px;
+		resize: none;
+		overflow-y: auto;
+		max-height: 500px;
+		padding: 10px 0 0 10px;
+		margin-top: 8px;
+		cursor: auto;
+
+		&.textarea-border {
+			border: 1px solid $darkblue-20;
+		}
+
+		&:active, &:focus {
+			outline: none;
+		}
+
+		.short-view {
+			max-height: 144px;
+		}
+	}
+
+	&.error {
+		textarea.textarea::placeholder {
+			color: $red-50;
+		}
+	}
+}

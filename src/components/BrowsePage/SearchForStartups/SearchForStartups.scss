@@ -1,0 +1,21 @@
+.search-for-startups-wrapper {
+	display: flex;
+	flex-direction: row;
+	padding-left: 50px;
+	padding-right: 50px;
+	margin-bottom: 10px;
+
+	.search-input {
+		width: 100%;
+	}
+
+	.search-button {
+		position: relative;
+		width: 45%;
+		margin-left: 35px;
+
+		svg {
+			margin-right: 8px;
+		}
+	}
+}

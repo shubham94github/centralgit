@@ -1,0 +1,63 @@
+@import 'src/styles/colors';
+
+.registration-approval-container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	background-color: rgb(190, 192, 198);
+
+	.registration-approval-content {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		max-width: 570px;
+		border-radius: 20px;
+		margin: 0 auto;
+		background: $gray-05;
+		padding: 30px 60px;
+
+		&.modal-startup {
+			max-width: 500px;
+			padding: 30px;
+		}
+
+		.p16 {
+			max-width: 255px;
+			text-align: center;
+		}
+
+		.p14 {
+			margin-top: 10px;
+		}
+
+		.close-icon {
+			position: absolute;
+			top: 30px;
+			right: 30px;
+		}
+	}
+
+	.verification-loading {
+		position: static;
+		margin-top: 20px;
+		margin-bottom: 5px;
+		background: inherit;
+
+		.spinner {
+			height: auto;
+		}
+
+		.spinner-border {
+			width: 33px !important;
+			height: 33px !important;
+		}
+
+		.text-danger {
+			color: $darkblue-30 !important;
+		}
+	}
+}

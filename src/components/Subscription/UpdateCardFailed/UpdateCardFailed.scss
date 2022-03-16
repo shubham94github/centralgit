@@ -1,0 +1,42 @@
+@import 'src/styles/colors';
+
+.update-card-failed {
+	&-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&-container {
+		max-width: 585px;
+		padding: 30px 115px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background: $gray-05;
+		border-radius: 20px;
+		color: $darkblue-70;
+
+		.description {
+			margin-top: 15px;
+		}
+
+		.primary-button {
+			width: 90px;
+			height: 50px;
+
+			&:nth-child(2) {
+				margin-left: 15px;
+			}
+		}
+
+		.label{
+			padding-top: 15px;
+		}
+	}
+
+	&-actions {
+		margin-top: 15px;
+	}
+}

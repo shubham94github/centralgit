@@ -1,0 +1,44 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.text-toggle-for-height-container {
+	.text-content {
+		max-width: 780px;
+		overflow: hidden;
+		max-height: 1000px;
+		transition: max-height 500ms;
+
+		&.hide-text {
+			position: relative;
+			overflow: hidden;
+			max-height: 120px;
+			transition: max-height 200ms;
+
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255));
+			}
+		}
+	}
+
+	.s16 {
+		@include textStyle(16px, $gray-90, 20px);
+	}
+
+	.s14 {
+		@include textStyle(14px, $gray-90, 20px);
+	}
+
+	.toggle-text-button {
+		@include textStyle(16px, $grass-50, 20px);
+
+		margin-top: 10px;
+		cursor: pointer;
+	}
+}

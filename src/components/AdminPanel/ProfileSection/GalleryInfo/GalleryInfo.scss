@@ -1,0 +1,10 @@
+@import '/src/styles/colors';
+
+.admin-panel-gallery {
+	margin-top: -20px;
+
+	.gallery {
+		background: $white;
+		padding: 0;
+	}
+}

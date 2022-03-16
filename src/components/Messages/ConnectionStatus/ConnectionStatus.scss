@@ -1,0 +1,14 @@
+@import 'src/styles/colors';
+
+.connection-status {
+	position: absolute;
+	bottom: 2px;
+	right: 3px;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+
+	&.online {
+		background: $grass-50;
+	}
+}

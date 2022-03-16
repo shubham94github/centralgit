@@ -1,0 +1,17 @@
+@import 'src/styles/colors';
+
+.member-groups-menu-list {
+	&__item {
+		padding: 10px;
+		box-sizing: border-box;
+
+		&:hover {
+			cursor: pointer;
+			background: $grass-50;
+
+			.s16 {
+				color: $white;
+			}
+		}
+	}
+}

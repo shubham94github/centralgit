@@ -1,0 +1,13 @@
+@import 'src/styles/colors';
+
+.bs-1 {
+	box-shadow: 0 5px 10px $box-shadow-color;
+}
+
+.bs-2 {
+	box-shadow: 0 10px 10px $box-shadow-color;
+}
+
+.bs-3 {
+	box-shadow: 1px 7px 10px 5px $box-shadow-color;
+}

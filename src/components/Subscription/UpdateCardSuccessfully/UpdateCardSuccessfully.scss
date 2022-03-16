@@ -1,0 +1,28 @@
+@import 'src/styles/colors';
+
+.update-card-successfully-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.update-card-successfully-container {
+		max-width: 630px;
+		padding: 30px 114px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background: $gray-05;
+		border-radius: 20px;
+		border: 1px solid $darkblue-20;
+		color: $darkblue-70;
+
+		.description {
+			margin-top: 15px;
+		}
+
+		.check-icon {
+			margin-bottom: 15px;
+		}
+	}
+}

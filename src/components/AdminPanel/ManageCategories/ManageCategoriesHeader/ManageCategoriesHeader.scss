@@ -1,0 +1,15 @@
+.categories-header {
+	width: 100%;
+
+	.description {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-top: 15px;
+
+		svg {
+			width: 24px;
+			height: 24px;
+		}
+	}
+}

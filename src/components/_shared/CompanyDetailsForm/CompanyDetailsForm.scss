@@ -1,0 +1,248 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.company-detail-container {
+	position: relative;
+
+	.step-style {
+		margin-bottom: 20px;
+	}
+
+	.traction-group-title {
+		margin-bottom: 15px;
+	}
+
+	.avatar-box {
+		max-width: 180px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex-direction: column;
+	}
+
+	.checkbox-margin {
+		@include textStyle(14px, $darkblue-70, 16px);
+
+		display: inline-block;
+		white-space: nowrap;
+	}
+
+	.radio-fields {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		.checkbox-margin {
+			margin-right: 20px;
+		}
+	}
+
+	.mb-10 {
+		margin-bottom: 10px;
+	}
+
+	.field-group-title {
+		.btn {
+			margin-top: 15px;
+			padding-right: 0 !important;
+		}
+	}
+
+	.app-date-picker {
+		width: 100%;
+
+		.label {
+			font-size: 14px;
+		}
+
+		.value {
+			padding: 0;
+		}
+
+		.input-settings {
+			padding: 12px 18px;
+		}
+
+		.close {
+			display: none;
+		}
+	}
+
+	.btn {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		margin-top: 15px;
+
+		.retailer-float-end {
+			margin-right: 45px;
+		}
+	}
+
+	.associated-tags-title, .interests-title {
+		margin-bottom: 15px;
+	}
+
+	.interests-title {
+		margin-top: 10px;
+	}
+
+	.associated-tags-select {
+		margin-top: 20px;
+	}
+
+	.fixed-height-label {
+		display: block;
+		min-height: 48px;
+		margin-bottom: 2px;
+	}
+
+	.textarea-container {
+		width: 100%;
+
+		.textarea {
+			width: 100%;
+		}
+	}
+
+	.checkboxes-container {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+
+		.checkbox-container {
+			min-width: 135px;
+			margin-right: 20px;
+			margin-bottom: 20px;
+
+			label {
+				white-space: nowrap;
+			}
+		}
+	}
+
+	.text-input-container, .select-container {
+		margin-bottom: 15px;
+
+		&.error {
+			margin-bottom: 5px;
+		}
+	}
+
+	.app-date-picker {
+		margin-bottom: 3px;
+		margin-top: 3px;
+	}
+
+	.warning-text {
+		margin-bottom: 15px;
+		margin-top: 15px;
+	}
+
+	.upload-btn {
+		min-width: 0 !important;
+		background: $darkblue-40;
+		margin-top: 15px;
+	}
+
+	.avatar-input-label {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 13px;
+		background: #96A7CF;
+		border-radius: 8px;
+		cursor: pointer;
+
+		span {
+			color: $white;
+		}
+
+		input {
+			display: none;
+		}
+	}
+
+	.primary-button {
+		min-width: 270px;
+	}
+
+	.upload-file {
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		align-items: center;
+
+		@media screen and (max-width: 991px) {
+			align-items: flex-start;
+		}
+
+		.icon-person {
+			width: 70px;
+			height: 70px;
+			border-radius: 8px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			img {
+				width: 70px;
+				height: 70px;
+			}
+
+			.icon-person__text {
+				color: $white;
+			}
+		}
+	}
+
+	.company-description, .solution-products-services {
+
+		textarea {
+			overflow-y: auto !important;
+		}
+	}
+
+	.user-avatar {
+		border-radius: 8px;
+	}
+
+	.startup-logo {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 8px;
+
+		.startup-logo-icon {
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			top: 16px;
+			left: 16px;
+			width: 38px;
+			height: 38px;
+			opacity: 0;
+			background: $grass-40;
+			border-radius: 50%;
+		}
+
+		&:hover {
+			cursor: pointer;
+
+			.icon-person__text {
+				opacity: 0;
+			}
+
+			.startup-logo-icon {
+				opacity: 1;
+			}
+		}
+
+		.black-tooltip {
+			color: $black;
+		}
+	}
+}

@@ -1,0 +1,42 @@
+.startup-analysis-header {
+	width: 100%;
+
+	.description {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-top: 15px;
+
+		svg {
+			width: 24px;
+			height: 24px;
+		}
+
+		.p14 {
+			width: 623px;
+			margin-left: 10px;
+		}
+	}
+
+	.actions {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		margin-top: 25px;
+
+		.form {
+			display: flex;
+			flex-direction: row;
+			margin-top: 22px;
+
+			.select-container {
+				width: 682px;
+			}
+
+			.primary-button {
+				height: 50px;
+				margin-left: 15px;
+			}
+		}
+	}
+}

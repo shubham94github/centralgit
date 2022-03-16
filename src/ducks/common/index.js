@@ -1,0 +1,35 @@
+const appName = process.env.APP_NAME;
+export const moduleName = 'common';
+
+export const GET_COUNTRIES = `${appName}/${moduleName}/GET_COUNTRIES`;
+export const SET_COUNTRIES = `${appName}/${moduleName}/SET_COUNTRIES`;
+export const SET_IS_LOADING = `${appName}/${moduleName}/SET_IS_LOADING`;
+export const GET_CATEGORIES = `${appName}/${moduleName}/GET_CATEGORIES`;
+export const SET_CATEGORIES = `${appName}/${moduleName}/SET_CATEGORIES`;
+export const GET_PAYMENT_PLANS = `${appName}/${moduleName}/GET_PAYMENT_PLANS`;
+export const SET_PAYMENT_PLANS = `${appName}/${moduleName}/SET_PAYMENT_PLANS`;
+export const GET_ALL_TAGS = `${appName}/${moduleName}/GET_ALL_TAGS`;
+export const SET_ALL_TAGS = `${appName}/${moduleName}/SET_ALL_TAGS`;
+export const CLEAR_COMMON_STORE = `${appName}/${moduleName}/CLEAR_COMMON_STORE`;
+export const GET_VIEWED_PROFILE = `${appName}/${moduleName}/GET_VIEWED_PROFILE`;
+export const SET_SNACKBAR = `${appName}/${moduleName}/SET_SNACKBAR`;
+export const GET_SNACKBAR = `${appName}/${moduleName}/GET_SNACKBAR`;
+export const DELETE_SNACKBAR = `${appName}/${moduleName}/DELETE_SNACKBAR`;
+export const GET_DEPARTMENTS = `${appName}/${moduleName}/GET_DEPARTMENTS`;
+export const SET_DEPARTMENTS = `${appName}/${moduleName}/SET_DEPARTMENTS`;
+export const GET_POSITIONS = `${appName}/${moduleName}/GET_POSITIONS`;
+export const SET_POSITIONS = `${appName}/${moduleName}/SET_POSITIONS`;
+export const GET_PLATFORM_PARTNERS = `${appName}/${moduleName}/GET_PLATFORM_PARTNERS`;
+export const SET_PLATFORM_PARTNERS = `${appName}/${moduleName}/SET_PLATFORM_PARTNERS`;
+export const SEND_MISSION = `${appName}/${moduleName}/SEND_MISSION`;
+export const GET_TRIAL = `${appName}/${moduleName}/GET_TRIAL`;
+export const SET_TRIAL = `${appName}/${moduleName}/SET_TRIAL`;
+export const INC_TRIAL_PROFILE = `${appName}/${moduleName}/INC_TRIAL_PROFILE`;
+export const INC_TRIAL_SEARCH = `${appName}/${moduleName}/INC_TRIAL_SEARCH`;
+export const GET_TRIAL_IN_FORK = `${appName}/${moduleName}/GET_TRIAL_IN_FORK`;
+export const GET_STARTUPS_OPTIONS = `${appName}/${moduleName}/GET_STARTUPS_OPTIONS`;
+export const SET_STARTUPS_OPTIONS = `${appName}/${moduleName}/SET_STARTUPS_OPTIONS`;
+export const GET_PAYMENT_PLANS_FOR_COUPONS = `${appName}/${moduleName}/GET_PAYMENT_PLANS_FOR_COUPONS`;
+export const SET_PAYMENT_PLANS_FOR_COUPONS = `${appName}/${moduleName}/SET_PAYMENT_PLANS_FOR_COUPONS`;
+
+export { default } from './reducer';

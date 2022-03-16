@@ -1,0 +1,45 @@
+@import 'src/styles/colors';
+
+.password-recovery-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: $darkblue-05;
+	background: url('~/src/assets/images/sing-up-bg.jpg') $darkblue-90;
+	background-size: cover;
+	background-position-x: center;
+
+	.password-recovery {
+		min-width: 630px;
+	}
+
+	.form-wrapper {
+		width: 100%;
+		max-width: 630px;
+		padding-left: 15px;
+		padding-right: 15px;
+
+		.email-form {
+			.text-input-container {
+				width: 100%;
+
+				input {
+					width: 100%;
+				}
+			}
+		}
+
+		.title, .description {
+			margin-bottom: 15px;
+		}
+
+		.primary-button {
+			width: 270px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 15px;
+		}
+	}
+}

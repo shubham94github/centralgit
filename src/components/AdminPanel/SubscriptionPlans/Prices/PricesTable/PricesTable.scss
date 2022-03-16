@@ -1,0 +1,11 @@
+@import '/src/styles/mixins';
+
+.prices-table {
+	width: 960px;
+
+	.comment {
+		@include truncate-text(2);
+
+		word-break: break-word;
+	}
+}

@@ -1,0 +1,7 @@
+.messages-page-container {
+	display: flex;
+	width: 100%;
+	max-height: calc(100vh - 80px - 139px);
+	position: relative;
+	overflow-x: auto;
+}

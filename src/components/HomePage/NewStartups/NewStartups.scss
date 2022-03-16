@@ -1,0 +1,14 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.new-startup-wrapper {
+	background: $darkblue-05;
+
+	.text-bold {
+		font-weight: 700;
+	}
+
+	.truncate-text-category {
+		@include truncate-text(1);
+	}
+}

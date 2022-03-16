@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+    retailhub-fe:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: retailhub-fe
+        container_name: retailhub-fe
+        ports:
+            - 80:8080
+        deploy:
+            resources:
+                limits:
+                    memory: 512M
+                reservations:
+                    memory: 128M

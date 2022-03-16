@@ -1,0 +1,61 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+$line-height: 16px;
+$max-lines: 4;
+
+.text-toggle-container {
+	.button-toggle-text {
+		display: inline-block;
+		color: $darkblue-50;
+		cursor: pointer;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+
+	.truncate-overflow {
+		@include textStyle(12px, $darkblue-70, $line-height);
+
+		max-height: 700px;
+		transition: max-height 1s;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		word-break: break-word;
+
+		&.hide-text {
+			position: relative;
+			max-height: $line-height*$max-lines;
+			transition: none;
+			-webkit-line-clamp: $max-lines;
+
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255));
+			}
+		}
+
+		ul li {
+			list-style: disc;
+			margin-left: 20px;
+		}
+
+		ol li {
+			margin-left: 20px;
+		}
+
+		ul, ol {
+			padding: 0;
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+	}
+}

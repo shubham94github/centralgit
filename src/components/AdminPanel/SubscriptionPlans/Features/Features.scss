@@ -1,0 +1,28 @@
+.features-container {
+	.main-table {
+		>div {
+			>div {
+				width: auto;
+			}
+		}
+
+		.rdt_TableHeadRow {
+			.rdt_TableCol {
+				#column-isSingleUser,
+				#column-isMultiUser,
+				#column-isEnterpriseUser {
+					width: 100%;
+				}
+
+				.rdt_TableCol_Sortable {
+					text-align: center;
+
+					div {
+						width: 100%;
+					}
+
+				}
+			}
+		}
+	}
+}

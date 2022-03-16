@@ -1,0 +1,36 @@
+@import 'src/styles/colors';
+
+.feedback-page-container {
+	width: 100%;
+	max-width: 1920px;
+	margin: 0 auto;
+	background: $gray-05;
+
+	& > :not(:last-child):not(:first-child) {
+		margin-bottom: 17px;
+	}
+
+	& > :first-child {
+		margin-bottom: 5px;
+	}
+
+	.textarea-full-width {
+		width: 100%;
+
+		.textarea {
+			width: 100%;
+		}
+	}
+
+	& + .startup-profile-wrapper {
+		display: none;
+	}
+
+	.warning-text {
+		padding-left: 15px;
+	}
+}
+
+.feedbacks-container .modal-content {
+	background: $gray-05;
+}

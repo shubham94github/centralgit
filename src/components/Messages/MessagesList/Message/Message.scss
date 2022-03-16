@@ -1,0 +1,115 @@
+@import 'src/styles/colors';
+
+.message {
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding: 10px 30px;
+
+	&.highlighted {
+		background: $darkblue-05;
+	}
+
+	&.user-message {
+		justify-content: flex-end;
+
+		.message-content {
+			border-radius: 15px 15px 4px 15px;
+		}
+	}
+
+	.user-avatar {
+		justify-content: flex-end;
+		width: 40px;
+		height: 40px;
+		margin-right: 5px;
+
+		label {
+			width: 40px;
+			height: 40px;
+
+			.avatar-shutter {
+				max-width: 40px;
+				max-height: 40px;
+				width: 40px;
+				height: 40px;
+			}
+		}
+
+		.connection-status {
+			bottom: 2px;
+			right: 0;
+		}
+	}
+
+	.message-content {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		max-width: 645px;
+		min-width: 113px;
+		background: $darkblue-50;
+		border-radius: 8px;
+		padding: 5px 80px 20px 12px;
+		font-size: 16px;
+		color: $white;
+
+		&.user-message {
+			background: $white;
+			margin-left: 45px;
+			color: $darkblue-70;
+
+			.message-header {
+				font-size: 11px;
+
+				span {
+					color: $darkblue-70;
+					font-size: 11px;
+				}
+			}
+		}
+
+		.message-text {
+			width: 100%;
+			overflow-wrap: break-word;
+
+			p {
+				margin-bottom: 0;
+			}
+
+			code {
+				font-size: 16px;
+				margin-right: 3px;
+			}
+
+			ul {
+				list-style: disc;
+
+				li {
+					list-style: disc;
+					margin-left: 15px;
+				}
+			}
+		}
+
+		.message-header {
+			position: absolute;
+			bottom: 4px;
+			right: 10px;
+
+			span {
+				color: $white;
+				font-size: 11px;
+			}
+
+			.user-name {
+				margin-right: 10px;
+			}
+
+			.read-status {
+				margin-left: 5px;
+			}
+		}
+	}
+}

@@ -1,0 +1,160 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.account-information-wrapper {
+	.tooltip-children {
+		padding-bottom: 5px;
+	}
+
+	.receive-messages-container {
+		margin-left: 35px;
+	}
+
+	.checkbox-container {
+		display: inline-flex;
+		padding-top: 1px;
+	}
+
+	.clickable {
+		cursor: pointer;
+	}
+
+	.full-name {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+		width: 20%;
+	}
+
+	.primary-button {
+		padding: 7px 14px;
+	}
+
+	.avatar-for-profile {
+		.icon-person__text {
+			font-size: 24px;
+		}
+	}
+
+	.user-logo-without-permissions {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		width: 60px;
+		height: 60px;
+		padding-bottom: 8px;
+
+		.avatar-company-container {
+			.icon-person {
+				border-radius: 50%;
+
+				.user-avatar {
+					border-radius: 50%;
+				}
+			}
+
+			.icon-person__text {
+				font-size: 24px;
+			}
+		}
+	}
+
+	.user-logo {
+		width: 60px;
+		height: 60px;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 8px;
+
+		.avatar-company-container {
+			.icon-person {
+				border-radius: 50%;
+
+				.user-avatar {
+					border-radius: 50%;
+				}
+			}
+
+			.icon-person__text {
+				font-size: 24px;
+			}
+		}
+
+		.startup-logo-icon {
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			top: 11px;
+			left: 11px;
+			width: 38px;
+			height: 38px;
+			opacity: 0;
+			background: $grass-40;
+			border-radius: 50%;
+		}
+
+		&:hover {
+			cursor: pointer;
+
+			.icon-person__text {
+				opacity: 0;
+			}
+
+			.startup-logo-icon {
+				opacity: 1;
+			}
+		}
+
+		.black-tooltip {
+			color: $black;
+		}
+	}
+
+	.first-last-name-wrapper {
+		max-width: 220px;
+
+		.first-last-name {
+			@include truncate-text(1);
+		}
+	}
+
+	.word-break {
+		@include truncate-text(1);
+	}
+
+	.small-button {
+		display: flex;
+		align-items: center;
+		width: 65px;
+		height: 30px;
+		font-size: 12px;
+	}
+}
+
+.account-information-pop-up {
+	.modal-dialog.modal-container {
+		max-width: 690px !important;
+		border: none;
+	}
+
+	.modal-content {
+		border: 1px solid $darkblue-20;
+	}
+
+	.modal-title {
+		@include textStyle(16px, $darkblue-70, 20px);
+	}
+}
+
+.two-fa-form {
+	border: none !important;
+
+	.primary-button {
+		height: 50px;
+	}
+}

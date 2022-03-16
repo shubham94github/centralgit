@@ -1,0 +1,18 @@
+.assign-feature-modal {
+	.main-table {
+		> div {
+			> div {
+				width: 100%;
+			}
+		}
+
+		.rdt_TableBody {
+			height: calc(100vh - 400px);
+			overflow-y: auto;
+		}
+	}
+
+	.custom-line {
+		margin-top: 20px;
+	}
+}

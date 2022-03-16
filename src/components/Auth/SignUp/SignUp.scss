@@ -1,0 +1,30 @@
+@import 'src/styles/colors';
+
+.sign-up-page-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	padding-top: 25px;
+	padding-bottom: 25px;
+
+	.sign-up-page-container{
+		padding: 0 15px;
+		width: 100%;
+		max-width: 1920px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.add-retail-company-container {
+			.form-field-wrapper {
+				margin-bottom: 15px !important;
+			}
+		}
+	}
+
+	.step-style {
+		margin-bottom: 15px;
+	}
+}

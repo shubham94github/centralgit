@@ -1,0 +1,31 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.categories-buttons {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+	.categories-buttons_item {
+		padding: 10px;
+		border-radius: 15px;
+		background: $darkblue-40;
+		cursor: pointer;
+		margin-right: 5px;
+		margin-bottom: 10px;
+
+		&:hover {
+			background: $darkblue-30;
+		}
+
+		.close-icon svg {
+			height: 24px;
+			width: 24px;
+		}
+	}
+
+	.text__white {
+		color: $white;
+		word-break: break-all;
+	}
+}

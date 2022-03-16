@@ -1,0 +1,104 @@
+@import '/src/styles/colors';
+@import './src/styles/mixins';
+
+.subscription-plans {
+	width: 100%;
+
+	.page-title {
+		margin-bottom: 18px;
+	}
+
+	.admin-primary {
+		max-width: 260px;
+
+		.s16 {
+			margin-left: 5px;
+			color: $white;
+		}
+	}
+
+	.buttons {
+		grid-auto-flow: row;
+		width: 380px;
+		margin-top: 18px;
+		margin-bottom: 15px;
+	}
+
+	.guidelines {
+		margin-bottom: 20px;
+
+		.p14 {
+			width: 700px;
+		}
+
+		.link {
+			color: $linkedin-blue;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+
+	.prices-table {
+		max-width: 1545px;
+		padding-right: 30px;
+
+		.price {
+			white-space: nowrap;
+		}
+	}
+
+	.subscription-plans-table-header {
+		width: 950px;
+
+		.field-container {
+			display: flex;
+			flex-wrap: nowrap;
+			width: 100%;
+			max-width: 230px;
+
+			.select-container {
+				width: 100%;
+				min-width: 150px;
+			}
+		}
+	}
+
+	.show-filter-btn {
+		background-color: $darkblue-40;
+
+		&.active {
+			background-color: $grass-50;
+		}
+	}
+
+	.subscription-plans-table {
+		min-width: 1650px;
+		max-width: 2200px;
+		padding-right: 30px;
+
+		.name {
+			@include truncate-text(1);
+		}
+
+		#column-actions {
+			width: 100%;
+			justify-content: center;
+		}
+
+		.tooltip-children {
+			width: 100%;
+		}
+
+		.menu-list {
+			&__slider-item {
+				.slider-checkbox-container {
+					margin-left: 15px;
+				}
+			}
+		}
+	}
+
+	.text-input-light:disabled, .text-input-light.text-input__readonly {
+		color: $black;
+	}
+}

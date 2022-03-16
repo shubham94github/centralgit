@@ -1,0 +1,30 @@
+@import 'src/styles/colors';
+
+.loading-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.5);
+	z-index: 3;
+
+	&.centered {
+		.spinner {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(50%, 50%);
+			z-index: 3;
+		}
+	}
+
+	.spinner-border {
+		width: 50px !important;
+		height: 50px !important;
+		color: $darkblue-30 !important;
+	}
+}

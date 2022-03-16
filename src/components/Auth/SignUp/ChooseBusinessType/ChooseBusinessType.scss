@@ -1,0 +1,94 @@
+@import '/src/styles/colors';
+
+.choose-business-type {
+	max-width: 1140px;
+
+	.form-wrapper {
+		padding-left: 40px;
+		padding-right: 40px;
+		padding-bottom: 50px;
+		margin-left: 0;
+	}
+
+	.text-center {
+		margin-bottom: 30px;
+
+		.title {
+			font-size: 24px;
+			font-weight: bold;
+			color: $darkblue-70;
+		}
+
+		.p16:last-child {
+			max-width: 565px;
+			margin-top: 30px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	.sub-title {
+		text-align: center;
+		margin-bottom: 15px;
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+	.fields {
+		display: flex;
+		flex-direction: column;
+		margin-right: 25px;
+
+		.p14 {
+			font-size: 16px;
+			font-weight: bold;
+			color: $darkblue-70;
+		}
+	}
+
+	.company {
+		border-right: 1px solid $gray-10;
+
+		.p14, .fields {
+			margin-right: 15px;
+		}
+	}
+
+	.startup {
+		.p14, .fields {
+			margin-left: 15px;
+		}
+	}
+
+	.startup .description,
+	.company .description {
+		font-size: 16px;
+		color: $gray-50;
+	}
+
+	.radio-button-container {
+		margin-top: 10px;
+		font-size: 16px;
+		color: $darkblue-70;
+	}
+
+	.primary-button {
+		width: 270px;
+		margin-top: 15px;
+	}
+
+	.back-btn {
+		position: absolute;
+		left: 0;
+		top: 3px;
+		cursor: pointer;
+	}
+
+	.text-input-container {
+		margin-top: 20px;
+	}
+
+	.blue-link {
+		font-size: 16px;
+	}
+}

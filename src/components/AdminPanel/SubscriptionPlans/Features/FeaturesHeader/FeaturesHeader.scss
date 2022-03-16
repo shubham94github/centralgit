@@ -1,0 +1,27 @@
+@import '/src/styles/colors';
+
+.features-header {
+	width: 100%;
+
+	.guidelines {
+		margin-top: 15px;
+		margin-bottom: 7px;
+
+		.p14 {
+			width: 700px;
+		}
+	}
+
+	.primary-button {
+		margin-top: 15px;
+		background: $darkblue-40;
+
+		svg {
+			margin-right: 5px;
+		}
+
+		&:hover {
+			background: $darkblue-40;
+		}
+	}
+}

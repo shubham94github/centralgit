@@ -1,0 +1,55 @@
+@import 'src/styles/colors';
+
+.search-input-container {
+	display: flex;
+	position: relative;
+	margin-bottom: 15px;
+
+	.icon {
+		position: absolute;
+		left: 18px;
+		top: 13px;
+	}
+
+	.search-input, .search-input:active {
+		height: 50px;
+		padding: 13px 49px;
+		background: $white;
+		border: 1px solid $darkblue-20;
+		box-sizing: border-box;
+		border-radius: 8px;
+		width: 100%;
+		outline: none;
+
+		&::placeholder,
+		&:-ms-input-placeholder,
+		&::-webkit-input-placeholder {
+			color: $gray-50;
+		}
+	}
+
+	.filter {
+		position: absolute;
+		top: 13px;
+		right: 30px;
+	}
+
+	.clear-value {
+		position: absolute;
+		right: 15px;
+		top: 13px;
+		cursor: pointer;
+	}
+
+	.spinner {
+		position: absolute;
+		right: 17px;
+		top: 14px;
+		background: $white;
+	}
+
+	.spinner-border-xs {
+		width: 20px !important;
+		height: 20px !important;
+	}
+}

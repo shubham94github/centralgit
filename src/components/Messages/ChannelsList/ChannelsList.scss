@@ -1,0 +1,47 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.channels-list-container {
+	display: flex;
+	flex-direction: column;
+	width: 470px;
+	max-width: 470px;
+	min-width: 470px;
+	background: $white;
+
+	.channels-list-header {
+		@include textStyle(16px, $darkblue-70, 20px);
+
+		font-weight: bold;
+	}
+
+	.channels {
+		height: 100%;
+		overflow-y: auto;
+		scrollbar-width: thin;
+
+		.spinner {
+			display: flex;
+			justify-content: center;
+		}
+
+		.spinner-border {
+			width: 50px !important;
+			height: 50px !important;
+			color: $darkblue-30 !important;
+		}
+
+		.reserve-loading {
+			min-height: 50px;
+			width: 100%;
+		}
+	}
+
+	.search-input-container {
+		margin: 30px 20px;
+
+		.search-input {
+			border: 1px solid $gray-10;
+		}
+	}
+}

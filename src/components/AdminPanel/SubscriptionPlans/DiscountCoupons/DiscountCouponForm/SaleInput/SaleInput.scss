@@ -1,0 +1,29 @@
+@import 'src/styles/colors';
+
+.sale-input {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	.text-input-container {
+		input {
+			border-bottom-right-radius: 0px;
+			border-top-right-radius: 0px;
+		}
+	}
+
+	.percent-wrapper {
+		width: 50px;
+		height: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $gray-10;
+		border-bottom-right-radius: 8px;
+		border-top-right-radius: 8px;
+	}
+
+	.amount-wrapper {
+		width: 105px;
+	}
+}

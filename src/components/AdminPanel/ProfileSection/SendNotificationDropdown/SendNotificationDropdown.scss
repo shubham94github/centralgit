@@ -1,0 +1,50 @@
+@import 'src/styles/colors';
+
+.send-notification-dropdown {
+	position: absolute;
+	left: -30px;
+	top: 35px;
+	width: 340px;
+	background: $white;
+	border: 1px solid #B8C4DF;
+	filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+	padding: 20px;
+	z-index: 3;
+	border-radius: 4px;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -8px;
+		left: 29px;
+		display: block;
+		width: 0;
+		height: 0;
+		border-bottom: 8px solid #B8C4DF;
+		border-top: none;
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		top: -7px;
+		left: 29px;
+		display: block;
+		width: 0;
+		height: 0;
+		border-bottom: 8px solid $white;
+		border-top: none;
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+	}
+
+	.textarea-container {
+		margin-bottom: 10px;
+		border-top-right-radius: 8px;
+
+		textarea {
+			width: 100%;
+		}
+	}
+}

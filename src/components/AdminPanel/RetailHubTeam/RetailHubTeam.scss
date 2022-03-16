@@ -1,0 +1,21 @@
+.retail-hub-team {
+	.title {
+		margin-bottom: 30px;
+	}
+
+	.admin-users-header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		width: 100%;
+
+		.add-user-btn {
+			margin-left: 15px;
+		}
+	}
+
+	.logo-container {
+		border-radius: 8px;
+		overflow: hidden;
+	}
+}

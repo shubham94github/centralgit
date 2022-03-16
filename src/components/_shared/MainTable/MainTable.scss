@@ -1,0 +1,411 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+$appCheckboxSize: 20px;
+
+.main-table {
+	position: relative;
+	cursor: default;
+	overflow-x: unset;
+	overflow-y: unset;
+
+	> div {
+		scrollbar-width: thin;
+	}
+
+	.table-header {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		padding-bottom: 20px;
+		box-sizing: border-box;
+
+		.categories-header {
+			width: 100%;
+
+			.description {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: center;
+				margin-top: 15px;
+
+				.p14 {
+					width: 623px;
+					margin-left: 10px;
+				}
+			}
+
+			.primary-button {
+				background: $darkblue-40;
+				margin-top: 23px;
+
+				svg {
+					width: 18px;
+					height: 18px;
+					margin-right: 8px;
+				}
+			}
+		}
+
+		.table-filters-container {
+			width: 100%;
+		}
+
+		.actions-line {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			width: 100%;
+		}
+
+		.table-filters {
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, 230px);
+			grid-column-gap: 10px;
+			grid-row-gap: 10px;
+			margin-top: 20px;
+
+			.date-range-picker {
+				.date-range-input {
+					input {
+						width: 100%;
+					}
+				}
+			}
+
+			.filter-btn {
+				background: $darkblue-40;
+
+				svg {
+					margin-right: 5px;
+				}
+			}
+
+			.apply {
+				width: 77px;
+				height: 50px;
+			}
+
+			.reset {
+				width: 105px;
+				height: 50px;
+				margin-left: 10px;
+			}
+		}
+
+		.closed {
+			display: none;
+		}
+
+		.table-header-actions {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			width: calc(100% - 45px);
+
+			.select-container {
+				min-width: 190px;
+				margin-right: 15px;
+			}
+
+			.search-input-container {
+				margin-bottom: 0;
+			}
+
+			.show-filter-btn {
+				margin-left: 15px;
+				background: $darkblue-40;
+
+				svg {
+					margin-right: 5px;
+				}
+			}
+
+			.show-categories-filter-btn {
+				margin-left: 15px;
+				background: $darkblue-40;
+			}
+
+			.active {
+				background: $grass-50;
+			}
+		}
+
+		.table-settings {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 45px;
+			height: 45px;
+			cursor: pointer;
+
+			svg {
+				width: 34px;
+				height: 34px;
+			}
+		}
+	}
+
+	.rdt_Table {
+		.rdt_TableHead {
+			.rdt_TableHeadRow {
+				border-top: 1px solid $darkblue-20;
+				border-left: 1px solid $darkblue-20;
+				border-right: 1px solid $darkblue-20;
+				border-radius: 8px 8px 0 0;
+				background: $darkblue-50;
+				min-height: 40px;
+				box-sizing: border-box;
+
+				.rdt_TableCol {
+					font-weight: bold;
+					font-size: 16px;
+					line-height: 20px;
+					display: flex;
+					align-items: center;
+					text-align: center;
+
+					&_Sortable {
+						color: $white;
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+
+		.rdt_TableBody {
+			border-left: 1px solid $darkblue-20;
+			border-bottom: 1px solid $darkblue-20;
+			border-right: 1px solid $darkblue-20;
+			box-sizing: border-box;
+			scrollbar-width: thin;
+
+			div {
+				box-sizing: border-box !important;
+			}
+
+			.rdt_TableRow {
+				min-height: 40px;
+
+				&:not(:last-of-type) {
+					border-bottom: 1px solid $darkblue-20;
+				}
+
+				.rdt_TableCell {
+					font-size: 14px;
+					line-height: 20px;
+
+					.actions-cell {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+
+						.icon {
+							cursor: pointer;
+
+							&:nth-child(n + 2) {
+								margin-left: 10px;
+							}
+						}
+					}
+
+					.dropdown {
+						cursor: pointer;
+					}
+
+					.action {
+						cursor: pointer;
+					}
+
+					.category-name {
+						@include truncate-text(2);
+					}
+
+					.truncate-country {
+						@include truncate-text(1);
+					}
+
+					.centered-checkbox {
+						width: 100%;
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						justify-content: center;
+					}
+
+					.icon-person, .user-avatar {
+						width: 30px;
+						height: 30px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						border-radius: 8px;
+
+						&__text {
+							color: $white;
+						}
+					}
+
+					.stars-container {
+						display: flex;
+						flex-direction: row;
+					}
+
+					.truncate-brand {
+						@include truncate-text(1);
+					}
+
+					.truncate-brand-name {
+						@include truncate-text(2);
+						word-break: break-word;
+					}
+				}
+			}
+		}
+
+		.dropdown-menu-table {
+			border: 1px solid $darkblue-20;
+			box-sizing: border-box;
+			border-radius: 8px;
+			padding: 0;
+			overflow: hidden;
+
+			.slider-checkbox-container {
+				position: relative;
+				margin-top: 4px;
+				margin-bottom: 2px;
+				cursor: pointer;
+
+				.label {
+					margin-left: 37px;
+				}
+
+				.custom-checkbox-slider {
+					position: relative;
+					margin-right: 15px;
+					cursor: pointer;
+
+					& + input {
+						opacity: 1;
+						margin: 0;
+						padding: 0;
+						width: 0;
+						height: 0;
+						cursor: pointer;
+					}
+
+					& + input:checked {
+						&::before {
+							transform: translateX(18px);
+							opacity: 1;
+							background: $white;
+							border: 1px solid $white;
+						}
+
+						&::after {
+							border: 1px solid $grass-50;
+							background: $grass-50;
+							opacity: 1;
+						}
+					}
+
+					& + input::after,
+					& + input::before {
+						content: '';
+						position: absolute;
+						left: 0;
+						transition: all 0.15s ease-in-out;
+						opacity: 1;
+					}
+
+					& + input::after {
+						width: 40px;
+						height: 20px;
+						border: 1px solid $red-50;
+						border-radius: 12px;
+						background: $red-50;
+						outline: none;
+						opacity: 1;
+						position: relative;
+						left: -3px;
+					}
+
+					& + input::before {
+						left: 3px;
+						top: 0;
+						width: 12px;
+						height: 12px;
+						border: 1px solid $white;
+						border-radius: 50%;
+						outline: none;
+						z-index: 2;
+						opacity: 1;
+						background: green;
+					}
+
+					& + input::before {
+						left: 3px;
+						top: 2px;
+						width: 12px;
+						height: 12px;
+						border-radius: 50%;
+						outline: none;
+						z-index: 2;
+						opacity: 1;
+						background: $white;
+						border: 1px solid $white;
+					}
+
+					& + input:disabled {
+						&::before, &::after {
+							opacity: 0.5;
+						}
+					}
+				}
+			}
+		}
+
+		input[type='checkbox']:after {
+			line-height: 1.5em;
+			content: '';
+			display: block;
+			width: $appCheckboxSize;
+			height: $appCheckboxSize;
+			position: relative;
+			top: -2px;
+			border-radius: 5px;
+			background: $white;
+			border: 1px solid $grass-50;
+		}
+
+		input[type='checkbox']:checked:after {
+			width: $appCheckboxSize;
+			height: $appCheckboxSize;
+			background: $grass-50;
+		}
+
+		input[type='checkbox']:checked:before {
+			content: '';
+			position: absolute;
+			top: 0.5px;
+			left: 4px;
+			width: 12px;
+			height: 9px;
+			transform: rotate(-75deg) skew(-26deg, 25deg);
+			border: 2px solid transparent;
+			border-bottom-color: $white;
+			border-left-color: $white;
+			cursor: pointer;
+			z-index: 6;
+		}
+
+		input[type='checkbox']:disabled {
+			opacity: 0.5;
+			cursor: default;
+		}
+	}
+}

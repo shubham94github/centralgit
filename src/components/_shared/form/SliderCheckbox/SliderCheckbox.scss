@@ -1,0 +1,105 @@
+@import 'src/styles/colors';
+
+.slider-checkbox-container {
+	width: 40px;
+	height: 17px;
+	position: relative;
+	margin-top: 4px;
+	margin-bottom: 2px;
+	cursor: pointer;
+
+	&.label-before {
+		.label {
+			margin-left: 0;
+		}
+	}
+
+	.label {
+		margin-left: 37px;
+	}
+
+	.custom-checkbox-slider {
+		position: relative;
+		margin-right: 15px;
+		cursor: pointer;
+
+		& + input {
+			position: relative;
+			top: -10px;
+			opacity: 1;
+			margin: 0;
+			padding: 0;
+			width: 0;
+			height: 0;
+			cursor: pointer;
+		}
+
+		& + input:checked {
+			&::before {
+				transform: translateX(18px);
+				opacity: 1;
+				background: $white;
+				border: 1px solid $white;
+			}
+
+			&::after {
+				border: 1px solid $grass-50;
+				background: $grass-50;
+				opacity: 1;
+			}
+		}
+
+		& + input::after,
+		& + input::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: -4px;
+			transition: all 0.15s ease-in-out;
+			opacity: 1;
+		}
+
+		& + input::after {
+			width: 40px;
+			height: 20px;
+			border: 1px solid $red-50;
+			border-radius: 12px;
+			background: $red-50;
+			outline: none;
+			opacity: 1;
+			left: -3px;
+		}
+
+		& + input::before {
+			left: 3px;
+			top: 0;
+			width: 12px;
+			height: 12px;
+			border: 1px solid $white;
+			border-radius: 50%;
+			outline: none;
+			z-index: 1;
+			opacity: 1;
+			background: green;
+		}
+
+		& + input::before {
+			left: 3px;
+			top: 0;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			outline: none;
+			z-index: 1;
+			opacity: 1;
+			background: $white;
+			border: 1px solid $white;
+		}
+
+		& + input:disabled {
+			&::before, &::after {
+				opacity: 0.5;
+			}
+		}
+	}
+}

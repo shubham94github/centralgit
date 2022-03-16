@@ -1,0 +1,6 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.p14 {
+	@include textStyle(14px, $darkblue-70, 20px);
+}

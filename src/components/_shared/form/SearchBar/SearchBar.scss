@@ -1,0 +1,32 @@
+@import 'src/styles/colors';
+
+.search-bar-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	padding-top: 5px;
+
+	@media only screen and (max-width: 1120px) {
+		display: none;
+	}
+
+	.text-input {
+		width: 280px;
+		border-radius: 0px;
+		border: none;
+		padding: 13px 0 13px 18px;
+
+		& + label {
+			display: none;
+		}
+	}
+
+	.search-button {
+		height: 50px;
+		border-radius: 0px 8px 8px 0px;
+
+		svg {
+			cursor: pointer;
+		}
+	}
+}

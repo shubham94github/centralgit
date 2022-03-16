@@ -1,0 +1,29 @@
+@import 'src/styles/colors';
+
+.payment-retry {
+	&-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&-container {
+		max-width: 630px;
+		padding: 30px 114px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background: $gray-05;
+		border-radius: 20px;
+		color: $darkblue-70;
+
+		.description {
+			margin-top: 15px;
+		}
+
+		.check-icon {
+			padding-bottom: 15px;
+		}
+	}
+}

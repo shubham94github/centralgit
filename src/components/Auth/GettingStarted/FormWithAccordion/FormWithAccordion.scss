@@ -1,0 +1,149 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.accordion-custom {
+	padding: 30px 40px;
+	box-sizing: border-box;
+
+	.accordion-header {
+		.title {
+			margin-top: 20px;
+		}
+
+		.guidelines {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			margin-top: 15px;
+
+			svg {
+				cursor: pointer;
+				margin-right: 9px;
+			}
+		}
+
+		.p14 {
+			width: 525px;
+		}
+
+		.filter-type {
+			display: flex;
+			flex-direction: row;
+			margin-top: 25px;
+			margin-bottom: 10px;
+
+			.checkbox-container:nth-child(2) {
+				margin-left: 20px;
+			}
+		}
+
+		.accordion-chosen-items {
+			margin-top: 15px;
+		}
+	}
+
+	.accordion-rows {
+		margin-top: 15px;
+		margin-bottom: 30px;
+
+		.accordion-row {
+			display: flex;
+			flex-direction: column;
+			border-top: 1px solid $gray-20;
+			padding-top: 14px;
+			padding-bottom: 14px;
+			box-sizing: border-box;
+
+			.row-header {
+				display: flex;
+				flex-direction: row;
+				width: 100%;
+				cursor: pointer;
+
+				.p14 {
+					width: 210px;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
+				}
+
+				.spacer {
+					flex-grow: 1;
+				}
+
+				svg {
+					width: 24px;
+					height: 24px;
+				}
+			}
+
+			.row-content {
+				display: flex;
+				flex-direction: column;
+				margin-top: 30px;
+
+				.sub-item {
+					display: flex;
+					flex-direction: column;
+
+					&:nth-child(n+2) {
+						margin-top: 22px;
+					}
+
+					.sub-item-header {
+						display: flex;
+						flex-direction: row;
+
+						.sub-item-icon {
+							margin-left: 11px;
+							cursor: pointer;
+						}
+
+						.checkbox-label {
+							width: 210px;
+							text-overflow: ellipsis;
+							overflow: hidden;
+							white-space: nowrap;
+						}
+
+						.checkbox-container:nth-child(n+2) {
+							margin-top: 22px;
+						}
+					}
+
+					.sub-item-content {
+						display: grid;
+						grid-gap: 15px 0;
+						grid-template-columns: 1fr 1fr 1fr;
+						margin-top: 17px;
+						margin-left: 40px;
+
+						.child-item-header {
+							.checkbox-label {
+								width: 210px;
+								text-overflow: ellipsis;
+								overflow: hidden;
+								white-space: nowrap;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.accordion-row:last-child {
+			border-bottom: 1px solid $gray-20;
+		}
+	}
+
+	.accordion-actions {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+
+		.primary-button {
+			width: 270px;
+		}
+	}
+}

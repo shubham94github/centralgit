@@ -1,0 +1,56 @@
+@import '/src/styles/colors';
+
+.snackbar {
+	width: max-content;
+	padding: 20px 30px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	color: $white;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 20px;
+	border-radius: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+	animation: slideFromRight 200ms;
+}
+
+.infoType {
+	background: $green-50;
+}
+
+.warningType {
+	background: $orange-50;
+}
+
+.errorType {
+	background: $red-50;
+}
+
+.removeSnackbar {
+	animation: slideFromLeft 200ms;
+}
+
+@keyframes slideFromRight {
+	from {
+		transform: translateX(100%);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideFromLeft {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(100%);
+	}
+}

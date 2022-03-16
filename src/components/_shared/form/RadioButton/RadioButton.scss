@@ -1,0 +1,53 @@
+@import '/src/styles/colors';
+
+label.radio-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	margin-bottom: 0;
+	cursor: pointer;
+
+	&.disabled {
+		cursor: default;
+
+		&::before {
+			border: 1px solid $gray-40;
+			background: $gray-10;
+			cursor: default;
+		}
+	}
+
+	&::before {
+		content: '';
+		display: block;
+		width: 20px;
+		height: 20px;
+		border: 1px solid $grass-50;
+		border-radius: 50%;
+		background: $white;
+	}
+
+	span.checked {
+		display: none;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 12px;
+		height: 12px;
+		background-color: $grass-50;
+		border-radius: 50%;
+	}
+
+	input[type='radio'] {
+		display: none;
+	}
+
+	input[type='radio']:checked + span.checked {
+		display: block;
+	}
+}
+
+span.radio-label {
+	cursor: default;
+}

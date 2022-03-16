@@ -1,0 +1,62 @@
+@import 'src/styles/colors.scss';
+
+.navbar-wrapper-admin-panel {
+	display: flex;
+	justify-content: start;
+	margin-bottom: 25px;
+	width: 100%;
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 12px;
+		bottom: -5px;
+		height: 2px;
+		width: 98%;
+		background: $gray-20;
+	}
+
+	.navbar-container {
+		display: inline-flex;
+		flex-direction: row;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -5px;
+			height: 2px;
+			width: 100%;
+			background: $gray-20;
+		}
+
+		& > *:not(:last-child) {
+			margin-right: 30px;
+		}
+
+		.menu-item-style {
+			color: $darkblue-70;
+			cursor: pointer;
+			white-space: nowrap;
+		}
+
+		.green-underline {
+			color: $grass-50;
+			position: relative;
+
+			&::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -5px;
+				height: 2px;
+				width: 100%;
+				background: $grass-50;
+				z-index: 1;
+			}
+		}
+	}
+
+}

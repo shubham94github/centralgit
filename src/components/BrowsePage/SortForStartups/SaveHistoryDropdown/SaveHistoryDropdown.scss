@@ -1,0 +1,41 @@
+@import 'src/styles/colors';
+
+.save-history-dropdown-container {
+	position: absolute;
+	left: 35%;
+	top: 65px;
+	width: 330px;
+	background: $white;
+	border: 1px solid $darkblue-20;
+	filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+	z-index: 3;
+	border-radius: 4px;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -8px;
+		left: 29px;
+		display: block;
+		width: 0;
+		height: 0;
+		border-bottom: 8px solid #B8C4DF;
+		border-top: none;
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: -7px;
+		left: 29px;
+		display: block;
+		width: 0;
+		height: 0;
+		border-bottom: 8px solid $white;
+		border-top: none;
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+	}
+}

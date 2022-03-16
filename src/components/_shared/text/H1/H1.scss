@@ -1,0 +1,8 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.h1 {
+	@include textStyle(24px, $white, 28px);
+
+	text-align: center;
+}

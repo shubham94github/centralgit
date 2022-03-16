@@ -1,0 +1,87 @@
+@import '/src/styles/colors';
+@import '/src/styles/mixins';
+
+.search-bar-menu {
+	@include textStyle(14px, $white, 20px);
+	width: 555px;
+	background: $darkblue-90;
+	height: 100%;
+	padding-top: 15px;
+	z-index: 4;
+
+	.search-bar-filters-container {
+		padding-right: 40px;
+		padding-left: 50px;
+
+		> div {
+			margin: 15px 0;
+		}
+	}
+
+	.separator-line {
+		position: relative;
+		padding-top: 9px;
+		color: $white;
+	}
+
+	.subheader {
+		@include textStyle(18px, $white, 22px);
+
+		padding-top: 20px;
+		padding-bottom: 15px;
+		font-weight: 700;
+	}
+
+	.search-title {
+		margin-bottom: 20px;
+		color: $white;
+	}
+
+	.item-style {
+		margin: 10px 0;
+		cursor: pointer;
+		color: $white;
+	}
+
+	.checkbox-style {
+		margin: 6px 0;
+
+		label {
+			color: $white;
+		}
+	}
+
+	.selected-category {
+		color: $grass-50;
+	}
+
+	.clear-link {
+		margin: 15px 0px;
+		color: $blue-50;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+	.margin-subcategories {
+		margin: 10px 0;
+	}
+
+	.date-range {
+		margin: 0;
+
+		.rdrDayStartPreview, .rdrDayEndPreview {
+			border-color: $grass-50;
+		}
+
+		.value {
+			padding: 0;
+			svg {
+				margin: 0;
+			}
+		}
+	}
+
+	.text-white {
+		color: $white;
+	}
+}

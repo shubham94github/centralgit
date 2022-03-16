@@ -1,0 +1,198 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.chat-header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 20px 30px 9px 30px;
+	background: $white;
+	border-bottom: 1px solid $gray-10;
+	min-height: 110px;
+	height: 110px;
+
+	.tooltip-children {
+		width: 24px;
+		height: 24px;
+	}
+
+	.actions {
+		display: flex;
+		align-items: center;
+		margin-left: 28px;
+	}
+
+	.search-container {
+		min-width: 310px;
+	}
+
+	.search-input-container {
+		width: 100%;
+		max-width: 600px;
+		margin-bottom: 0;
+
+		.search-input {
+			border: 1px solid $gray-10;
+		}
+	}
+
+	.dropdown {
+		cursor: pointer;
+		margin-left: 20px;
+
+		.menu-list {
+			&__item {
+				@include textStyle(14px, $black, 20px);
+
+				padding-left: 15px;
+			}
+		}
+	}
+
+	.ellipsis {
+		cursor: pointer;
+	}
+
+	.info-icon {
+		cursor: pointer;
+		margin-left: 5px;
+	}
+
+	.user-card {
+		display: flex;
+		justify-content: space-between;
+		width: 250px;
+		height: 84px;
+
+		label {
+			width: 60px;
+			height: 60px;
+			min-width: 60px;
+			margin-right: 15px;
+
+			.avatar-shutter {
+				min-width: 60px;
+				min-height: 60px;
+				border: none;
+			}
+		}
+
+		.connection-status {
+			width: 15px;
+			height: 15px;
+			bottom: 4px;
+			right: 2px;
+		}
+
+		.last-online {
+			color: $gray-40;
+			white-space: nowrap;
+		}
+
+		.username {
+			width: 170px;
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			margin-right: 30px;
+
+			.name {
+				width: 145px;
+				overflow: hidden;
+				display: inline-block;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			.p12 {
+				width: 159px;
+				@include truncate-text(1);
+			}
+		}
+	}
+
+	.messages-search-result {
+		position: absolute;
+		top: calc(100% + 10px);
+		right: 0;
+		max-height: 230px;
+		left: 0;
+		overflow-y: auto;
+		padding-top: 6px;
+		padding-bottom: 10px;
+		background: $white;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		z-index: 1;
+
+		.title {
+			padding-left: 6px;
+		}
+	}
+
+	.message-search-item {
+		display: flex;
+		padding: 5px 25px 6px 6px;
+		cursor: pointer;
+
+		&:hover {
+			background: $darkblue-10;
+		}
+
+		.item-content {
+			width: calc(100% - 55px);
+			display: flex;
+			flex-direction: column;
+		}
+
+		.avatar-container {
+			width: 40px;
+			min-width: 40px;
+			height: 40px;
+			margin-right: 15px;
+			margin-bottom: 0;
+
+			.avatar-shutter {
+				width: 40px;
+				height: 40px;
+			}
+		}
+
+		.channel-name {
+			@include textStyle(14px, $darkblue-70, 20px);
+
+			display: flex;
+			justify-content: space-between;
+
+			.name {
+				width: 100%;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+
+			.date {
+				@include textStyle(12px, $darkblue-70, 16px);
+
+				margin-top: 3px;
+				margin-left: 10px;
+				text-align: right;
+				width: auto;
+				white-space: nowrap;
+			}
+		}
+
+		.message-text {
+			@include textStyle(12px, $darkblue-70, 16px);
+			@include truncate-text(1);
+
+			display: flex;
+
+			span {
+				width: 100%;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+		}
+	}
+}

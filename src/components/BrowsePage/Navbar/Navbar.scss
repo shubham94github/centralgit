@@ -1,0 +1,51 @@
+@import 'src/styles/colors.scss';
+
+.navbar-wrapper {
+	display: flex;
+	justify-content: start;
+	margin-bottom: 30px;
+	margin-right: 50px;
+	margin-left: 50px;
+
+	.navbar-container {
+		display: inline-flex;
+		flex-direction: row;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -5px;
+			height: 2px;
+			width: 100%;
+			background: $gray-20;
+		}
+
+		& > *:not(:last-child) {
+			margin-right: 30px;
+		}
+
+		.menu-item-style {
+			color: $darkblue-70;
+			cursor: pointer
+		}
+
+		.green-underline {
+			color: $grass-50;
+			position: relative;
+
+			&::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -5px;
+				height: 2px;
+				width: 100%;
+				background: $grass-50;
+				z-index: 1;
+			}
+		}
+	}
+
+}

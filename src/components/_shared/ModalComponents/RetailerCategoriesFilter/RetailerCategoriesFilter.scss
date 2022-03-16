@@ -1,0 +1,27 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.filter-categories {
+	.categories-list {
+		max-height: 500px;
+		overflow-y: auto;
+		scrollbar-width: thin;
+
+		 > li {
+			margin-top: 10px;
+		}
+
+		.checkbox-container {
+			.checkbox-label {
+				@include truncate-text(1);
+
+				color: $black;
+			}
+		}
+	}
+
+	.primary-button {
+		width: 133px;
+		margin-top: 20px;
+	}
+}

@@ -1,0 +1,32 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.history-form-container {
+	padding: 30px;
+	width: 330px;
+
+	& > *:not(:last-child) {
+		margin-bottom: 15px;
+	}
+
+	.title-wrapper {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: center;
+
+		&.remove {
+			align-items: flex-start;
+
+			p {
+				font-weight: 400;
+			}
+		}
+	}
+
+	.close-icon {
+		display: flex;
+		justify-content: end;
+		width: 100%;
+	}
+}

@@ -1,0 +1,118 @@
+@import '/src/styles/colors';
+
+.documents-carousel {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	.swiper-slide {
+		width: unset;
+
+		&:last-child {
+			margin-right: 0 !important;
+		}
+	}
+
+	.categories-swiper-wrapper .swiper {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.format-icon {
+		&.small {
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			width: 35px;
+			height: 35px;
+
+			svg {
+				width: 35px;
+				height: 35px;
+			}
+		}
+	}
+
+	.document-preview {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 510px;
+		height: 425px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		background-color: $gray-20;
+
+		.close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 30px;
+			height: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			background: $close-icon-background;
+			cursor: pointer;
+		}
+
+		&.video {
+			background-size: cover;
+
+			.tooltip-children {
+				display: flex;
+				align-items: center;
+				width: 100%;
+				height: 100%;
+
+				.default-video-icon {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.swiper-button-prev-unique, .swiper-button-next-unique {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+
+		svg {
+			height: 32px;
+			width: 18px;
+		}
+	}
+
+	.swiper-button-prev-unique {
+		left: -32px;
+	}
+
+	.swiper-button-next-unique {
+		right: -32px;
+	}
+}
+
+.pdf-pop-up {
+	.modal-dialog, .modal-container {
+		.modal-content {
+			height: 90vh;
+
+			.modal-body {
+				padding: 0 0 30px 0;
+				height: 100%;
+			}
+		}
+	}
+}

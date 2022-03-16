@@ -1,0 +1,32 @@
+@import '/src/styles/colors';
+
+.prices {
+	width: 100%;
+
+	.page-title {
+		margin-bottom: 18px;
+	}
+
+	.guidelines {
+		margin-bottom: 6px;
+	}
+
+	.admin-primary {
+		max-width: 180px;
+		margin-bottom: 10px;
+		margin-top: 18px;
+
+		.s16 {
+			margin-left: 5px;
+			color: $white;
+		}
+	}
+
+	.warning-text {
+		margin-bottom: 0;
+	}
+
+	.prices-table {
+		max-width: 1545px;
+	}
+}

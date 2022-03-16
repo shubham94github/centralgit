@@ -1,0 +1,15 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.p12 {
+	@include textStyle(12px, $darkblue-70, 16px);
+
+	&.warning-text {
+		color: $red-50;
+	}
+
+	&.error-text {
+		margin: 8px 0;
+		color: $red-50;
+	}
+}

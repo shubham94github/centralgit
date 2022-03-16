@@ -1,0 +1,25 @@
+@import 'src/styles/colors';
+
+.company-short-info-wrapper {
+	.tooltip-children {
+		width: fit-content;
+	}
+}
+
+.profile-gallery {
+	margin-top: 40px;
+	padding-bottom: 30px;
+	border-bottom: 2px solid $gray-10;
+
+	.gallery-title {
+		display: flex;
+		align-items: center;
+		margin-bottom: 30px;
+		font-weight: bold;
+		font-size: 24px;
+
+		span {
+			margin-left: 5px;
+		}
+	}
+}

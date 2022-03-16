@@ -1,0 +1,88 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.discount-coupons {
+	.main-table {
+		.rdt_Table {
+			.dropdown-menu-table .slider-checkbox-container {
+				position: relative;
+				bottom: 5px;
+				right: 5px;
+				cursor: pointer;
+			}
+
+			.rdt_TableRow {
+				.rdt_TableCell {
+					width: 100% !important;
+
+					.link {
+						@include textStyle(14px, $blue-50, 20px);
+
+						width: 100%;
+						cursor: pointer;
+						text-decoration: underline;
+					}
+
+					.center {
+						width: 100%;
+						text-align: center;
+					}
+				}
+			}
+		}
+
+		.truncate-name {
+			@include truncate-text(1);
+		}
+	}
+
+	.discount-coupons-header {
+		width: 100%;
+		margin-top: 20px;
+
+		.menage-section {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 20px;
+
+			.search-input-container {
+				margin-bottom: 0px;
+			}
+
+			.search-input {
+				width: 450px;
+			}
+
+			.add-coupon-btn {
+				width: 280px;
+				background: $darkblue-40;
+
+				svg {
+					margin-right: 8px;
+				}
+			}
+		}
+	}
+
+	.custom-date-picker {
+		.label {
+			@include textStyle(14px, $darkblue-70, 20px);
+
+			white-space: nowrap;
+		}
+
+		.value {
+			padding: 0px;
+
+			> svg {
+				margin: 0px 5px;
+			}
+		}
+	}
+}
+
+.overflow-calendar {
+	overflow-y: auto;
+}

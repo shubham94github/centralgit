@@ -1,0 +1,78 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.activity-categories-header {
+	width: 100%;
+
+	.description {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-top: 15px;
+
+		.p14 {
+			margin-left: 5px;
+		}
+
+		svg {
+			width: 24px;
+			height: 24px;
+		}
+
+
+	}
+
+	.search-container {
+		display: flex;
+		flex-direction: row;
+		margin-top: 20px;
+
+		.search-input-container {
+			width: 450px;
+			margin-bottom: 0;
+		}
+
+		.show-filter-btn {
+			height: 50px;
+			margin-left: 15px;
+			background: $darkblue-40;
+		}
+
+		.active {
+			background: $grass-50;
+		}
+	}
+
+	.table-filters {
+
+		.date-range-filter {
+			border: 1px solid $darkblue-20;
+			border-radius: 8px;
+			height: 50px;
+
+			.app-date-picker {
+				width: 100%;
+				height: 100%;
+				padding: 2px 8px;
+
+				.s16 {
+					width: 100%;
+					@include textStyle(16px, $gray-40, 24px);
+				}
+
+				.range-text {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					width: 100%;
+					height: 100%;
+					@include textStyle(16px, $black, 24px);
+				}
+
+				svg {
+					display: none;
+				}
+			}
+		}
+	}
+}

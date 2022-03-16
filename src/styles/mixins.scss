@@ -1,0 +1,93 @@
+@import 'colors';
+
+@mixin autofill($colorFocus,$background,$color) {
+
+	&:-webkit-autofill {
+		color: $color;
+		background-color: $background;
+		-webkit-box-shadow: 0 0 0 1000px $background inset;
+		-webkit-text-fill-color: $color;
+	}
+
+	&:-webkit-autofill:focus {
+		color: $colorFocus;
+		background-color: $background;
+		-webkit-box-shadow: 0 0 0 1000px $background inset;
+		-webkit-text-fill-color: $colorFocus;
+	}
+}
+
+@mixin notifications($color,$colorFocus) {
+	color: $color;
+
+	& ~ label, &::placeholder {
+		color: $color;
+	}
+
+	&:focus {
+		color: $colorFocus;
+
+		& ~ label {
+			color: $gray-60;
+		}
+
+		&::placeholder {
+			color: transparent;
+		}
+	}
+}
+
+@mixin textStyle($size, $color, $height) {
+	margin: 0;
+	color: $color;
+	font-family: Montserrat, sans-serif;
+	font-size: $size;
+	line-height: $height;
+	font-weight: 400;
+
+	&.bold-theme {
+		font-weight: 700;
+	}
+}
+
+@mixin truncate-text($line-count, $wordBreak: break-all) {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: $line-count;
+	-webkit-box-orient: vertical;
+	word-break: $wordBreak;
+}
+
+@mixin animatePlaceholder {
+	z-index: 2;
+	opacity: 1;
+	transform: translate(-12%, -16px) scale(0.75);
+	width: fit-content;
+	display: block;
+}
+
+@mixin container($max-width: 1650px){
+	width: 100%;
+	max-width: $max-width;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+@mixin unorderedList($color: $gray-90){
+	ul {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		padding-left: 2rem;
+
+		li {
+			list-style: disc;
+			padding: 0;
+			margin: 0;
+
+			&::marker {
+				color: $color;
+				font-size: 1.3rem;
+			}
+		}
+	}
+}

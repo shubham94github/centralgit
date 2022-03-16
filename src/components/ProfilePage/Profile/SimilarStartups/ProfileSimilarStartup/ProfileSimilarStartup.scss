@@ -1,0 +1,45 @@
+@import 'src/styles/colors';
+@import 'src/styles/extends';
+@import 'src/styles/mixins';
+
+.profile-similar-startup-wrapper {
+	display: flex;
+	flex-direction: row;
+	padding: 25px;
+	margin: 10px;
+	background: $white;
+	border-radius: 8px;
+
+	@extend .bs-1;
+
+	.img-similar-startup {
+		display: flex;
+		justify-content: center;
+		width: 120px;
+		min-width: 120px;
+		cursor: pointer;
+		margin-right: 10px;
+	}
+
+	.company-short-name {
+		display: flex;
+		justify-content: start;
+		margin-bottom: 10px;
+		color: $darkblue-90;
+		font-size: 20px;
+
+		span {
+			@include truncate-text(1);
+
+			cursor: pointer;
+		}
+	}
+
+
+	.company-description {
+		@include truncate-text(3, break-word);
+
+		color: $gray-50;
+		height: 72px;
+	}
+}

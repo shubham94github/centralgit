@@ -1,0 +1,18 @@
+.contact-us {
+	.text-input-container {
+		margin-bottom: 15px;
+	}
+
+	.textarea-container {
+		margin-bottom: 15px;
+
+		.RichEditor-root {
+			min-height: 144px;
+		}
+	}
+
+	.warning-text {
+		margin-top: -15px;
+		margin-bottom: 15px;
+	}
+}

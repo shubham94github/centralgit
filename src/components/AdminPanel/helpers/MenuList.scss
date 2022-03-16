@@ -1,0 +1,36 @@
+@import '/src/styles/colors';
+
+.menu-list {
+	&__item, &__slider-item, &__text-item {
+		padding: 10px;
+		box-sizing: border-box;
+	}
+
+	&__slider-item {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+
+		.slider-checkbox-container {
+			margin-left: 5px;
+
+			.custom-checkbox-slider {
+				& + input {
+					top: -17px;
+				}
+			}
+		}
+	}
+
+	&__item {
+		&:hover {
+			cursor: pointer;
+			background: $grass-50;
+
+			.s14 {
+				color: $white;
+			}
+		}
+	}
+}

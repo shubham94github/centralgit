@@ -1,0 +1,8 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+h2,.h2 {
+	@include textStyle(20px, $darkblue-70, 24px);
+
+	text-align: center;
+}

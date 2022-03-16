@@ -1,0 +1,25 @@
+@import '/src/styles/colors';
+
+.member-groups-header {
+	width: 100%;
+
+	.guidelines {
+		margin: 20px 0;
+
+		.p14 {
+			width: 700px;
+		}
+	}
+
+	.primary-button {
+		background: $darkblue-40;
+
+		svg {
+			margin-right: 5px;
+		}
+
+		&:hover {
+			background: $darkblue-40;
+		}
+	}
+}

@@ -1,0 +1,51 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.date-range-picker {
+	display: flex;
+	align-items: center;
+	height: 50px;
+	border: 1px solid $darkblue-20;
+	border-radius: 8px;
+	padding: 2px 8px;
+	box-sizing: border-box;
+	cursor: pointer;
+
+	.date-range-input {
+		input {
+			@include textStyle(16px, $black, 24px);
+			border: none;
+			cursor: pointer;
+
+			&:focus, :active {
+				outline: none;
+			}
+		}
+
+		.rdrCalendarWrapper, .rdrDateRangeWrapper {
+			position: absolute;
+			background: $white;
+			z-index: 1;
+			margin-top: 40px;
+			box-shadow: 0 0 10px 10px rgb(0, 0, 0, 0.2);
+
+			.rdrDateInput {
+				border-radius: 0;
+			}
+		}
+
+		.rdrNextPrevButton {
+			border-radius: 0;
+		}
+
+		.rdrDay {
+			.rdrInRange, .rdrStartEdge, .rdrEndEdge {
+				border-radius: 0;
+			}
+
+			.rdrDayStartPreview, .rdrDayEndPreview, .rdrDayInPreview {
+				border-radius: 0;
+			}
+		}
+	}
+}

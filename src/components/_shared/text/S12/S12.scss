@@ -1,0 +1,11 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.s12 {
+	@include textStyle(12px, $darkblue-70, 16px);
+
+	&.warning-text {
+		color: $red-50;
+		text-align: left;
+	}
+}

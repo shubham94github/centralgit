@@ -1,0 +1,6 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.s18 {
+	@include textStyle(18px, $darkblue-70, 22px)
+}

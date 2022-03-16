@@ -1,0 +1,24 @@
+.company-members-admin {
+	.form-wrapper {
+		padding: 0;
+		border: none;
+	}
+
+	.modal-body {
+		position: static;
+	}
+
+	.modal-content {
+		overflow: hidden;
+	}
+
+	.my-masonry-grid {
+		.my-masonry-grid_column {
+			width: 288px !important;
+
+			&:nth-child(n + 2) {
+				margin-left: 20px;
+			}
+		}
+	}
+}

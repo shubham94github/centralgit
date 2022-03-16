@@ -1,0 +1,84 @@
+@import 'src/styles/colors';
+@import 'src/styles/extends';
+@import 'src/styles/mixins';
+
+.search-history-wrapper {
+	@extend .bs-2;
+
+	position: absolute;
+	max-height: 470px;
+	width: 100%;
+	background: $white;
+	top: 50px;
+	z-index: 4;
+	overflow-y: auto;
+	padding-top: 10px;
+
+	.history-item {
+		display: flex;
+		flex-wrap: nowrap;
+		padding: 5px 25px 5px 5px;
+
+		&:hover {
+			background: $grass-10;
+		}
+
+		.key-word {
+			@include truncate-text(1);
+		}
+
+		.history-request {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: nowrap;
+			width: 100%;
+		}
+
+		.manage-section {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: nowrap;
+
+				& > :first-child {
+					margin-left: 20px;
+					cursor: pointer;
+				}
+
+				& > :last-child {
+					margin-left: 10px;
+					cursor: pointer;
+				}
+		}
+	}
+
+	.history-title {
+		color: $darkblue-70;
+		padding: 5px;
+	}
+
+	.history-loader {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.spinner {
+			position: static;
+		}
+	}
+}
+
+.tooltip-edit-history {
+	&.popover-container {
+		margin-left: 20px !important;
+	}
+
+	.popover-body {
+		padding: 0px !important;
+	}
+
+	.parent-paths {
+		margin: 0px !important;
+	}
+}

@@ -1,0 +1,25 @@
+@import 'src/styles/colors';
+
+.cookie-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	z-index: 4;
+	left: 0.5%;
+	bottom: 10px;
+	width: 99%;
+	background: $white;
+	border-radius: 8px;
+	padding: 15px 30px;
+
+	.message-cookie {
+		width: 70%;
+	}
+
+	.cookie-link {
+		color: $blue-50;
+		cursor: pointer;
+	}
+}

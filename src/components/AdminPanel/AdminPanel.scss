@@ -1,0 +1,25 @@
+@import '/src/styles/colors';
+
+.admin-panel-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+
+	.admin-panel-section {
+		position: relative;
+		width: calc(100% - 30px);
+		min-width: 900px;
+		margin: 25px 30px;
+		border: 1px solid $darkblue-20;
+		background-color: $white;
+		box-sizing: border-box;
+		border-radius: 8px;
+		padding: 30px;
+		overflow-y: auto;
+		scrollbar-width: thin;
+
+		&.max-width {
+			max-width: 1230px;
+		}
+	}
+}

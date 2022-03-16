@@ -1,0 +1,39 @@
+@import 'src/styles/colors';
+
+.manage-table-columns {
+	max-height: 80%;
+
+	.columns-list {
+		max-height: 450px;
+		overflow-y: auto;
+		scrollbar-width: thin;
+
+		li {
+			margin-bottom: 10px;
+		}
+
+		.checkbox-label {
+			color: $black;
+		}
+
+		li:nth-child(n+2) {
+			margin-top: 10px;
+		}
+	}
+
+	.p12 {
+		width: 247px;
+		margin-bottom: 20px;
+	}
+
+	.actions {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	.primary-button {
+		width: 133px;
+		margin-top: 20px;
+	}
+}

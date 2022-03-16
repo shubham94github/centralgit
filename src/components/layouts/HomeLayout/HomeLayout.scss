@@ -1,0 +1,44 @@
+@import 'src/styles/colors';
+
+.home-layout-container__without-scroll::-webkit-scrollbar {
+	width: 0;
+	background: transparent;
+}
+
+.home-layout-container {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	overflow: hidden;
+	z-index: 0;
+	overflow-y: auto;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	scrollbar-width: thin;
+
+	.content-wrapper {
+		flex: 1 0 auto;
+		display: flex;
+		background: $darkblue-05;
+
+		&.bg-retailer-stuffer {
+			background-color: $darkblue-05-dark;
+			background-image: url("~/src/assets/images/bg-retailer.jpg");
+			background-repeat: no-repeat;
+			background-position: top center;
+			background-size: 1920px auto;
+
+			@media (max-width: 1920px) {
+				background-size: cover;
+			}
+		}
+	}
+}
+
+.landing-layout-container {
+	.landing-page-container, .content-wrapper {
+		background: transparent;
+	}
+}

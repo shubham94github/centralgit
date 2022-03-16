@@ -1,0 +1,10 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.rated-startups-wrapper {
+	background: $white;
+
+	.truncate-text-descriptions {
+		@include truncate-text(5);
+	}
+}

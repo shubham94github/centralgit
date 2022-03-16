@@ -1,0 +1,27 @@
+@import '/src/styles/mixins';
+
+.enterprise-plans {
+	.title {
+		margin-bottom: 18px;
+	}
+
+	.guidelines {
+		margin-bottom: 0;
+	}
+
+	.enterprise-table {
+		.main-table {
+			margin-right: 15px;
+		}
+	}
+
+	.stripe-name {
+		@include truncate-text(2);
+	}
+
+	.edit-enterprise-code {
+		.field-container {
+			margin-bottom: 30px;
+		}
+	}
+}

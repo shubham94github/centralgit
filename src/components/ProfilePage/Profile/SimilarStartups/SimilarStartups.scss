@@ -1,0 +1,46 @@
+@import 'src/styles/colors';
+
+.similar-startups-wrapper {
+	position: relative;
+	padding-top: 40px;
+	padding-bottom: 15px;
+	width: 100.8%;
+
+	.title-section {
+		display: flex;
+		justify-content: start;
+		color: $black;
+		margin-bottom: 25px;
+	}
+
+	.similar-startups-swiper {
+		display: flex;
+		flex-wrap: nowrap;
+
+		.swiper-button-prev-unique {
+			display: flex;
+			align-items: center;
+			cursor: pointer;
+			padding-right: 20px;
+
+			&.swiper-button-disabled {
+				display: none;
+			}
+		}
+
+		.swiper-button-next-unique {
+			display: flex;
+			align-items: center;
+			cursor: pointer;
+
+			&.swiper-button-disabled {
+				display: none;
+			}
+		}
+
+		.swiper {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}

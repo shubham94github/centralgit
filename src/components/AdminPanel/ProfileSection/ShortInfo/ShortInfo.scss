@@ -1,0 +1,103 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.short-info-wrapper {
+	margin-bottom: 10px;
+
+	.img-profile-wrapper {
+		width: 100%;
+		max-width: 60px;
+	}
+
+	.avatar-for-profile {
+		.icon-person__text {
+			font-size: 24px;
+		}
+	}
+
+	.clickable {
+		cursor: pointer;
+	}
+
+	.word-wrap {
+		word-break: break-word;
+	}
+
+	.text__darkblue {
+		color: $darkblue-50;
+	}
+
+	.blue-link {
+		@include textStyle(12px, $blue-50, 20px);
+
+		text-decoration: underline;
+		cursor: pointer;
+		position: relative;
+
+		&.truncate {
+			@include truncate-text(1);
+		}
+
+		&::after {
+			display: none;
+		}
+	}
+
+	.startup-logo {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 8px;
+
+		.startup-logo-icon {
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			top: 11px;
+			left: 11px;
+			width: 38px;
+			height: 38px;
+			opacity: 0;
+			background: $grass-40;
+			border-radius: 50%;
+		}
+
+		&:hover {
+			cursor: pointer;
+
+			.icon-person__text {
+				opacity: 0;
+			}
+
+			.startup-logo-icon {
+				opacity: 1;
+			}
+		}
+
+		.black-tooltip {
+			color: $black;
+		}
+	}
+
+	.notification-icon {
+		position: relative;
+	}
+
+	.align-items-center {
+		.p12 {
+			padding: 0 !important;
+		}
+
+		.slider-checkbox-container {
+			margin-left: 5px;
+
+			.custom-checkbox-slider {
+				& + input {
+					top: -15px;
+				}
+			}
+		}
+	}
+}

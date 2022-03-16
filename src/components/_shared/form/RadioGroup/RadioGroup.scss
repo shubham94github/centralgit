@@ -1,0 +1,32 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.radio-button-container {
+	display: inline-flex;
+	align-items: center;
+
+	&.radio-button_disabled {
+		.radio-button {
+			&::before {
+				border-color: $gray-40;
+				background: $gray-10;
+			}
+		}
+	}
+
+	.radio-button.disabled {
+		&+.label {
+			cursor: default;
+		}
+	}
+
+	.radio-group-text {
+		@include textStyle(12px, $darkblue-70, 16px);
+		margin-left: 5px;
+	}
+
+	.label {
+		margin-left: 5px;
+		cursor: pointer;
+	}
+}

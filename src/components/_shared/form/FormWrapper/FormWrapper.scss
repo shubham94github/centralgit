@@ -1,0 +1,10 @@
+@import 'src/styles/colors';
+
+.form-wrapper {
+	padding: 30px 40px;
+	margin-left: auto;
+	margin-right: auto;
+	background: $gray-05;
+	border-radius: 20px;
+	border: 1px solid $darkblue-10;
+}

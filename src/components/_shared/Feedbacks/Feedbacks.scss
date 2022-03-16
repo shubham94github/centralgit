@@ -1,0 +1,25 @@
+@import 'src/styles/colors';
+
+.feedbacks-container {
+	.feedbacks-title {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		text-align: left;
+		color: $gray-80;
+	}
+
+	.feedbacks-content {
+		.rating-line {
+			margin-bottom: 25px;
+		}
+	}
+
+	.rating-stars-viewing {
+		margin-right: 15px;
+
+		.rating-stars-container {
+			padding-top: 10px;
+		}
+	}
+}

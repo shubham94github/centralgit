@@ -1,0 +1,63 @@
+@import 'src/styles/colors';
+
+.image-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 50px;
+
+	.image {
+		max-height: 80vh;
+		max-width: 100%;
+	}
+
+	.bottom-menu {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+		background: $gray-10;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+
+		.full-screen-button {
+			padding: 15px;
+			cursor: pointer;
+		}
+	}
+
+	.fullscreen {
+		display: none;
+
+		&.fullscreen-enabled {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		.full-image-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+		}
+
+		.fullscreen-loader {
+			&.loading-overlay {
+				background: $black;
+			}
+		}
+
+		.bottom-menu {
+			align-self: flex-end;
+			justify-self: flex-end;
+			background: $black;
+
+			.full-screen-button {
+				padding: 30px;
+			}
+		}
+	}
+}

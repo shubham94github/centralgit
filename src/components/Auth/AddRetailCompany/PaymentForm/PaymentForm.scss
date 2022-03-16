@@ -1,0 +1,119 @@
+@import '/src/styles/colors';
+@import 'src/styles/mixins';
+
+.add-retail-company-container {
+	max-width: 630px;
+
+	&.form-wrapper .form-field-wrapper {
+		margin-top: 15px;
+		margin-bottom: 0 !important;
+	}
+
+	.text-black-50 {
+		margin-top: 15px;
+	}
+
+	form {
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+
+	.checkbox-container {
+		margin-top: 15px;
+	}
+
+	.card-field-wrapper {
+		display: grid;
+		grid-template-columns: 8fr 2fr 3fr;
+		grid-column-gap: 15px;
+		width: 100%;
+		padding-left: 12px;
+
+		.card-number-input, .card-cvc-input, .card-expiry-input {
+			height: 50px;
+			background: $white;
+			border-radius: 8px;
+			padding-top: 16px;
+
+			@media screen and (max-width: 576px) {
+				margin-top: 15px;
+			}
+		}
+
+		.card-number-input {
+			width: 100%;
+			padding-left: 10px;
+		}
+
+		.card-expiry-input {
+			width: 100%;
+			padding-left: 12px;
+		}
+
+		.card-cvc-wrapper {
+			position: relative;
+			min-width: 43px;
+
+			.payment-card-icon {
+				position: absolute;
+				top: 12px;
+				left: 10px;
+			}
+
+			.tooltip-children {
+				position: absolute;
+				top: 13px;
+				right: 16px;
+			}
+
+			.card-cvc-input {
+				width: 100%;
+				padding-left: 43px;
+			}
+		}
+	}
+
+	.plan-description, .form-actions {
+		margin-top: 15px;
+		justify-content: center;
+	}
+
+	.form-actions {
+		margin-right: 15px;
+		margin-left: 15px;
+	}
+
+	.card-input {
+		border: 1px solid #B8C4DF;
+		border-radius: 8px;
+		padding: 13px 10px;
+		font-size: 16px;
+	}
+
+	.link {
+		margin-left: 5px;
+		text-decoration: underline;
+		color: $darkblue-50;
+		cursor: pointer;
+	}
+
+	.blue-link {
+		@include textStyle(12px, $darkblue-50, 20px);
+
+		text-decoration: none;
+		display: inline-block;
+		cursor: pointer;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 2px;
+			width: 100%;
+			border-bottom: 0.7px solid $darkblue-50;
+		}
+	}
+
+}

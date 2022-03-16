@@ -1,0 +1,50 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.range-container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+
+	.range {
+		width: 94%;
+		margin: 0 10px;
+	}
+
+	.range-input-container {
+		max-width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 10px;
+
+		.range-input {
+			@include autofill($black, $white, $black);
+			@include textStyle(16px, $gray-40, 24px);
+
+			height: 30px;
+			max-width: 48%;
+			border-radius: 8px;
+			outline: none;
+			background: $white;
+			border: 1px solid $darkblue-20;
+			padding: 5px 4px;
+			text-align: start;
+		}
+	}
+
+	.rc-slider-handle {
+
+		&.rc-slider-handle-2 {
+			margin-left: 7px;
+
+		}
+
+		&.rc-slider-handle-1 {
+			margin-left: -7px;
+		}
+	}
+}

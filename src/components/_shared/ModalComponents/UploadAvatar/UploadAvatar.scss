@@ -1,0 +1,51 @@
+@import 'src/styles/colors';
+
+.upload-avatar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+
+	.drop-zone {
+		width: 100%;
+		padding: 40px;
+		background: $gray-05;
+		border: 1px dashed $gray-40;
+		box-sizing: border-box;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		.drop-zone-text {
+			text-align: center;
+			margin-bottom: 0;
+			color: $gray-40;
+		}
+	}
+
+	.is-error {
+		border: 1px dashed $pink-50;
+	}
+
+	.error {
+		color: $pink-50;
+	}
+
+	.image-cropper {
+		margin-top: 25px;
+	}
+
+	.upload-file-action {
+		margin-top: 20px;
+
+		button {
+			min-width: 0 !important;
+		}
+
+		.apply-btn {
+			margin-left: 15px;
+		}
+	}
+}

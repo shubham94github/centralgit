@@ -1,0 +1,38 @@
+@import 'src/styles/colors';
+
+.popover-container {
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+
+	&.popover {
+		border: 1px solid $darkblue-20;
+		width: auto !important;
+		max-width: unset !important;
+	}
+
+	&.bs-popover-top {
+		.popover-arrow::before {
+			border-top-color: $darkblue-20;
+		}
+	}
+
+	&.bs-popover-end {
+		.popover-arrow::before {
+			border-right-color: $darkblue-20;
+		}
+	}
+
+	&.bs-popover-right {
+		.popover-arrow::after {
+			border-right-color: $white;
+		}
+	}
+
+	&.popover-mt {
+		margin-bottom: 10px;
+	}
+
+	&.popover-ml {
+		margin-left: 10px;
+	}
+}

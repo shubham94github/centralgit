@@ -1,0 +1,279 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.input-settings {
+	@include textStyle(16px, $white, 24px);
+
+	position: relative;
+	z-index: 1;
+	height: 50px;
+	width: 100%;
+	border-radius: 8px;
+	outline: none;
+	padding: 13px 10px;
+
+	& + label {
+		@include textStyle(16px, $gray-40, 20px);
+
+		position: absolute;
+		z-index: auto;
+		left: 11px;
+		bottom: 15px;
+		transition: opacity, transform 150ms linear;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	&[type=number] + label {
+		left: 11px;
+	}
+
+	&:not(:placeholder-shown), &:focus {
+		padding: 18px 10px 8px;
+
+		& + label {
+			@include animatePlaceholder;
+		}
+	}
+
+	&:not(.text-input__readonly.text-input__empty):focus::placeholder {
+		color: transparent;
+	}
+
+	&.pass-theme {
+		padding: 13px 44px 13px 10px;
+
+		&:not(:placeholder-shown) {
+			padding: 18px 44px 8px 10px;
+		}
+
+		& ~ label {
+			&:last-child {
+				position: absolute;
+				z-index: 2;
+				top: 12px;
+				right: 14px;
+				cursor: pointer;
+			}
+		}
+
+		&:disabled {
+			& ~ label {
+				&:last-child {
+					cursor: auto;
+				}
+			}
+		}
+	}
+}
+
+.text-input-container {
+	position: relative;
+	z-index: 1;
+	overflow-x: hidden;
+
+	&.error {
+		input:focus + label {
+			color: $red-50;
+		}
+	}
+
+	.password-checkbox {
+		position: absolute;
+		display: none;
+	}
+}
+
+.text-input-dark {
+	@include autofill($white, $darkblue-90, $white);
+	@extend .input-settings;
+
+	background: $darkblue-90;
+	border: 1px solid $darkblue-60;
+
+	&[type='password'] {
+		color: $gray-60;
+	}
+
+	&::placeholder {
+		color: $gray-40;
+	}
+
+	&:focus {
+		color: $white;
+		outline: none;
+		box-shadow: none;
+		border: 1px solid $darkblue-60;
+	}
+
+	&:disabled, &.text-input__readonly {
+		color: $gray-60;
+		background: $gray-80;
+		border: 1px solid $gray-60;
+
+		&+label {
+			display: none;
+		}
+	}
+
+	&.text-input__error {
+		@include notifications($red-50, $white);
+		@include autofill($white, $darkblue-90, $red-50);
+
+		&::placeholder {
+			color: transparent;
+		}
+
+		& + label {
+			color: $red-50;
+			@include animatePlaceholder;
+		}
+	}
+
+	&.text-input__warring {
+		@include notifications($orange-50, $white);
+		@include autofill($white, $darkblue-90, $orange-50);
+
+		& + label {
+			color: $orange-50;
+		}
+	}
+
+	&.text-input__success {
+		@include notifications($green-60, $white);
+		@include autofill($white, $darkblue-90, $green-60);
+
+		& + label {
+			color: $green-60;
+		}
+	}
+}
+
+.text-input-light {
+	@include autofill($black, $white, $black);
+	@extend .input-settings;
+
+	color: $black;
+	background: $white;
+	border: none;
+
+	&[type='password'] {
+		color: $gray-40;
+	}
+
+	&::placeholder {
+		color: $gray-40;
+	}
+
+	&:focus {
+		color: $black;
+		outline: none;
+		box-shadow: none;
+		border: none;
+	}
+
+	&:disabled, &.text-input__readonly {
+		color: $gray-40;
+		background: $gray-10;
+		border: none;
+	}
+
+	&.text-input__error {
+
+		&:focus + label {
+			@include animatePlaceholder;
+		}
+	}
+
+	&.text-input__warring {
+		@include notifications($orange-50, $black);
+		@include autofill($black, $white, $orange-50);
+
+		& + label {
+			color: $orange-50;
+		}
+	}
+
+	&.text-input__success {
+		@include notifications($green-60, $black);
+		@include autofill($black, $white, $green-60);
+
+		& + label {
+			color: $green-60;
+		}
+	}
+
+
+
+	&.phone-number-input {
+		padding-top: 3px;
+
+		.phone-number-top-placeholder {
+			@include textStyle(12px, $gray-40, 16px);
+
+			position: absolute;
+			top: 2px;
+			left: 10px;
+			z-index: 1;
+			user-select: none;
+		}
+
+		.PhoneInputCountry {
+			margin-top: 6px;
+
+			.PhoneInputCountrySelect {
+				&:disabled {
+					opacity: 0;
+				}
+			}
+
+			.PhoneInputCountrySelectArrow {
+				position: relative;
+				left: 3px;
+			}
+		}
+
+		.PhoneInputInput {
+			padding-left: 10px;
+			padding-top: 13px;
+			border: none;
+			border-radius: 8px;
+			padding-bottom: 5px;
+			background: $white;
+			-webkit-box-shadow: 0 0 0 30px white inset;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		&__disabled {
+			color: $gray-40;
+			background: $gray-10;
+
+			.PhoneInputInput {
+				color: $gray-40;
+				background: $gray-10;
+				-webkit-box-shadow: none;
+			}
+		}
+	}
+}
+
+.text-input-border {
+	border: 1px solid $darkblue-20;
+
+	&:focus {
+		border: 1px solid $darkblue-20;
+	}
+
+	&:disabled, &.text-input__readonly {
+		border: 1px solid $gray-40;
+	}
+}
+
+.without-top-placeholder {
+	&:not(:placeholder-shown), &:focus {
+		padding: 13px 10px;
+	}
+}

@@ -1,0 +1,24 @@
+@import '/src/styles/colors';
+
+.getting-started-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	background: $white;
+
+	.form-container {
+		background: $gray-05;
+
+		.form-wrapper {
+			border: none;
+		}
+
+		.accordion-custom {
+			width: 1210px;
+		}
+	}
+
+	.container-centered {
+		width: 100%;
+	}
+}

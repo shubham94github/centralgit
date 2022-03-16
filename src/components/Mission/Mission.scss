@@ -1,0 +1,90 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.mission-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	background: $gray-05;
+
+	.mission-container {
+		width: 100%;
+		max-width: 700px;
+		margin-top: 50px;
+		margin-bottom: 50px;
+
+		.title {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			span {
+				padding-right: 10px;
+			}
+		}
+
+		.description {
+			p {
+				@include textStyle(16px, $darkblue-70, 20px);
+
+				padding-right: 10px;
+				padding-left: 10px;
+				text-align: center;
+
+				&:first-child {
+					padding-bottom: 20px;
+				}
+			}
+		}
+
+		.buttons {
+			justify-content: end;
+		}
+
+		.text-darkblue {
+			color: $darkblue-70;
+		}
+
+		.mb-40 {
+			margin-bottom: 40px;
+		}
+
+		.mb-20 {
+			margin-bottom: 20px;
+		}
+
+		.align-items {
+			align-items: start;
+		}
+
+		.description-mission {
+			.textarea {
+				width: 100%;
+			}
+		}
+	}
+
+	.sector-of-competence-mission {
+		.modal-dialog.modal-container {
+			border: none;
+		}
+
+		.guideline-text {
+			width: 100%;
+		}
+
+		.form-with-accordion-container {
+			margin: 0 !important;
+		}
+
+		.flex-section {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.accordion-custom {
+			padding: 0px;
+		}
+	}
+}

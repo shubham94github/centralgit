@@ -1,0 +1,7 @@
+@import 'src/styles/mixins';
+
+.actions-option {
+	@include truncate-text(2);
+
+	word-break: break-word;
+}

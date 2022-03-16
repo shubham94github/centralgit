@@ -1,0 +1,194 @@
+@import 'src/styles/colors';
+
+.roles-and-permissions {
+	.roles-and-permissions-header {
+		width: 100%;
+
+		.description {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: flex-start;
+			margin-top: 15px;
+			margin-bottom: 20px;
+
+			.p14 {
+				width: 623px;
+				margin-left: 10px;
+
+				p {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.checked-permission {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.users-count {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.actions {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			cursor: pointer;
+
+			&:first-child {
+				margin-right: 5px;
+			}
+
+			&:last-child {
+				margin-left: 5px;
+			}
+		}
+	}
+
+	.main-table {
+		.rdt_Table {
+			border: 1px solid $gray-10;
+		}
+
+		.rdt_TableBody {
+			.rdt_TableRow {
+
+				&:not(:last-of-type) {
+					border-bottom: 2px solid $gray-10;
+				}
+			}
+		}
+
+		.rdt_TableCol, .rdt_TableCell {
+			padding: 0;
+		}
+
+		.rdt_TableCol {
+			.rdt_TableCol_Sortable {
+				display: flex;
+				justify-content: center;
+			}
+
+			&:first-child .rdt_TableCol_Sortable {
+				justify-content: flex-start;
+				padding-left: 20px;
+			}
+		}
+
+		.rdt_TableHeader {
+			display: none;
+		}
+
+		.rdt_TableCol_Sortable > div {
+			text-align: left;
+		}
+
+		.rdt_Table > div {
+			border-radius: 0;
+		}
+
+		.category-cell {
+			width: 100%;
+			height: 100%;
+			background: $gray-10;
+			font-weight: bold;
+		}
+
+		.title {
+			display: flex;
+			align-items: center;
+			padding-left: 20px;
+			border-radius: 0;
+		}
+	}
+
+	.edit-role-form {
+		.error-text {
+			margin-top: 20px;
+			font-size: 14px;
+			margin-bottom: 0;
+		}
+
+		.description {
+			.icon {
+				margin-right: 5px;
+			}
+		}
+
+		.title {
+			&:not(.category-cell) {
+				cursor: pointer;
+			}
+		}
+
+		.warning-text {
+			margin-bottom: 10px;
+		}
+
+		.select-container {
+			margin-bottom: 20px;
+
+			&.error {
+				margin-bottom: 0;
+			}
+		}
+
+		.check-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			margin-left: 25px;
+		}
+
+		.modal-overlay .modal-dialog .modal-content .modal-body, .modal-overlay .modal-container .modal-content .modal-body {
+			max-height: 700px;
+		}
+
+		.btn-container {
+			display: flex;
+			padding-top: 20px;
+
+			.primary-button {
+				&:first-child {
+					margin-right: 15px;
+				}
+
+				&:last-child {
+					margin-left: 15px;
+				}
+			}
+
+			.tooltip-children {
+				width: 100%;
+
+				.primary-button {
+					margin-left: 0;
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
+	.user-role-table {
+		margin-top: 30px;
+
+		div[role='columnheader'] {
+			width: 100%;
+		}
+	}
+}

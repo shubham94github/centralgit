@@ -1,0 +1,43 @@
+.browse-sort-container {
+	&.p-50 {
+		padding-right: 50px;
+		padding-left: 50px;
+	}
+
+	.flex-center {
+		display: flex;
+		align-items: center;
+	}
+
+	.sort-section {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-end;
+
+		.search-input {
+			width: 110px;
+		}
+	}
+
+	.count-of-records {
+		display: flex;
+		justify-content: start;
+		align-items: center;
+	}
+
+	.sort-chat-section {
+		display: flex;
+		flex-direction: row;
+		justify-content: end;
+		align-items: center;
+		padding-right: 10px;
+
+		.slider-checkbox-container {
+			display: flex;
+			justify-content: start;
+			align-items: flex-end;
+			bottom: 5px;
+		}
+	}
+}

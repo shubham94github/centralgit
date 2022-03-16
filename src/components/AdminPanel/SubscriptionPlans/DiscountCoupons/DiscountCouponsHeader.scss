@@ -1,0 +1,24 @@
+@import '/src/styles/colors';
+
+.discount-coupons-header {
+	.guidelines {
+		margin-bottom: 6px;
+	}
+
+	.status-discount-definition {
+		padding-left: 29px;
+
+		.status-discount-definition-list {
+			width: 700px;
+			margin-top: 5px;
+			padding-left: 22px;
+			font-size: 14px;
+			line-height: 20px;
+			color: $darkblue-70;
+
+			li {
+				list-style: disc;
+			}
+		}
+	}
+}

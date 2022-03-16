@@ -1,0 +1,238 @@
+@import '/src/styles/colors';
+
+.gallery {
+	position: relative;
+	max-width: 1011px;
+	min-width: 867px;
+	background: $gray-05;
+	padding: 30px 50px;
+
+	.format-icon {
+		&.small {
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			width: 35px;
+			height: 35px;
+
+			svg {
+				width: 35px;
+				height: 35px;
+			}
+		}
+	}
+
+	.step-style {
+		margin-bottom: 20px;
+	}
+
+	.video-fields {
+		max-width: 767px;
+	}
+
+	.title {
+		display: block;
+		margin-bottom: 20px;
+	}
+
+	.description, .instruction {
+		display: block;
+		margin-bottom: 12px;
+	}
+
+	.description {
+		color: $darkblue-70;
+	}
+
+	.instruction {
+		color: $black;
+	}
+
+	.input-container {
+		position: relative;
+		width: 100%;
+		margin-bottom: 15px;
+
+		.text-input-container {
+			input {
+				padding-right: 45px;
+				color: $darkblue-70;
+			}
+		}
+
+		.close {
+			position: absolute;
+			right: 15px;
+			top: 12px;
+			z-index: 1;
+			cursor: pointer;
+		}
+
+		.spinner {
+			position: absolute;
+			right: 10px;
+			top: 12px;
+			z-index: 2;
+			background: white;
+			width: 30px !important;
+			height: 30px !important;
+
+			.spinner-border {
+				width: 28px !important;
+				height: 28px !important;
+			}
+		}
+	}
+
+	.primary-button {
+		margin-bottom: 20px;
+	}
+
+	.l-40 {
+		width: 40%;
+		padding-right: 15px;
+	}
+
+	.r-60 {
+		width: 60%;
+		padding-left: 15px;
+	}
+
+	.input-label, .preview-title {
+		margin-bottom: 10px;
+		font-size: 14px;
+		line-height: 20px;
+		color: $darkblue-70;
+	}
+
+	.tooltip-children {
+		position: relative;
+		top: -2px;
+	}
+
+	.RichEditor-root {
+		.ql-editor {
+			max-height: 143px;
+			min-height: 143px;
+		}
+
+		&.controls-opened {
+			.ql-editor {
+				max-height: 113px;
+				min-height: 113px;
+			}
+		}
+	}
+
+	.documents-uploading-container {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 32px;
+		padding-right: 32px;
+
+		&.no-carousel {
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		.documents-carousel {
+			margin-top: 20px;
+		}
+	}
+
+	.docs-uploading-error {
+		margin-top: 15px;
+	}
+
+	.previews-container {
+		max-width: 100%;
+		display: grid;
+		grid-gap: 25px;
+
+		.tooltip-children {
+			margin-top: 15px;
+		}
+
+		.document-preview {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 287px;
+			height: 239px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			background-color: $gray-20;
+
+			.close-icon {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				width: 30px;
+				height: 30px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: $close-icon-background;
+				border-radius: 50%;
+			}
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.upload-btn-container {
+		margin-top: 15px;
+		width: auto;
+
+		.file-upload-btn {
+			width: auto;
+			padding-left: 13px;
+			padding-right: 13px;
+		}
+	}
+
+	.buttons-container {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 30px;
+
+		.primary-button {
+			width: 250px;
+			height: 50px;
+			margin-top: 8px;
+			margin-bottom: 0;
+
+			&:first-child {
+				margin-right: 15px;
+			}
+		}
+
+		.tooltip-children {
+			top: 0;
+		}
+	}
+
+	.files-content-types {
+		color: $black;
+	}
+
+	.description-info {
+		max-width: 700px;
+		margin-top: 5px;
+	}
+
+	.modal-content {
+		.primary-button {
+			margin-bottom: 0;
+		}
+
+		.text-center {
+			margin-bottom: 20px;
+		}
+	}
+}

@@ -1,0 +1,9 @@
+.categories-activity-container {
+	.main-table {
+		:nth-child(2) {
+			> div {
+				width: auto;
+			}
+		}
+	}
+}

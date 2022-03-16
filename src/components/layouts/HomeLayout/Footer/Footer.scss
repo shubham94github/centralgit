@@ -1,0 +1,57 @@
+@import '../../../../styles/colors';
+
+.footer-wrapper {
+	flex: 0 0 auto;
+	background: $darkblue-90;
+	z-index: 3;
+
+	.footer-container {
+		padding: 15px 15px 20px;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.link {
+		text-decoration: none;
+		margin-left: 0;
+	}
+
+	.footer-container__white-text {
+		color: $white;
+
+		&:hover:not(.copyright) {
+			color: $grass-50;
+			cursor: pointer;
+		}
+	}
+
+	.social-container {
+
+		@media (max-width: 576px) and (orientation: portrait) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-top: 30px;
+		}
+	}
+
+	.social-links {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 10px;
+
+		a:not(:last-child) {
+			margin-right: 10px;
+		}
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			margin-bottom: 10px;
+		}
+	}
+}

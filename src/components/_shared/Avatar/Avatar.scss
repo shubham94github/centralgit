@@ -1,0 +1,45 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.avatar-company-container {
+	width: 100%;
+	height: 100%;
+
+	.icon-person {
+		width: 100%;
+		position: relative;
+		border-radius: 8px;
+
+		.user-avatar {
+			width: 100%;
+			border-radius: 8px;
+		}
+
+		.icon-person__text {
+			@include textStyle(36px, $white, 20px);
+
+			@media (max-width: 576px) {
+				font-size: 26px;
+			}
+
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	&.avatar-default {
+		.icon-person {
+			&::after {
+				content: '';
+				display: block;
+				padding-top: 100%;
+			}
+		}
+	}
+}

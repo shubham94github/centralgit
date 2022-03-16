@@ -1,0 +1,55 @@
+@import 'src/styles/colors';
+
+.payment-card-info {
+	display: flex;
+
+	.p14 {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.short-name {
+		color: $darkblue-50;
+		white-space: nowrap;
+	}
+
+	.edit {
+		width: 24px;
+		height: 24px;
+		margin-left: 8px;
+		padding: 0;
+	}
+
+	svg {
+		cursor: pointer;
+		margin: 0 4px;
+	}
+
+	.card-number {
+		margin-left: 8px;
+		font-weight: 700;
+		color: $darkblue-70;
+	}
+}
+
+.add-new-card-modal {
+	.form-wrapper {
+		border: unset;
+		padding: 0;
+
+		.form-field-wrapper {
+			margin-top: 0 !important;
+		}
+
+		.p16 {
+			margin-bottom: 16px;
+		}
+	}
+}
+
+.delete-confirm-content {
+	.card-number {
+		margin-bottom: 30px;
+	}
+}

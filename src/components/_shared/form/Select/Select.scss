@@ -1,0 +1,32 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.select-container {
+	position: relative;
+
+	.close {
+		cursor: pointer;
+
+		svg {
+			position: relative;
+			bottom: -1px;
+		}
+	}
+
+	.select-top-placeholder {
+		@include textStyle(12px, $gray-40, 16px);
+
+		position: absolute;
+		top: 2px;
+		left: 10px;
+		z-index: 1;
+		user-select: none;
+	}
+}
+
+.error {
+	div[class*='control'] {
+		border-color: $red-50;
+	}
+}
+

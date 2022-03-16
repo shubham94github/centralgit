@@ -1,0 +1,71 @@
+@import 'src/styles/colors';
+
+.sign-up-verification-proceed-section {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.sign-up-verification-proceed-container {
+		width: 100%;
+		max-width: 630px;
+		padding: 30px 88px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background: $white;
+		border-radius: 8px;
+		border: 1px solid $darkblue-20;
+		color: $darkblue-70;
+
+		.description, .links, .primary-button {
+			margin-top: 15px;
+		}
+
+		.description {
+			width: 100%;
+		}
+
+		.links {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+
+
+			.link {
+				margin-left: 0;
+			}
+		}
+	}
+
+	.contact-as-modal {
+		.modal-dialog.modal-container {
+			max-width: 630px !important;
+		}
+
+		.modal-title {
+			font-weight: 400;
+		}
+
+		.textarea-full-width {
+			width: 100%;
+
+			.textarea {
+				width: 100%;
+				max-height: 145px;
+			}
+		}
+	}
+
+	.success-message-as-modal {
+		.modal-dialog.modal-container {
+			max-width: 400px !important;
+		}
+	}
+
+	.clickable {
+		cursor: pointer;
+	}
+}

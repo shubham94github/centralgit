@@ -1,0 +1,116 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.list-of-startup-wrapper {
+	position: relative;
+	min-height: 75vh;
+
+	.truncate-text {
+		@include truncate-text(2);
+	}
+
+	.truncate-name {
+		@include truncate-text(1);
+	}
+
+	.clickable {
+		cursor: pointer;
+	}
+
+	.img-wrapper-home {
+		width: 120px;
+		min-width: 120px;
+		cursor: pointer;
+		margin-right: 15px;
+	}
+
+	.text__darkblue {
+		color: $darkblue-70;
+	}
+
+	.gray__text {
+		color: $gray-50;
+	}
+
+	.text-bold {
+		font-weight: 700;
+	}
+
+	.sector-size {
+		width: 165px;
+	}
+
+	.sectors-style {
+		@include truncate-text(1);
+
+		color: $blue-50;
+
+		span {
+			margin-right: 10px;
+			cursor: pointer;
+		}
+	}
+
+	.separator-horizontal {
+		height: 1px;
+		width: 100%;
+		background: $gray-20;
+	}
+
+	.browse-item-startup {
+		width: 100%;
+		padding: 20px 50px;
+
+		&:hover {
+			background: $gray-03;
+		}
+
+		.content-startup {
+			width: 100%;
+		}
+	}
+
+	.browse-paginate {
+		padding-top: 35px;
+
+		&.p-50 {
+			padding-left: 50px;
+			padding-right: 50px;
+		}
+	}
+
+	.error-messages {
+		padding-left: 50px;
+		padding-right: 50px;
+
+		&.center {
+			position: absolute;
+			height: 100%;
+			top: 0;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	.company-description {
+		@include textStyle(12px, $gray-50, 16px);
+		@include truncate-text(2);
+		@include unorderedList($gray-50);
+
+		word-break: break-word;
+	}
+}
+
+.popover {
+	max-width: unset;
+}
+
+.popover-body {
+	.parent-paths span {
+		color: $darkblue-70;
+		white-space: nowrap;
+	}
+}
+
