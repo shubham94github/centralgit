@@ -1,6 +1,6 @@
 def projectName = "retailhub-fe"
 def branchName1 = "master"
-def branchName2 = "development_wip"
+def branchName2 = "developement_wip"
 def dirName = "${projectName}"
 def osUser = "ubuntu"
 def ipAddr = ""
