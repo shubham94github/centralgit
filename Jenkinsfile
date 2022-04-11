@@ -23,12 +23,12 @@ pipeline {
             {
                 sh "npm --version"
                 sh "node --version"
-                sh "npm install"
+                sh "npm install --no-optional"
                 script {
                     if (env.BRANCH_NAME == "${branchName2}")
                     {
                         sh "ls"
-                        sh "npm run build"
+                        sh "npm run build:local"
                     }else if (env.BRANCH_NAME == "${branchName1}")
                     {
                         sh "npm run build"
