@@ -28,7 +28,7 @@ pipeline {
                     if (env.BRANCH_NAME == "${branchName2}")
                     {
                         sh "ls"
-                        sh "npm run build:local"
+                        sh "npm run build"
                     }else if (env.BRANCH_NAME == "${branchName1}")
                     {
                         sh "npm run build"
