@@ -28,6 +28,7 @@ pipeline {
                     if (env.BRANCH_NAME == "${branchName2}")
                     {
                         sh "ls"
+                        sh "mv .env.production .env"
                         sh "npm run build"
                     }else if (env.BRANCH_NAME == "${branchName1}")
                     {
