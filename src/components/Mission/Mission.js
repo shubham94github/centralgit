@@ -203,6 +203,7 @@ const Mission = ({
               isLightTheme
               setValue={setValue}
               onBlur={trimValues("budget")}
+              row={5}
             />
           </GridContainer>
         </GridContainer>

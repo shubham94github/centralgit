@@ -608,11 +608,10 @@ const Header = ({
         onHide={() => OpenClosePopup("Mission")}
         backdrop="static"
         size="lg"
-        centered
       >
-        <Modal.Header closeButton>
+        {/* <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
-        </Modal.Header>
+        </Modal.Header> */}
         <Mission handleClose={() => OpenClosePopup("Mission")} />
       </Modal>
     </header>
