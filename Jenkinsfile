@@ -1,5 +1,5 @@
 def projectName = "retailhub-fe"
-def branchName1 = "master"
+def branchName1 = "preprod"
 def branchName2 = "developement_wip"
 def dirName = "${projectName}"
 def osUser = "ubuntu"
@@ -32,7 +32,6 @@ pipeline {
                     }else if (env.BRANCH_NAME == "${branchName1}")
                     {
                         sh "npm run build"
-                        sh "cp -a build/. /var/empty/"
                     }
 
                 }
@@ -53,16 +52,11 @@ pipeline {
                         echo "Build Deployed. "
                     }else if (env.BRANCH_NAME == "${branchName1}")
                     {   
-                        sshagent ( ["${agentName}"]) {
-                            sh "cd  /root/dcompose/${dirName} && ls" 
-                            sh "apt-get update && apt-get install zip"
-                            sh "cd  /root/dcompose/${dirName} && zip -r latest.zip ."
-
-                            sh "scp -o StrictHostKeyChecking=no /root/dcompose/${dirName}/latest.zip ${osUser}@${ipAddr}:/home/ubuntu/"
-                            sh "ssh -o StrictHostKeyChecking=no ${osUser}@${ipAddr} ls -la /home/ubuntu"
-                            sh "ssh -o StrictHostKeyChecking=no ${osUser}@${ipAddr} sudo unzip  -o /home/ubuntu/latest.zip -d /usr/share/nginx/html/"
-
-                        }
+                        echo "Deleting the old build.  "
+                        sh "rm -r /var/empty2/* || ls"
+                        echo "Old build deleted, Deploying new build"
+                        sh "cp -a build/. /var/empty2/"
+                        echo "Build Deployed. "
                     }
 
                 }
