@@ -369,9 +369,7 @@ const Header = ({
       });
     return obj;
   });
-  useEffect(() => {
-    console.log(ModelsIsvisible);
-  }, [ModelsIsvisible]);
+
   const OpenClosePopup = (name) => {
     Object.keys(ModelsIsvisible).forEach(function (key, value) {
       if (key === name) return (ModelsIsvisible[key] = !ModelsIsvisible[key]);
