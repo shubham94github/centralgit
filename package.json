@@ -48,6 +48,7 @@
 		"markdown-to-jsx": "^7.1.6",
 		"msw": "^0.36.5",
 		"nanoid": "^3.2.0",
+		"node-polyfill-webpack-plugin": "^1.1.4",
 		"node-sass": "^7.0.1",
 		"normalize-url": "^5.3.1",
 		"pdfjs-dist": "^2.12.313",
@@ -90,6 +91,7 @@
 		"uniqid": "^5.4.0",
 		"uuid": "^8.3.2",
 		"web-vitals": "^1.1.0",
+		"xml2js": "^0.4.23",
 		"yup": "^0.32.9"
 	},
 	"devDependencies": {
@@ -162,23 +164,22 @@
 		"webpackbar": "^5.0.0-3",
 		"worker-loader": "^3.0.8"
 	},
-	
 	"eslintConfig": {
 		"extends": [
-		  "react-app",
-		  "react-app/jest"
+			"react-app",
+			"react-app/jest"
 		]
-	  },
+	},
 	"browserslist": {
 		"production": [
-		  ">0.2%",
-		  "not dead",
-		  "not op_mini all"
+			">0.2%",
+			"not dead",
+			"not op_mini all"
 		],
 		"development": [
-		  "last 1 chrome version",
-		  "last 1 firefox version",
-		  "last 1 safari version"
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
 		]
 	}
 }
