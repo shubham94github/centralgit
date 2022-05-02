@@ -1,4 +1,4 @@
-def projectName = "retailhub-fe"
+def projectName = "retailhub-fe-test"
 def branchName1 = "preprod"
 def branchName2 = "developement_wip"
 def dirName = "${projectName}"
