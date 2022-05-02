@@ -15,7 +15,8 @@ const NewsFeed = () => {
           if (err) {
             throw err;
           }
-          console.log(result.rss.channel[0].item);
+          // console.log(result.rss.channel[0].item);
+          SetNews(result.rss.channel[0].item);
         });
       });
   }, []);
@@ -25,7 +26,24 @@ const NewsFeed = () => {
         <H1 className="title" bold>
           News
         </H1>
-        <div className="news-feed-greed">Coming soon!</div>
+        <div className="news-feed-greed">
+          {news.map((item, index) => {
+            return (
+              <a href={item.link[0]} key={index} target="_blank">
+                <div className="news-item">
+                  <div className="news-feed-item-title">{item.title[0]} </div>
+                  <div className="news-feed-item-content">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: item.description[0],
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
