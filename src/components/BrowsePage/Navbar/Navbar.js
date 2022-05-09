@@ -17,7 +17,7 @@ const Navbar = ({ browseType, setFieldForFilter }) => {
   useEffect(() => {
     console.log("browseType, setFieldForFilter", browseType, setFieldForFilter);
     setSelectedId(navbarMenuItems.find((item) => item.value === browseType).id);
-  }, [browseType]);
+  }, [browseType, setFieldForFilter]);
 
   return (
     <Row>
