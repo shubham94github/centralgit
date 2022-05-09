@@ -18,6 +18,7 @@ export const defaultFilterCategories = {
   presenceInCountriesIds: [],
   browseType: "All",
   isAvailableToChat: false,
+  filterClientName: "",
 };
 
 export const trialPeriodSearchWarning = (count) =>
