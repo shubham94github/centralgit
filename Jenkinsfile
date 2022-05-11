@@ -2,7 +2,7 @@
 def projectName = "retailhub-fe"
 def branchName1 = "${env.branch}"
 
-def branchName2 = "developement_wip"
+def branchName2 = "preprod"
 def dirName = "${projectName}"
 def osUser = "ubuntu"
 def ipAddr = ""
