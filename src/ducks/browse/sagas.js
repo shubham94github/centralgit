@@ -295,7 +295,7 @@ export function* handleBookmarkWorker({ payload: { id, isBookmarked } }) {
   try {
     yield setIsLoading(true);
 
-    yield call(getStartupProfile, clearCache);
+    yield call(getStartupProfile, id);
 
     const startups = yield select(selectListOfStartupsBrowse);
     const profile = yield select(selectStartupProfile);
