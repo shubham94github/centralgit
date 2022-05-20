@@ -1,4 +1,3 @@
-
 def projectName = "retailhub-fe"
 def branchName1 = "${env.branch}"
 
@@ -25,6 +24,7 @@ pipeline {
             {
                 sh "npm --version"
                 sh "node --version"
+                sh "cat .env.production"
                 sh "npm install --no-optional"
                 script {
                     if (env.BRANCH_NAME == "${branchName2}")

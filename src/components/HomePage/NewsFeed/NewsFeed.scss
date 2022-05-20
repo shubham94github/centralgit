@@ -13,33 +13,43 @@
 
 		.title {
 			padding-top: 50px;
-			padding-bottom: 40px;
+			padding-bottom: 20px;
 		}
 	}
 
 	.news-feed-greed {
 		@include textStyle(40px, $white, 28px);
-
+		padding: 0% 1% 0% 1%;
 		padding-bottom: 130px;
 		font-weight: 700;
 		text-align: center;
 		margin-top: 40px;
-
+		display: grid;
+		grid-template-columns:repeat(2, 1fr);
+		grid-template-rows: 1fr;
+		column-gap: 20px;
 		@media (max-width: 1000px) {
-			grid-template-columns: repeat(1, 500px);
-			grid-template-rows: repeat(3, 491px);
+			grid-template-columns: repeat(1, auto);
+   			//  grid-template-rows: repeat(6, 170px);
 			justify-content: center;
+			
 		}
+	
 
 		.news-item {
-			background: $white;
+		    max-height: 250px;
 			border-radius: 8px;
 			padding: 30px;
+			margin-bottom:10px ;
 			transition-duration: 150ms;
 			cursor: pointer;
-
+			background: #ffffff91;
+			@media(max-width:1000px){
+				max-height: unset;
+			}
+			
 			&:hover {
-				transform: scale(1.05) translateY(11px);
+				transform: scale(1.02) translateY(4px);	background: $white;
 			}
 
 			img {
@@ -47,20 +57,23 @@
 				max-width: 440px;
 			}
 
-			.title-news {
+			.news-feed-item-title {
 				@include textStyle(20px, $darkblue-90, 24px);
 
 				font-weight: 700;
-				margin-bottom: 10px;
-				padding-top: 20px;
+				margin-bottom: 5px;
+				padding-top: 10px;
 			}
-
+			.news-feed-item-content{
+				@include textStyle(20px, $darkblue-90, 20px);
+			}
 			.date {
 				@include textStyle(12px, $gray-50, 16px);
 
 				padding-bottom: 15px;
 			}
 		}
+		
 	}
 
 	.clickable {

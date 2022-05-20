@@ -1,5 +1,5 @@
 const appName = process.env.APP_NAME;
-export const moduleName = 'browse';
+export const moduleName = "browse";
 
 export const GET_FIELD = `${appName}/${moduleName}/GET_FIELD`;
 export const SET_FIELD_OUTSIDE = `${appName}/${moduleName}/SET_FIELD_OUTSIDE`;
@@ -24,4 +24,4 @@ export const SET_SAVED_SEARCH_HISTORY = `${appName}/${moduleName}/SET_SAVED_SEAR
 export const REMOVE_SAVED_SEARCH = `${appName}/${moduleName}/REMOVE_SAVED_SEARCH`;
 export const SET_IS_HISTORY_LOADING = `${appName}/${moduleName}/SET_IS_HISTORY_LOADING`;
 
-export { default } from './reducer';
+export { default } from "./reducer";
