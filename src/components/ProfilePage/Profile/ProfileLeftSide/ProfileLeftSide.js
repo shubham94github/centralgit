@@ -228,11 +228,8 @@ const ProfileLeftSide = ({
                     <P16 className="text-gray">
                       {clientsList.map((exampleItem, index) => (
                         <span key={exampleItem + index}>
-                          {numberOfClients}
-
                           {index !== 0 && ", "}
                           <Link to={`/browse-page?client=${exampleItem}`}>
-                            {" "}
                             {exampleItem}
                           </Link>
                         </span>
