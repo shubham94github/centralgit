@@ -36,14 +36,32 @@ const ProfileHeader = ({
   handleBookmarkClick,
   isAuthRoleRetailer,
   isStartup,
+  urlOfCompanyWebsite,
+  linkedInCompanyPage,
 }) => {
   const bookmarkIcon = Icons.bookmarkIcon(
     isBookmarked ? colors.grass50 : colors.darkblue70
   );
 
   const aboutItems = useMemo(
-    () => setAboutItems(country, owner, foundedAt, totalFundingAmount),
-    [country, owner, foundedAt, totalFundingAmount]
+    () =>
+      setAboutItems(
+        country,
+        owner,
+        foundedAt,
+        totalFundingAmount,
+        linkedInCompanyPage,
+        urlOfCompanyWebsite
+      ),
+
+    [
+      country,
+      owner,
+      foundedAt,
+      totalFundingAmount,
+      linkedInCompanyPage,
+      urlOfCompanyWebsite,
+    ]
   );
 
   const isVisibleChatIcon =
@@ -91,33 +109,39 @@ const ProfileHeader = ({
               </Tooltip>
             )}
           </div>
-          <div>
-            <P12 className="word-wrap">
-              <span className="pe-2">{locationIcon}</span>
-              {!!city && `${city}, `}
-              {country?.name}
-              <br />
-            </P12>
-          </div>
-          <div>
-            <P12 className="word-wrap">
-              <span className="pe-2">
-                <img src={linlogo} className={`icon`}></img>
-              </span>
-              {!!city && `${city}, `}
+          {!!city && !!country?.name ? (
+            <div>
+              <P12 className="word-wrap">
+                <span className="pe-2">{locationIcon}</span>
+                {!!city && `${city}, `}
+                {country?.name}
+                <br />
+              </P12>
+            </div>
+          ) : null}
+          {!!linkedInCompanyPage ? (
+            <div>
+              <P12 className="word-wrap">
+                <span className="pe-2">
+                  <img src={linlogo} className={`icon`}></img>
+                </span>
+                {linkedInCompanyPage}
 
-              <br />
-            </P12>
-          </div>
-          <div>
-            <P12 className="word-wrap">
-              <span className="pe-2">
-                <img src={weblogo} className="icon"></img>
-              </span>
-              {country?.name}
-              <br />
-            </P12>
-          </div>
+                <br />
+              </P12>
+            </div>
+          ) : null}
+          {!!urlOfCompanyWebsite ? (
+            <div>
+              <P12 className="word-wrap">
+                <span className="pe-2">
+                  <img src={weblogo} className="icon"></img>
+                </span>
+                {urlOfCompanyWebsite}
+                <br />
+              </P12>
+            </div>
+          ) : null}
         </div>
       </div>
       {!isRetailer && (
@@ -173,6 +197,8 @@ ProfileHeader.propTypes = {
   handleBookmarkClick: func.isRequired,
   isAuthRoleRetailer: bool,
   isStartup: bool,
+  urlOfCompanyWebsite: string,
+  linkedInCompanyPage: string,
 };
 
 ProfileHeader.defaltProps = {
