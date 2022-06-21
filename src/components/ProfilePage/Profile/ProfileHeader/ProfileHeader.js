@@ -68,6 +68,13 @@ const ProfileHeader = ({
     isFullNameFilled &&
     !isStartup &&
     (isRetailer ? !isAuthRoleRetailer : !isDemoStartup && isEnableMailing);
+  const isAbsoluteUrl = (url) =>
+    /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/.test(
+      url
+    );
+
+  const makeAbsouluteUrl = (link) =>
+    link.indexOf("://") === -1 ? "http://" + link : link;
 
   return (
     <div className="profile-header-container">
@@ -119,26 +126,36 @@ const ProfileHeader = ({
               </P12>
             </div>
           ) : null}
-          {!!linkedInCompanyPage ? (
+          {!!linkedInCompanyPage && isAbsoluteUrl(linkedInCompanyPage) ? (
             <div>
               <P12 className="word-wrap">
-                <span className="pe-2">
-                  <img src={linlogo} className={`icon`}></img>
-                </span>
-                {linkedInCompanyPage}
+                <a
+                  href={makeAbsouluteUrl(linkedInCompanyPage)}
+                  target={`_blank`}
+                >
+                  <span className="pe-2">
+                    <img src={linlogo} className={`icon`}></img>
+                  </span>
+                  {linkedInCompanyPage}
 
-                <br />
+                  <br />
+                </a>
               </P12>
             </div>
           ) : null}
           {!!urlOfCompanyWebsite ? (
             <div>
               <P12 className="word-wrap">
-                <span className="pe-2">
-                  <img src={weblogo} className="icon"></img>
-                </span>
-                {urlOfCompanyWebsite}
-                <br />
+                <a
+                  href={makeAbsouluteUrl(urlOfCompanyWebsite)}
+                  target={`_blank`}
+                >
+                  <span className="pe-2">
+                    <img src={weblogo} className="icon"></img>
+                  </span>
+                  {urlOfCompanyWebsite}
+                  <br />
+                </a>
               </P12>
             </div>
           ) : null}
