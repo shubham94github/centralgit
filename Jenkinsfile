@@ -23,7 +23,7 @@ pipeline {
             {
                 sh "npm --version"
                 sh "node --version"
-                sh "npm install --no-optional"
+                echo "npm install --no-optional"
                 script {
                     if (env.BRANCH_NAME == "${branchName2}")
                     {
@@ -58,7 +58,7 @@ pipeline {
                         sh "cp -a build/. /var/empty2/"
                         echo "Build Deployed. "
                     }
-
+                
                 }
             }
         }
