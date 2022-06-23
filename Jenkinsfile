@@ -12,7 +12,7 @@ pipeline {
     }
     agent {
         docker {
-            image "node:latest"
+            image "node:16"
             args "-v /usr/share/nginx/html/${dirName}:/var/empty2 -v /root/dcompose/${dirName}:/var/empty"
         }
     }
@@ -23,7 +23,7 @@ pipeline {
             {
                 sh "npm --version"
                 sh "node --version"
-                sh "npm install --no-optional"
+                sh "yarn install --no-optional"
                 script {
                     if (env.BRANCH_NAME == "${branchName2}")
                     {
@@ -31,7 +31,7 @@ pipeline {
                         sh "npm run build"
                     }else if (env.BRANCH_NAME == "${branchName1}")
                     {
-                        sh "npm run build"
+                        sh "yarn run build"
                     }
 
                 }
