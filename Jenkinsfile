@@ -29,7 +29,7 @@ pipeline {
                     if (env.BRANCH_NAME == "${branchName2}")
                     {
                         sh "ls"
-                        sh "npm run build"
+                        sh "yarn run build"
                     }else if (env.BRANCH_NAME == "${branchName1}")
                     {
                         sh "yarn run build"
