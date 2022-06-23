@@ -76,7 +76,7 @@ pipeline {
             tokenCredentialId:'Slack-Token'
             System.exit(1)
         }
-        }
+        
     }
     post { 
         always { 
