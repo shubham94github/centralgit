@@ -12,7 +12,7 @@ pipeline {
     }
     agent {
         docker {
-            image "node:16"
+            image "node:latest"
             args "-v /usr/share/nginx/html/${dirName}:/var/empty2 -v /root/dcompose/${dirName}:/var/empty"
         }
     }
