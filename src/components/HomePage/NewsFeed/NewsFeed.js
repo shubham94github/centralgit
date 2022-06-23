@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from "react";
 import { H1 } from "@components/_shared/text";
 
-import { getNewsFromCms } from "@api/NewsApi";
+import { getNewsFromCms } from "@api/newsApi";
 import "./NewsFeed.scss";
 import { News } from "@components/News";
 
