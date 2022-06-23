@@ -69,10 +69,4 @@ pipeline {
             cleanWs()
         }
     }
-    slackSend baseurl: 'https://retailhub-group.slack.com/services/',
-            channel: 'deployments',
-            color: 'good',
-            message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Image Tag:* ${imageTag} \n *Status: SUCCESSFULL* ",
-            teamDomain:'devops',
-            tokenCredentialId:'Slack-Token'
 }
