@@ -24,15 +24,15 @@ pipeline {
             {
                 sh "npm --version"
                 sh "node --version"
-                sh "yarn install --no-optional"
+                sh "npm install --no-optional"
                 script {
                     if (env.BRANCH_NAME == "${branchName2}")
                     {
                         sh "ls"
-                        sh "yarn run build"
+                        sh "npm run build"
                     }else if (env.BRANCH_NAME == "${branchName1}")
                     {
-                        sh "yarn run build"
+                        sh "npm run build"
                     }
 
                 }
