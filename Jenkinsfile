@@ -72,15 +72,6 @@ pipeline {
             message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Image Tag:* ${imageTag} \n *Status: SUCCESSFULL* ",
             teamDomain:'devops',
             tokenCredentialId:'Slack-Token'
-        catch (Exception err) {
-            slackSend baseurl: 'https://hooks.slack.com/services/',
-            channel: 'deployments',
-            color: 'danger',
-            message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Image Tag:* ${imageTag} \n *Status: FAILED*",
-            teamDomain:'devops',
-            tokenCredentialId:'Slack-Token'
-            System.exit(1)
-        }
         }
     }
 }
