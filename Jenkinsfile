@@ -1,6 +1,6 @@
 def projectName = "retailhub-fe"
 def branchName1 = "preprod"
-def branchName2 = "developement_wip"
+def branchName2 = "developement"
 def dirName = "${projectName}"
 def osUser = "ubuntu"
 def ipAddr = ""
@@ -61,6 +61,21 @@ pipeline {
 
                 }
             }
+            slackSend baseurl: 'https://hooks.slack.com/services/',
+            channel: 'deployments',
+            color: 'good',
+            message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Image Tag:* ${imageTag} \n *Status: SUCCESSFULL* ",
+            teamDomain:'devops',
+            tokenCredentialId:'Slack-Token'
+        }catch (Exception err) {
+            slackSend baseurl: 'https://hooks.slack.com/services/',
+            channel: 'deployments',
+            color: 'danger',
+            message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Image Tag:* ${imageTag} \n *Status: FAILED*",
+            teamDomain:'devops',
+            tokenCredentialId:'Slack-Token'
+            System.exit(1)
+        }
         }
     }
     post { 
