@@ -17,7 +17,7 @@ pipeline {
         }
     }
     stages {
-        try {
+    try {
         stage("Build")
         {
             steps
@@ -58,8 +58,13 @@ pipeline {
                         echo "Old build deleted, Deploying new build"
                         sh "cp -a build/. /var/empty2/"
                         echo "Build Deployed. "
-                    }
-            slackSend baseurl: 'https://retailhub-group.slack.com/services/',
+                    }       
+                }
+            }
+            
+        }
+    }
+        slackSend baseurl: 'https://retailhub-group.slack.com/services/',
             channel: 'deployments',
             color: 'good',
             message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Image Tag:* ${imageTag} \n *Status: SUCCESSFULL* ",
@@ -73,12 +78,6 @@ pipeline {
             teamDomain:'devops',
             tokenCredentialId:'Slack-Token'
             System.exit(1)
-        }
-
-                
-                }
-            }
-            
         }
     }
     post { 
