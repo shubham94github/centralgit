@@ -17,6 +17,7 @@ pipeline {
         }
     }
     stages {
+        try {
         stage("Build")
         {
             steps
@@ -58,6 +59,22 @@ pipeline {
                         sh "cp -a build/. /var/empty2/"
                         echo "Build Deployed. "
                     }
+            slackSend baseurl: 'https://retailhub-group.slack.com/services/',
+            channel: 'deployments',
+            color: 'good',
+            message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Image Tag:* ${imageTag} \n *Status: SUCCESSFULL* ",
+            teamDomain:'devops',
+            tokenCredentialId:'Slack-Token'
+        }catch (Exception err) {
+            slackSend baseurl: 'https://hooks.slack.com/services/',
+            channel: 'deployments',
+            color: 'danger',
+            message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Image Tag:* ${imageTag} \n *Status: FAILED*",
+            teamDomain:'devops',
+            tokenCredentialId:'Slack-Token'
+            System.exit(1)
+        }
+
                 
                 }
             }
@@ -66,18 +83,6 @@ pipeline {
     }
     post { 
         always { 
-            if ( buildResult == "SUCCESS" ) {
- 	            slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was successful"
-            }
-            else if( buildResult == "FAILURE" ) { 
-                slackSend color: "danger", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was failed"
-            }
-            else if( buildResult == "UNSTABLE" ) { 
-                slackSend color: "warning", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was unstable"
-            }
-            else {
-            slackSend color: "danger", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} its resulat was unclear"	
-            }
             cleanWs()
         }
     }
