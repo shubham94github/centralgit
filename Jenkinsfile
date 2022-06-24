@@ -63,6 +63,7 @@ pipeline {
             }
             
         }
+          slackSend (color: #FF0000, message: summary)
     }
     post { 
         always { 
