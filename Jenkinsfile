@@ -21,6 +21,7 @@ pipeline {
         {
             steps
             {
+                slackSend "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
                 sh "npm --version"
                 sh "node --version"
                 sh "npm install --no-optional"
