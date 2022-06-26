@@ -1,6 +1,6 @@
 def projectName = "retailhub-fe"
 def branchName1 = "preprod"
-def branchName2 = "developement"
+def branchName2 = "developement_wip"
 def dirName = "${projectName}"
 def osUser = "ubuntu"
 def ipAddr = ""
@@ -23,7 +23,7 @@ pipeline {
             {
                 sh "npm --version"
                 sh "node --version"
-                echo "npm install --no-optional"
+                sh "npm install --no-optional"
                 script {
                     if (env.BRANCH_NAME == "${branchName2}")
                     {
