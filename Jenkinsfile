@@ -1,6 +1,6 @@
 def projectName = "retailhub-fe"
 def branchName1 = "preprod"
-def branchName2 = "developement_wip"
+def branchName2 = "developement"
 def dirName = "${projectName}"
 def osUser = "ubuntu"
 def ipAddr = ""
@@ -21,10 +21,9 @@ pipeline {
         {
             steps
             {
-                slackSend "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
                 sh "npm --version"
                 sh "node --version"
-                sh "npm install --no-optional"
+                echo "npm install --no-optional"
                 script {
                     if (env.BRANCH_NAME == "${branchName2}")
                     {
@@ -64,9 +63,9 @@ pipeline {
             
         }
     }
-    post { 
-        always { 
-            cleanWs()
+    post {
+            success {
+                slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+            }
         }
-    }
 }
