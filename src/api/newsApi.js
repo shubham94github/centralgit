@@ -1,3 +1,3 @@
 import { cms } from "@api/cmsApi";
 
-export const getNewsFromCms = () => cms.get(`/News-Collections`);
+export const getNewsFromCms = () => cms.get(`/api/newsitems`);
