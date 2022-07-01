@@ -59,9 +59,10 @@ pipeline {
                         sh "cp -a build/. /var/empty2/"
                         echo "Build Deployed. "
                     }
-
+                
                 }
             }
+            
         }
     }
     post { 
