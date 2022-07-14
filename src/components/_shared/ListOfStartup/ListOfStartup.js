@@ -36,6 +36,7 @@ const ListOfStartup = ({
     center: !!emptyStartupsMessage,
   });
   const search = useLocation().search;
+  const ref = React.createRef();
   const searchedClient = new URLSearchParams(search).get("client");
   const handlePageClick = (page) => {
     const data = {
@@ -43,8 +44,11 @@ const ListOfStartup = ({
       data: page.selected + 1,
       filterClientName: searchedClient,
     };
-
     setFieldForFilter(data);
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   const changePageSizeHandler = (size) => {
@@ -63,7 +67,7 @@ const ListOfStartup = ({
   );
 
   return (
-    <div className="list-of-startup-wrapper">
+    <div className="list-of-startup-wrapper" ref={ref}>
       {isEmpty(startups) && !isLoading ? (
         isTrial && !trialData?.isTrialSearch ? (
           <P16 className="error-messages">{trialPeriodSearchWarning}</P16>
