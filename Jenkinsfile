@@ -37,7 +37,7 @@ pipeline {
                         sh "npm run build"
                     }else if (env.BRANCH_NAME == "${branchNamePreprod}")
                     {
-                        load "$JENKINS_HOOME/.env.staging"
+                        load "$JENKINS_HOME/.env.staging"
                         sh "cat .env.staging"
                         sh "npm run build:staging"
                     }else if (env.BRANCH_NAME == "${branchNameProd}")
