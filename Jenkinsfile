@@ -34,7 +34,9 @@ pipeline {
                 script {
                     if (env.BRANCH_NAME == "${branchNameDev}")
                     {
-                        sh "npm run build"
+                        load "$JENKINS_HOME/.env.development"
+                        sh "cat .env.development"
+                        sh "npm run build:development"
                     }else if (env.BRANCH_NAME == "${branchNamePreprod}")
                     {
                         sh "npm run build"
@@ -82,7 +84,7 @@ pipeline {
     }
     post { 
         always {
-            slackSend channel: 'deployments', color: COLOR_MAP[currentBuild.currentResult], message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Status: ${currentBuild.currentResult}*"  
+            //slackSend channel: 'deployments', color: COLOR_MAP[currentBuild.currentResult], message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Status: ${currentBuild.currentResult}*"  
         	cleanWs()
         }
     }
