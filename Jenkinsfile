@@ -30,12 +30,22 @@ pipeline {
             {
                 sh "npm --version"
                 sh "node --version"
-                sh "npm install --no-optional"
+                echo "npm install --no-optional"
                 script {
                     if (env.BRANCH_NAME == "${branchNameDev}")
                     {
                         load "$JENKINS_HOME/.env.development"
-                        sh "cat .env.development"
+                        echo "${env.SERVER_URL}"
+echo "${env.FILE_UPLOADER_URI}"
+echo "${env.OAUTH_SERVER_URL}"
+echo "${env.MESSAGES_SERVER_URL}"
+echo "${env.ADMIN_SERVER_URL}"
+echo "${env.WEBSOCKET_SERVER_URL}"
+echo "${env.APP_NAME}"
+echo "${env.CLIENT_ID}"
+echo "${env.CLIENT_SECRET}"
+echo "${env.STRIPE_LICENCE_KEY}"
+echo "${env.CMS_URL}"
                         sh "npm run build:development"
                     }else if (env.BRANCH_NAME == "${branchNamePreprod}")
                     {
