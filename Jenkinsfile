@@ -35,7 +35,7 @@ pipeline {
                     if (env.BRANCH_NAME == "${branchNameDev}")
                     {
                         load "$JENKINS_HOME/.env.development"
-                        sh "npm run build"
+                        sh "npm run build:development"
                     }else if (env.BRANCH_NAME == "${branchNamePreprod}")
                     {
                         sh "npm run build"
