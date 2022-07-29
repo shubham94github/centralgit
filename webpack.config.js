@@ -9,6 +9,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const { NormalModuleReplacementPlugin } = require("webpack");
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 function getEnvFileName(env) {
   if (!env) return ".env.development";
@@ -57,6 +58,7 @@ const plugins = (env, mode) => {
       );
     }),
     new NodePolyfillPlugin(),
+    new CopyPlugin({ patterns: [{ from: "robots.txt", to: "robots.txt" }] }),
   ];
 
   if (mode === "development" && !env.production) {
