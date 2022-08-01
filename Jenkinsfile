@@ -38,10 +38,10 @@ pipeline {
                         sh "npm run build:development"
                     }else if (env.BRANCH_NAME == "${branchNamePreprod}")
                     {
-                        sh "npm run build"
+                        sh "npm run build:staging"
                     }else if (env.BRANCH_NAME == "${branchNameProd}")
                     {
-                        sh "npm run build"
+                        sh "npm run build:production"
                     }
 
                 }
