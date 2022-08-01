@@ -83,7 +83,7 @@ pipeline {
     }
     post { 
         always {
-            //slackSend channel: 'deployments', color: COLOR_MAP[currentBuild.currentResult], message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Status: ${currentBuild.currentResult}*"  
+            slackSend channel: 'deployments', color: COLOR_MAP[currentBuild.currentResult], message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Status: ${currentBuild.currentResult}*"  
         	cleanWs()
         }
     }
