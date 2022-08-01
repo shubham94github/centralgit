@@ -111,6 +111,7 @@
 		"chalk": "^4.1.0",
 		"clean-terminal-webpack-plugin": "^3.0.0",
 		"clean-webpack-plugin": "^3.0.0",
+		"copy-webpack-plugin": "^11.0.0",
 		"css-loader": "^5.0.2",
 		"dotenv": "^8.2.0",
 		"dotenv-webpack": "^6.0.2",
