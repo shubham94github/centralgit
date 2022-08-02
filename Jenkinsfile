@@ -30,7 +30,7 @@ pipeline {
             {
                 sh "npm --version"
                 sh "node --version"
-                echo "npm install --no-optional"
+                echo "npm install --force"
                 script {
                     if (env.BRANCH_NAME == "${branchNameDev}")
                     {
