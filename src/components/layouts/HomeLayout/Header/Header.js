@@ -69,6 +69,7 @@ import { getItemFromStorage } from "@utils/storage";
 import { Modal, Button } from "react-bootstrap";
 
 import "./Header.scss";
+import { signUp } from "../../../../ducks/auth/actions";
 
 const {
   notificationsTooltipText,
@@ -145,12 +146,16 @@ const Header = ({
   const isGettingStarted = location.pathname.includes(
     Routes.AUTH.GETTING_STARTED.INDEX
   );
+  const isRegistrationProcess = location.pathname.includes(
+    Routes.AUTH.SIGN_UP.INDEX
+  );
   const userIcon = getUserIcon(
     user?.avatar60,
     userAvatar?.color || toColor(user?.id.toString()),
     user?.firstName,
     user?.lastName
   );
+  console.log(isRegistrationProcess);
   const userName =
     user && user.firstName && user.lastName
       ? `${user.firstName} ${user.lastName}`
@@ -393,6 +398,25 @@ const Header = ({
                     Log in
                   </S14>
                 </NavLink>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </header>
+    );
+  }
+  if (isRegistrationProcess) {
+    return (
+      <header className="header-wrapper header-wrapper--signUp">
+        <div className="landing-container">
+          <Container fluid>
+            <Row>
+              <Col className="d-flex justify-content-end">
+                <div className="logo-sm">
+                  <span className="link" onClick={handleClick}>
+                    {rhLogoHeaderIcon}
+                  </span>
+                </div>
               </Col>
             </Row>
           </Container>

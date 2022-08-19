@@ -1,0 +1,18 @@
+@import "src/styles/colors";
+.progress-item {
+  background-color: $primary-color;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+.progress-line {
+  width: 100px;
+  background: #fff;
+  height: 2px;
+  align-self: center;
+  &--active {
+    background-color: $primary-color !important;
+  }
+}
