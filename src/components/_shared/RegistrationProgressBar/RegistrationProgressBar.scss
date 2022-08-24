@@ -1,11 +1,16 @@
 @import "src/styles/colors";
 .progress-item {
-  background-color: $primary-color;
+  font-weight: 600;
+  background-color: $white;
+  color: $black;
   display: flex;
   width: 50px;
   height: 50px;
   align-items: center;
   justify-content: center;
+  &--filled {
+    background-color: $primary-color;
+  }
 }
 .progress-line {
   width: 100px;

@@ -3,7 +3,6 @@ import { bool, func, number, object } from "prop-types";
 import cn from "classnames";
 import { Col, Container, Row } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router";
-import { NavLink } from "react-router-dom";
 import { Routes } from "@routes";
 import { P12, P14, S14, S16 } from "@components/_shared/text";
 import { colors } from "@colors";
@@ -69,7 +68,6 @@ import { getItemFromStorage } from "@utils/storage";
 import { Modal, Button } from "react-bootstrap";
 
 import "./Header.scss";
-import { signUp } from "../../../../ducks/auth/actions";
 
 const {
   notificationsTooltipText,
@@ -155,7 +153,7 @@ const Header = ({
     user?.firstName,
     user?.lastName
   );
-  console.log(isRegistrationProcess);
+
   const userName =
     user && user.firstName && user.lastName
       ? `${user.firstName} ${user.lastName}`

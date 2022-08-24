@@ -97,7 +97,7 @@ const SignUpEmail = ({
 
   return (
     <div>
-      <RegistrationProgressBar />
+      <RegistrationProgressBar stepCount={1} />
       <FormWrapper className="signup-email-wrapper">
         <Container className="email-form-container">
           <P16>
