@@ -1,96 +1,140 @@
-@import 'src/styles/colors';
+@import "src/styles/colors";
 
 .sign-in-page-section {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	background: url('~/src/assets/images/sing-up-bg.jpg') $darkblue-90;
-	background-size: cover;
-	background-position-x: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url("~/src/assets/images/sing-up-bg.jpg") $darkblue-90;
+  background-size: cover;
+  background-position-x: center;
 
-	.sign-in-page-container {
-		width: 100%;
-		max-width: 1920px;
-		padding: 25px 15px;
-		margin: 0 auto;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+  .sign-in-page-container {
+    width: 100%;
+    max-width: 1920px;
+    padding: 25px 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .p16 {
+      margin-bottom: 15px;
+    }
+    p {
+      color: $white !important;
+    }
+  }
 
-		.p16 {
-			margin-bottom: 15px;
-		}
-	}
+  .sign-in-form-wrapper {
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+    max-width: 500px;
+    background-color: $auth-model-backgorund !important;
+    border: none;
+    color: $white;
+    label {
+      color: $white;
+    }
+    .p16 {
+      text-align: center;
+    }
+    .p12 {
+      color: $white;
+    }
+    .warning-text {
+      color: $red-50 !important;
+      margin: 0px;
+      padding: 2px 0px;
+    }
+    .form-group {
+      padding: 10px 30px;
+      &--input {
+        input {
+          color: white !important;
+          background-color: #777777 !important;
+        }
+      }
+    }
+    .sign-title {
+      font-size: 25px;
+      font-weight: 600;
+      span {
+        color: $primary-color;
+      }
+    }
+    .field-container {
+      margin-bottom: 15px;
+      &--input {
+        padding-bottom: 36px;
 
-	.warning-text {
-		color: $red-50;
-	}
+        input {
+          color: white !important;
+          background-color: #777777 !important;
+        }
+      }
 
-	.sign-in-form {
-		padding-left: 40px;
-		padding-right: 40px;
-		width: 100%;
-		max-width: 350px;
+      .p16 {
+        text-align: center;
+      }
+      .p12 {
+        color: $white !important;
+        .warning-text {
+          color: $red-50 !important;
+        }
+      }
+    }
 
-		.field-container {
-			margin-bottom: 15px;
+    .row {
+      margin-bottom: 15px;
+    }
 
-			.p16 {
-				text-align: center;
-			}
-		}
+    .row:last-child {
+      margin-top: 45px;
+      margin-bottom: 0;
+    }
 
-		.row {
-			margin-bottom: 15px;
-		}
+    .link {
+      color: $white;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
 
-		.row:last-child {
-			margin-top: 45px;
-			margin-bottom: 0;
-		}
+      &.link__underline {
+        position: relative;
+        font-weight: 700;
+        margin: 0;
 
-		.link {
-			color: inherit;
-			text-decoration: none;
-			display: inline-block;
-			cursor: pointer;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 2px;
+          width: 100%;
+          border-bottom: 0.7px solid $darkblue-70;
+        }
+      }
+    }
 
-			&.link__underline {
-				position: relative;
-				font-weight: 700;
-				margin: 0;
+    .linkedin-container {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      align-items: center;
 
-				&::after {
-					content: '';
-					position: absolute;
-					left: 0;
-					bottom: 2px;
-					width: 100%;
-					border-bottom: 0.7px solid $darkblue-70;
-				}
-			}
-		}
+      & > *:first-child {
+        flex: 1;
+        text-align: right;
+      }
 
-		.linkedin-container {
-			display: flex;
-			justify-content: center;
-			flex-direction: row;
-			align-items: center;
+      & > *:last-child {
+        flex: 1;
+        text-align: left;
+      }
+    }
 
-			& > *:first-child {
-				flex: 1;
-				text-align: right;
-			}
-
-			& > *:last-child {
-				flex: 1;
-				text-align: left;
-			}
-		}
-
-		.linkedin-icon {
-			margin: 0 10px;
-		}
-	}
+    .linkedin-icon {
+      margin: 0 10px;
+    }
+  }
 }

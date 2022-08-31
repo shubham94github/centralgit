@@ -71,8 +71,8 @@ const SignUp = ({ isStartup, isMember }) => {
   }, []);
 
   return (
-    <section className="sign-up-page-section" style={cssStyle}>
-      <div className="sign-up-page-container d-flex justify-content-center align-items-center">
+    <section className="sign-up-page-section " style={cssStyle}>
+      <div className="sign-up-page-container d-flex justify-content-center align-items-center flex-column">
         {!isMember && (
           <P12 className="step-style light">
             {renderStep(location.pathname)}
@@ -101,6 +101,11 @@ const SignUp = ({ isStartup, isMember }) => {
           <Route
             path={Routes.AUTH.SIGN_UP.RETAIL_BILLING_DETAILS}
             component={AddRetailCompany}
+          />
+          <Route
+            path={Routes.AUTH.SIGN_UP.EMAIL_VERIFICATION_PROCEED}
+            component={EmailVerificationProceed}
+            exact
           />
           <Route
             path={Routes.AUTH.SIGN_UP.EMAIL_VERIFICATION_PROCEED_STARTUP}

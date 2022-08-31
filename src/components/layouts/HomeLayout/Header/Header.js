@@ -9,7 +9,7 @@ import { colors } from "@colors";
 import CustomDropdown from "@components/_shared/CustomDropdown";
 import SearchForCategories from "@components/_shared/SearchForCategories";
 import Mission from "@components/Mission";
-
+import { NavLink } from "react-router-dom";
 import {
   burgerMenuIcon,
   constantsMainMenu,
@@ -403,7 +403,7 @@ const Header = ({
       </header>
     );
   }
-  if (isRegistrationProcess) {
+  if (!user) {
     return (
       <header className="header-wrapper header-wrapper--signUp">
         <div className="landing-container">

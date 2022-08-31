@@ -41,6 +41,7 @@
 		"date-fns": "^2.19.0",
 		"faker": "^5.5.3",
 		"file-saver": "^2.0.5",
+		"form-data": "^4.0.0",
 		"get-urls": "^10.0.0",
 		"history": "^4.10.1",
 		"html-to-markdown": "^1.0.0",

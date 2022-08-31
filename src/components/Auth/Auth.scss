@@ -1,0 +1,9 @@
+@import "src/styles/colors";
+.auth-background-dark {
+  background-color: $auth-model-backgorund !important;
+  max-width: 500px;
+  width: 100%;
+  p {
+    color: $white !important;
+  }
+}

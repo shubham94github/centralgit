@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { withRouter } from "react-router-dom";
 import { Routes } from "@routes";
+import ErrorBoundary from "../../Common/ErrorBoundary/index";
 import cn from "classnames";
 
 import "./HomeLayout.scss";
@@ -29,7 +30,7 @@ const HomeLayout = ({ children, location }) => {
   return (
     <div className={classes} ref={homeNode}>
       {!isLandingPage && <Header />}
-      {children}
+      <ErrorBoundary>{children}</ErrorBoundary>
       <Footer />
     </div>
   );
