@@ -1,90 +1,92 @@
-@import 'src/styles/colors';
+@import "src/styles/colors";
 
 .setting-buttons {
-	background: $grass-50;
-	border-radius: 8px;
-	padding: 13px 14px;
-	outline: none !important;
-	border: none;
-	font-family: 'Montserrat', serif;
-	font-size: 16px;
-	line-height: 24px;
-	font-weight: bold;
-	white-space: nowrap;
-	user-select: none;
+  background: $primary-color;
+  border-radius: 8px;
+  padding: 13px 14px;
+  outline: none !important;
+  border: none;
+  font-family: "Montserrat", serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+  white-space: nowrap;
+  user-select: none;
 
-	&:hover {
-		background-color: $grass-40;
-	}
+  &:hover {
+    background-color: $grass-40;
+  }
 
-	&:active {
-		background-color: $grass-30;
-	}
+  &:active {
+    background-color: $grass-30;
+  }
 
-	&:focus {
-		box-shadow: none !important;
-	}
+  &:focus {
+    box-shadow: none !important;
+  }
 
-	&[disabled] {
-		cursor: not-allowed;
-		pointer-events: none;
-	}
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 
-	&.full-width {
-		width: 100%;
-	}
+  &.full-width {
+    width: 100%;
+  }
 }
 
 .primary-button {
-	@extend .setting-buttons;
-	transition: 150ms;
+  @extend .setting-buttons;
+  transition: 150ms;
 
-	.spinner-border {
-		position: relative;
-		top: 3px;
-		margin-right: 10px;
-		width: 20px !important;
-		height: 20px !important;
-	}
+  .spinner-border {
+    position: relative;
+    top: 3px;
+    margin-right: 10px;
+    width: 20px !important;
+    height: 20px !important;
+  }
 
-	&.light-theme {
-		color: $white;
+  &.light-theme {
+    color: $white;
 
-		&[disabled] {
-			background: $gray-10;
-			color: $gray-40;
-			pointer-events: none;
-		}
-	}
+    &[disabled] {
+      background: $gray-10;
+      color: $gray-40;
+      pointer-events: none;
+    }
+  }
 
-	&.dark-theme {
-		color: $darkblue-90;
+  &.dark-theme {
+    color: $darkblue-90;
 
-		&[disabled] {
-			background: $gray-80;
-			color: $gray-60;
-			pointer-events: none;
-		}
-	}
+    &[disabled] {
+      background: $gray-80;
+      color: $gray-60;
+      pointer-events: none;
+    }
+  }
 
-	&.btn-outline-primary {
-		color: $darkblue-70;
-		font-weight: bold;
-		border: 1px solid $grass-50;
-		background: $white;
+  &.btn-outline-primary {
+    color: $darkblue-70;
+    font-weight: bold;
+    border: 1px solid $grass-50;
+    background: $white;
 
-		&:active, &:hover {
-			background: $grass-50;
-			color: $white;
-			border-color: $grass-50;
-		}
-	}
+    &:active,
+    &:hover {
+      background: $grass-50;
+      color: $white;
+      border-color: $grass-50;
+    }
+  }
 
-	&.admin-primary {
-		background: $darkblue-40;
+  &.admin-primary {
+    background: $darkblue-40;
 
-		&:active, &:hover {
-			background: $darkblue-30;
-		}
-	}
+    &:active,
+    &:hover {
+      background: $darkblue-30;
+    }
+  }
 }

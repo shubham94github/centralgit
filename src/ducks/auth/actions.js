@@ -116,7 +116,7 @@ export const checkTwoFa =
         if (isForgotPassword) setItemToSessionStorage("newPasswordData", data);
         else setItemToSessionStorage("signInData", data);
         setItemToSessionStorage("twoFaData", twoFaData);
-        dispatch(setIsLoading(false));
+        f;
 
         if (history) history.push(Routes.AUTH.TWO_FA);
       }

@@ -1,63 +1,73 @@
-@import 'src/styles/colors';
+@import "src/styles/colors";
 
 .registration-approval-container {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-	background-color: rgb(190, 192, 198);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  .registration-approval-content {
+    max-width: 500px;
+    background-color: #353535;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    margin: 0 auto;
+    color: $white;
+    padding: 50px 60px;
+    p {
+      font-weight: 600;
+      text-align: center;
+    }
+    .approvel-title {
+      text-align: center;
+      font-size: 25px;
+      font-weight: 600;
+      span {
+        color: $primary-color !important;
+      }
+    }
+    &.modal-startup {
+      max-width: 500px;
+      padding: 30px;
+    }
 
-	.registration-approval-content {
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		max-width: 570px;
-		border-radius: 20px;
-		margin: 0 auto;
-		background: $gray-05;
-		padding: 30px 60px;
+    .p16 {
+      max-width: 255px;
+      text-align: center;
+    }
 
-		&.modal-startup {
-			max-width: 500px;
-			padding: 30px;
-		}
+    .p14 {
+      margin-top: 10px;
+    }
 
-		.p16 {
-			max-width: 255px;
-			text-align: center;
-		}
+    .close-icon {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+    }
+  }
 
-		.p14 {
-			margin-top: 10px;
-		}
+  .verification-loading {
+    position: static;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    background: inherit;
 
-		.close-icon {
-			position: absolute;
-			top: 30px;
-			right: 30px;
-		}
-	}
+    .spinner {
+      height: auto;
+    }
 
-	.verification-loading {
-		position: static;
-		margin-top: 20px;
-		margin-bottom: 5px;
-		background: inherit;
+    .spinner-border {
+      width: 33px !important;
+      height: 33px !important;
+    }
 
-		.spinner {
-			height: auto;
-		}
-
-		.spinner-border {
-			width: 33px !important;
-			height: 33px !important;
-		}
-
-		.text-danger {
-			color: $darkblue-30 !important;
-		}
-	}
+    .text-danger {
+      color: $darkblue-30 !important;
+    }
+  }
 }

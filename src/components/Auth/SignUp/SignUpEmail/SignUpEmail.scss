@@ -1,11 +1,7 @@
 @import "src/styles/colors";
 
 .signup-email-wrapper {
-  max-width: 500px;
   background-color: $auth-model-backgorund !important;
-
-  padding: 62px 3em !important;
-  border: 0 !important;
 
   .p16 {
     font-weight: 600;
@@ -30,8 +26,6 @@
       }
     }
     &--button {
-      // padding: 0px 70px !important;
-
       button {
         background-color: $primary-color !important;
         color: $black !important;

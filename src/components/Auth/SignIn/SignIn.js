@@ -17,6 +17,8 @@ import { redirectToCorrectPageByStatus } from "@components/Auth/utils";
 import GridContainer from "@components/layouts/GridContainer";
 import Checkbox from "@components/_shared/form/Checkbox";
 import FormWrapper from "@components/_shared/form/FormWrapper";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
+
 import "./SignIn.scss";
 import { call } from "redux-saga/effects";
 
@@ -25,6 +27,7 @@ const { gettingStartedStatuses, userRoles } = enums;
 export const SignIn = ({ checkTwoFa, isAuthenticated, isLoading, user }) => {
   const history = useHistory();
   const [formError, setFormError] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const { register, handleSubmit, errors, watch, setValue } = useForm({
     resolver: yupResolver(schema),
@@ -77,6 +80,7 @@ export const SignIn = ({ checkTwoFa, isAuthenticated, isLoading, user }) => {
             </GridContainer>
 
             <div className="form-group form-group--input">
+              <label htmlFor="email">Email</label>
               <input
                 className="form-control"
                 id="email"
@@ -92,14 +96,26 @@ export const SignIn = ({ checkTwoFa, isAuthenticated, isLoading, user }) => {
             </div>
 
             <div className="form-group form-group--input">
-              <input
-                className="form-control"
-                id="password"
-                type="password"
-                name="password"
-                ref={register({ required: true })}
-                placeholder="Password"
-              />
+              <label htmlFor="password">Password</label>
+              <div className="input-group">
+                <input
+                  className="form-control"
+                  id="password"
+                  type={passwordVisible ? "text" : "password"}
+                  name="password"
+                  ref={register({ required: true })}
+                  placeholder="Password"
+                />
+                <div className="input-group-append">
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="button"
+                    onClick={() => setPasswordVisible(!passwordVisible)}
+                  >
+                    {!passwordVisible ? <BsEyeSlashFill /> : <BsEyeFill />}
+                  </button>
+                </div>
+              </div>
               {errors.password && (
                 <P12 className="warning-text">
                   {errors.password.message}&nbsp;
