@@ -2,21 +2,27 @@
 
 .sign-in-page-section {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: url("~/src/assets/images/sing-up-bg.jpg") $darkblue-90;
   background-size: cover;
-  background-position-x: center;
+  background-position: center;
+  background-color: $darkblue-90;
+  max-width: 1920px;
+  background: url("~/src/assets/images/sing-up-bg.jpg") $darkblue-90;
 
   .sign-in-page-container {
-    width: 100%;
-    max-width: 1920px;
-    padding: 25px 15px;
-    margin: 0 auto;
     display: flex;
+    max-width: 500px;
+    padding: 0 15px;
+    width: 100%;
+    margin: 0 auto;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    height: 100%;
+
+    margin: 0 auto;
+    @media only screen and (max-device-width: 700px) {
+      padding-top: 4em;
+    }
     .p16 {
       margin-bottom: 15px;
     }
@@ -29,7 +35,7 @@
     padding-left: 40px;
     padding-right: 40px;
     width: 100%;
-    max-width: 500px;
+
     background-color: $auth-model-backgorund !important;
     border: none;
     color: $white;

@@ -41,9 +41,8 @@ const SignUp = ({ isStartup, isMember }) => {
   };
 
   const cssStyle = {
-    backgroundSize: "cover",
-    backgroundPosition: isStartup ? "center" : "left top",
-    backgroundColor: colors.darkblue90,
+    // backgroundPosition: isStartup ? "center" : "left top",
+
     backgroundImage: `url(${
       isStartup ? backgroundStartup : backgroundRetailer
     })`,
@@ -71,13 +70,13 @@ const SignUp = ({ isStartup, isMember }) => {
   }, []);
 
   return (
-    <section className="sign-up-page-section " style={cssStyle}>
-      <div className="sign-up-page-container d-flex justify-content-center align-items-center flex-column">
-        {!isMember && (
+    <section className="auth-page-section" style={cssStyle}>
+      <div className="auth-page-container">
+        {/* {!isMember && (
           <P12 className="step-style light">
             {renderStep(location.pathname)}
           </P12>
-        )}
+        )} */}
         <Switch>
           <Route
             path={Routes.AUTH.SIGN_UP.INDEX}

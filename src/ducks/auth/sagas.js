@@ -724,12 +724,12 @@ export function* handleSignUpWorker({
       role,
     };
 
-    // const signUp = isMember
-    //   ? signUpAsMember
-    //   : isRetail
-    //   ? signUpAsRetailer
-    //   : signUpAsStartup;
-    const signUp = signUpAsRetailer;
+    const signUp = isMember
+      ? signUpAsMember
+      : isRetail
+      ? signUpAsRetailer
+      : signUpAsStartup;
+
     console.log(reqData);
     const { data: user } = yield call(signUp, reqData);
 

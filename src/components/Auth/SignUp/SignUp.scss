@@ -1,29 +1,54 @@
 @import "src/styles/colors";
 
-.sign-up-page-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  //   padding-top: 25px;
-  //   padding-bottom: 25px;
+// .sign-up-page-section {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   width: 100%;
+//   background-size: cover;
+//   background-position: center;
+//   background-color: $darkblue-90;
 
-  .sign-up-page-container {
+//   .sign-up-page-container {
+//     padding: 0 15px;
+//     width: 100%;
+//     max-width: 1920px;
+//     margin: 0 auto;
+//     @media only screen and (min-device-width: 480px) {
+//       padding-top: 10em;
+//     }
+
+//     .add-retail-company-container {
+//       .form-field-wrapper {
+//         margin-bottom: 15px !important;
+//       }
+//     }
+//   }
+
+//   .step-style {
+//     margin-bottom: 15px;
+//   }
+// }
+.auth-page-section {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: $darkblue-90;
+  max-width: 1920px;
+  .auth-page-container {
+    display: flex;
+    max-width: 500px;
     padding: 0 15px;
     width: 100%;
-    max-width: 1920px;
     margin: 0 auto;
-    @media (min-width: 768px) {
-    }
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 
-    .add-retail-company-container {
-      .form-field-wrapper {
-        margin-bottom: 15px !important;
-      }
+    margin: 0 auto;
+    @media only screen and (max-device-width: 700px) {
+      padding-top: 4em;
     }
-  }
-
-  .step-style {
-    margin-bottom: 15px;
   }
 }
