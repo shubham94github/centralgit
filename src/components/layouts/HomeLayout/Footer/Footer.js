@@ -1,20 +1,26 @@
-import React, { memo } from "react";
+import React, { memo, useState, useEffect } from "react";
+
 import P12 from "@components/_shared/text/P12";
 import { Col, Row } from "react-bootstrap";
 import { constantsLinks, constantsSocial } from "./constants";
 import { Routes } from "@routes";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import "./Footer.scss";
 import { deActivateAdminUser } from "@api/adminApi";
 
 const Footer = () => {
-  const isRegistrationProcess = location.pathname.includes(
-    Routes.AUTH.SIGN_UP.INDEX
-  );
+  const history = useHistory();
+  const [isAuthneticationProcess, setIsAuthenticationProcess] = useState(true);
+  useEffect(() => {
+    setIsAuthenticationProcess(
+      history.location.pathname.includes(Routes.AUTH.SIGN_UP.INDEX)
+    );
+  }, [history.location.pathname]);
+
   return (
     <footer className="footer-wrapper">
       <div className="footer-container">
-        {!isRegistrationProcess ? (
+        {!isAuthneticationProcess ? (
           <Row>
             <Col
               xs={6}

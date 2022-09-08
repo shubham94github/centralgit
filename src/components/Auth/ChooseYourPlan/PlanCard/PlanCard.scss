@@ -1,157 +1,185 @@
-@import '/src/styles/colors';
-@import 'src/styles/mixins';
+@import "/src/styles/colors";
+@import "src/styles/mixins";
 
+.plan-card-selected {
+  background-color: rgba(217, 217, 217, 0.19) !important;
+}
 .plan-card {
-	width: 330px;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	background: $white;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-	border-radius: 8px;
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 1px solid $white;
 
-	.contact-us-link a {
-		text-decoration: underline;
-	}
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 
-	&__header {
-		width: 100%;
-		padding: 30px 30px 15px 30px;
-	}
+  .contact-us-link a {
+    text-decoration: underline;
+  }
+  &__sub-header {
+    width: 100%;
+    padding-top: 15px;
+    text-align: center;
+    color: $primary-color;
+    font-size: 20px;
+  }
 
-	&__plans {
-		width: 100%;
-		min-height: 315px;
-		padding: 20px 25px 80px 25px;
-		background: $grass-05;
-		position: relative;
+  &__header {
+    width: 100%;
+    // padding: 30px 30px 15px 30px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 40px;
+  }
+  &__duration {
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    margin-top: -7px;
+  }
+  &__contact-us {
+    font-size: 12px;
+    width: 100%;
+    color: $primary-color !important;
+    text-align: center;
+    margin-top: -7px;
+    padding: 0 10%;
+  }
 
-		.p12 {
-			height: 100%;
-		}
+  &__plans {
+    width: 100%;
+    min-height: 315px;
+    padding: 20px 25px 80px 25px;
+    // background: $grass-05;
+    position: relative;
 
-		.plans-list {
-			height: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-items: flex-start;
+    .p12 {
+      height: 100%;
+    }
 
-			.plan {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: flex-start;
+    .plans-list {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
 
-				&:nth-child(n+2) {
-					margin-top: 25px;
-				}
+      .plan {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
 
-				.main-info {
-					display: flex;
-					flex-direction: row;
-					justify-content: flex-start;
-					align-items: center;
+        &:nth-child(n + 2) {
+          margin-top: 25px;
+        }
 
-					.plan-info {
-						display: flex;
-						flex-direction: row;
-						justify-content: flex-start;
-						align-items: center;
-						margin-left: 5px;
+        .main-info {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
 
-						.current-price {
-							font-size: 32px;
-							line-height: 22px;
-						}
+          .plan-info {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            margin-left: 5px;
 
-						.discounted {
-							@include textStyle(24px, $gray-40, 22px);
+            .current-price {
+              font-size: 32px;
+              line-height: 22px;
+            }
 
-							text-decoration: line-through $pink-50;
-							margin-top: 5px;
-						}
+            .discounted {
+              @include textStyle(24px, $gray-40, 22px);
 
-						.price-with-discount {
-							@include textStyle(32px, $pink-50, 22px);
+              text-decoration: line-through $pink-50;
+              margin-top: 5px;
+            }
 
-							margin-left: 5px;
-						}
+            .price-with-discount {
+              @include textStyle(32px, $pink-50, 22px);
 
-						.description {
-							display: flex;
-							flex-direction: column;
-							justify-content: flex-start;
-							align-items: flex-start;
-							margin-left: 5px;
+              margin-left: 5px;
+            }
 
-							.payment-period {
-								@include textStyle(10px, $gray-40, 16px);
-							}
+            .description {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              align-items: flex-start;
+              margin-left: 5px;
 
-							.user-restrictions {
-								@include textStyle(10px, $darkblue-70, 16px);
-							}
-						}
-					}
-				}
-			}
-		}
+              .payment-period {
+                @include textStyle(10px, $gray-40, 16px);
+              }
 
-		.code-actions {
-			position: absolute;
-			margin-top: 25px;
+              .user-restrictions {
+                @include textStyle(10px, $darkblue-70, 16px);
+              }
+            }
+          }
+        }
+      }
+    }
 
-			.text-input-container {
-				input {
-					font-size: 14px;
-					height: 35px;
-					line-height: 20px;
-					padding: 8px 10px;
-				}
-			}
+    .code-actions {
+      position: absolute;
+      margin-top: 25px;
 
-			.primary-button {
-				height: 35px;
-				padding: 7.5px 10px;
-				font-size: 14px;
-				line-height: 16px;
-			}
-		}
-	}
+      .text-input-container {
+        input {
+          font-size: 14px;
+          height: 35px;
+          line-height: 20px;
+          padding: 8px 10px;
+        }
+      }
 
-	&__features-list {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: flex-start;
-		padding: 15px 25px;
+      .primary-button {
+        height: 35px;
+        padding: 7.5px 10px;
+        font-size: 14px;
+        line-height: 16px;
+      }
+    }
+  }
 
-		.feature-item {
-			display: flex;
-			flex-direction: row;
-			align-items: flex-start;
-			justify-content: flex-start;
+  &__features-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 15px 25px;
+    width: 100%;
 
-			.p14 {
-				@include truncate-text(2);
-			}
+    .feature-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      .p14 {
+        @include truncate-text(2);
+      }
 
-			&:nth-child(n+2) {
-				margin-top: 10px;
-			}
+      &:nth-child(n + 2) {
+        margin-top: 10px;
+      }
 
-			.feature-icon {
-				width: 24px;
-				height: 24px;
-				margin-right: 5px;
+      .feature-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 5px;
 
-				svg {
-					width: 24px;
-					height: 24px;
-				}
-			}
-		}
-	}
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
 }

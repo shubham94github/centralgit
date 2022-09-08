@@ -1,0 +1,40 @@
+@import "src/styles/colors";
+.progressBarContainer {
+  margin-left: 25%;
+  padding: 25px;
+  margin-top: -15px;
+  padding-top: 20px;
+  border: 1px solid #dadada;
+  border-top: none;
+  border-radius: 10px;
+
+  width: 50%;
+  .subtitle_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    .subtitle {
+      a {
+        font-size: 12px;
+        text-transform: uppercase;
+        text-decoration: underline !important;
+      }
+    }
+    .percent {
+      font-size: 15px;
+    }
+  }
+  .progressbar {
+    display: flex;
+    justify-content: space-between;
+    &__item {
+      width: 24%;
+      height: 5px;
+      background: #d9d9d9;
+    }
+    .filled {
+      background: $primary-color;
+    }
+  }
+}
