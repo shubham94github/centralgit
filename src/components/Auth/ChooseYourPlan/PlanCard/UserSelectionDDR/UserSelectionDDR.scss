@@ -1,0 +1,64 @@
+.UserSelectionDDR {
+  display: flex;
+  justify-content: center;
+
+  .container {
+    width: 80px;
+  }
+
+  button {
+    border: 0;
+    border-radius: 4px;
+    background: rgba(112, 112, 112, 0.29);
+    width: 100%;
+    padding: 6px 8px;
+    position: relative;
+    text-align: left;
+    color: white;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  button::after {
+    position: absolute;
+    right: -3px;
+    top: 5px;
+    content: ">";
+    transform: rotate(-90deg);
+    border-top: 1px solid grey;
+    padding: 1px 10px;
+    color: white;
+  }
+
+  button.expanded::after {
+    content: ">";
+    transform: rotate(90deg);
+    border-top: none;
+    border-bottom: 1px solid grey;
+  }
+
+  ul.options {
+    border: 1px solid #949494;
+    display: none;
+    list-style: none;
+  }
+
+  ul.show {
+    display: block;
+  }
+
+  ul.options li {
+    padding: 6px 10px;
+    border-bottom: 1px solid #949494;
+  }
+
+  ul.options li:active,
+  ul.options li:focus,
+  ul.options li:hover,
+  ul.options li[aria-selected="true"] {
+    background: rgba(112, 112, 112, 0.29);
+    cursor: pointer;
+  }
+}

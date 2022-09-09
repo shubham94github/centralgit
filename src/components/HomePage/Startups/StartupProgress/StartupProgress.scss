@@ -9,6 +9,14 @@
   border-radius: 10px;
 
   width: 50%;
+  .cross_button {
+    color: grey;
+    font-size: 10px;
+    float: right;
+    margin-right: -20px;
+
+    cursor: pointer;
+  }
   .subtitle_container {
     display: flex;
     justify-content: space-between;

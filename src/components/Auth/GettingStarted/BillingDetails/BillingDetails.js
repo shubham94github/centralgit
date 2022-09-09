@@ -500,7 +500,7 @@ function BillingDetails({
           title="Upgrade yout account Choose the best plan for you"
           className="edit-payment-plan-modal"
           onClose={closeModal}
-          width="1105px"
+          width="100%"
           isDarkModal={true}
         />
       )}

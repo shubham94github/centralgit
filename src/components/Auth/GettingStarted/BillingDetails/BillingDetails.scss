@@ -1,167 +1,170 @@
-@import '/src/styles/colors';
-@import '/src/styles/mixins';
+@import "/src/styles/colors";
+@import "/src/styles/mixins";
 
 .billing-details-container {
-	position: relative;
-	max-width: 750px;
+  position: relative;
+  max-width: 750px;
 
-	&.container-modal {
-		padding: 0;
-		border: none;
+  &.container-modal {
+    padding: 0;
+    border: none;
 
-		.primary-button {
-			margin-top: 0px;
-		}
-	}
+    .primary-button {
+      margin-top: 0px;
+    }
+  }
 
-	.step-style {
-		margin-bottom: 20px;
-	}
+  .step-style {
+    margin-bottom: 20px;
+  }
 
-	.copy-from {
-		display: block;
-		margin-bottom: 15px;
-		color: $darkblue-50;
-		text-decoration: underline;
-		cursor: pointer;
-		font-size: 12px;
-	}
+  .copy-from {
+    display: block;
+    margin-bottom: 15px;
+    color: $darkblue-50;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
+  }
 
-	.text-input-container {
-		margin-bottom: 15px;
-	}
+  .text-input-container {
+    margin-bottom: 15px;
+  }
 
-	.add-card-title {
-		margin-top: 10px;
-	}
+  .add-card-title {
+    margin-top: 10px;
+  }
 
-	.add-card {
-		display: flex;
-		flex-direction: column;
+  .add-card {
+    display: flex;
+    flex-direction: column;
 
-		.p16 {
-			margin-bottom: 10px;
-		}
+    .p16 {
+      margin-bottom: 10px;
+    }
 
-		.add-card-container {
-			display: flex;
-			flex-wrap: nowrap;
-		}
+    .add-card-container {
+      display: flex;
+      flex-wrap: nowrap;
+    }
 
-		.p14 {
-			max-width: 200px;
-		}
+    .p14 {
+      max-width: 200px;
+    }
 
-		.add-card-btn {
-			margin-left: 8px;
-			cursor: pointer;
-		}
-	}
+    .add-card-btn {
+      margin-left: 8px;
+      cursor: pointer;
+    }
+  }
 
-	.card-info {
-		.p16 {
-			margin-bottom: 10px;
-		}
+  .card-info {
+    .p16 {
+      margin-bottom: 10px;
+    }
 
-		.card-container {
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-			justify-content: flex-start;
-			align-items: center;
+    .card-container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
 
-			.card-logo {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
+      .card-logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-				svg {
-					width: 40px;
-					height: 12px;
-				}
-			}
+        svg {
+          width: 40px;
+          height: 12px;
+        }
+      }
 
-			.card-number {
-				width: calc(100% - 72px);
-			}
+      .card-number {
+        width: calc(100% - 72px);
+      }
 
-			.edit, .delete, .add-card-btn {
-				text-align: center;
-				min-width: 24px;
-				width: 24px;
-				height: 24px;
-				cursor: pointer;
-			}
-		}
-	}
+      .edit,
+      .delete,
+      .add-card-btn {
+        text-align: center;
+        min-width: 24px;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+      }
+    }
+  }
 
-	.current-plan {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-end;
+  .current-plan {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
 
-		.edit {
-			margin-left: 8px;
-			cursor: pointer;
-		}
+    .edit {
+      margin-left: 8px;
+      cursor: pointer;
+    }
 
-		.disabled-action {
-			cursor: not-allowed;
-		}
-	}
+    .disabled-action {
+      cursor: not-allowed;
+    }
+  }
 
-	.billing-button {
-		margin-top: 30px;
-	}
+  .billing-button {
+    margin-top: 30px;
+  }
 
-	.warning-text {
-		margin-bottom: 15px;
-		color: $red-50;
-	}
+  .warning-text {
+    margin-bottom: 15px;
+    color: $red-50;
+  }
 
-	.text-input-container.error {
-		margin-bottom: 0;
-	}
+  .text-input-container.error {
+    margin-bottom: 0;
+  }
 
-	.edit-payment-plan-modal {
-		.choose-your-plan {
-			width: 100%;
-			margin: 0 auto;
-			padding: 0;
-			border: unset;
-		}
-	}
+  .edit-payment-plan-modal {
+    .choose-your-plan {
+      width: 100%;
+      margin: 0 auto;
+      margin-top: -15px;
+      padding: 0;
+      border: unset;
+    }
+  }
 
-	.next-payment {
-		margin-top: 10px;
-		color: $darkblue-70;
-		font-size: 14px;
+  .next-payment {
+    margin-top: 10px;
+    color: $darkblue-70;
+    font-size: 14px;
 
-		span {
-			margin-top: 8px;
+    span {
+      margin-top: 8px;
 
-			&:first-child {
-				display: inline-block;
-				padding-bottom: 5px;
-			}
-		}
+      &:first-child {
+        display: inline-block;
+        padding-bottom: 5px;
+      }
+    }
 
-		.change-plan-message {
-			display: inline-block;
-			padding-top: 15px;
-		}
-	}
+    .change-plan-message {
+      display: inline-block;
+      padding-top: 15px;
+    }
+  }
 
-	.toggle-subscription {
-		@include textStyle(16px, $darkblue-70, 20px);
+  .toggle-subscription {
+    @include textStyle(16px, $darkblue-70, 20px);
 
-		margin-bottom: 10px;
-		font-weight: 700;
-	}
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
 }
 
 .confirm-subscription {
-	.confirm {
-		width: 530px;
-	}
+  .confirm {
+    width: 530px;
+  }
 }

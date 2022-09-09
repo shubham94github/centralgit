@@ -5,7 +5,8 @@
   background-color: rgba(217, 217, 217, 0.19) !important;
 }
 .plan-card {
-  width: 330px;
+  // width: 330px;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -15,6 +16,15 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
 
+  .userselection {
+    padding: 10px;
+    padding-left: 25px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    width: 100%;
+    align-items: center;
+  }
   .contact-us-link a {
     text-decoration: underline;
   }
@@ -171,13 +181,13 @@
       }
 
       .feature-icon {
-        width: 24px;
-        height: 24px;
+        width: 10px;
+        height: 10px;
         margin-right: 5px;
 
         svg {
-          width: 24px;
-          height: 24px;
+          width: 10px;
+          height: 10px;
         }
       }
     }

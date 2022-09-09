@@ -77,7 +77,6 @@ const ChooseYourPlan = ({
 
   const location = useLocation();
   const history = useHistory();
-
   const isRetailer = !!user?.retailer;
   const isChangeSubscription =
     location.pathname === Routes.SUBSCRIPTION.CHANGE_PLAN;
@@ -225,7 +224,7 @@ const ChooseYourPlan = ({
             );
           })}
         </GridContainer>
-        {!isUnpaidUser && (
+        {/* {!isUnpaidUser && (
           <div className="points">
             {featurePoints.map((featurePoint, i) => (
               <div className="points-item" key={i}>
@@ -234,9 +233,9 @@ const ChooseYourPlan = ({
               </div>
             ))}
           </div>
-        )}
+        )} */}
       </div>
-      {isUnpaidUser && (
+      {/* {isUnpaidUser && (
         <GridContainer>
           <div className="points">
             {featurePoints.map((featurePoint, i) => (
@@ -247,7 +246,7 @@ const ChooseYourPlan = ({
             ))}
           </div>
         </GridContainer>
-      )}
+      )} */}
       <div className="buttons centered">
         {(withCancelButton || isUnpaidUser) && (
           <PrimaryButton

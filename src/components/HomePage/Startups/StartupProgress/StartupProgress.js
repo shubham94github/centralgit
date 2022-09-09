@@ -8,7 +8,9 @@ import { de } from "date-fns/locale";
 
 const StartupProgress = ({ progress }) => {
   const [gotoLink, setGotoLink] = useState(Routes.SETTINGS.ACCOUNT_INFO);
+  const [visible, setVisible] = useState(true);
   useEffect(() => {
+    setGotoLink(Routes.SETTINGS.ACCOUNT_INFO);
     switch (progress) {
       case "25":
         setGotoLink(Routes.SETTINGS.ACCOUNT_INFO);
@@ -20,34 +22,45 @@ const StartupProgress = ({ progress }) => {
         setGotoLink(Routes.SETTINGS.BILLING_DETAILS);
         break;
       default:
-        setGotoLink(Routes.ACCOUNT_INFO);
+        setGotoLink(Routes.SETTINGS.ACCOUNT_INFO);
     }
   }, [progress]);
-
+  const ClosePopup = () => {
+    setVisible(false);
+  };
   return (
-    <div className="progressBarContainer">
-      <div className="title bold ">Complete your account!</div>
-      <div className="subtitle_container">
-        <div className="subtitle">
-          <Link to={gotoLink}>complete Now &gt;</Link>
+    <>
+      {progress === 100 || !visible ? (
+        <></>
+      ) : (
+        <div className="progressBarContainer">
+          <div className="bold cross_button" onClick={ClosePopup}>
+            X
+          </div>
+          <div className="title bold ">Complete your account!</div>
+          <div className="subtitle_container">
+            <div className="subtitle">
+              <Link to={gotoLink}>complete Now &gt;</Link>
+            </div>
+            <div className="bold percent">{progress ? progress : 0}/100</div>
+          </div>
+          <div className="progressbar">
+            <div
+              className={`progressbar__item ${progress >= 25 ? "filled" : ""}`}
+            ></div>
+            <div
+              className={`progressbar__item ${progress >= 50 ? "filled" : ""}`}
+            ></div>
+            <div
+              className={`progressbar__item ${progress >= 75 ? "filled" : ""}`}
+            ></div>
+            <div
+              className={`progressbar__item ${progress >= 100 ? "filled" : ""}`}
+            ></div>
+          </div>
         </div>
-        <div className="bold percent">{progress}%/100%</div>
-      </div>
-      <div className="progressbar">
-        <div
-          className={`progressbar__item ${progress >= 25 ? "filled" : ""}`}
-        ></div>
-        <div
-          className={`progressbar__item ${progress >= 50 ? "filled" : ""}`}
-        ></div>
-        <div
-          className={`progressbar__item ${progress >= 75 ? "filled" : ""}`}
-        ></div>
-        <div
-          className={`progressbar__item ${progress >= 100 ? "filled" : ""}`}
-        ></div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
