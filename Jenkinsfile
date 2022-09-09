@@ -1,52 +1,49 @@
-def projectName = "retailhub-fe"
-
-def branchNameDev = "developement_wip"
-def branchNamePreprod = "preprod"
-def branchNameProd = "production"
-
-def dirName = "${projectName}"
-def osUser = "ubuntu"
-def ipAddr = ""
-def agentName = ""
+def project_name = 'retailhub-fe-test'
+def production_branch = 'production'
+def development_branch = 'developement_wip'
 def COLOR_MAP = [
     'SUCCESS': 'good', 
     'FAILURE': 'danger',
 ]
+if (env.BRANCH_NAME == "${development_branch}")
+{
+  agentName = 'RetailhubDev'
+  ip_address = 'dev1.retailhub.ai'
+  user = 'mehulbudasna'
+  deploy_path = '/usr/share/nginx/html/retailhub-fe-test'
+}
+if (env.BRANCH_NAME == "${production_branch}")
+{
+  deploy_path = ''
+  agentName = ''
+  ip_address = ''
+  user = ''
+}
 
 pipeline {
+    agent any
     options {
         buildDiscarder(logRotator(numToKeepStr: "7"))
     }
-    agent {
-        docker {
-            image "node:16"
-            args "-v /usr/share/nginx/html/${dirName}:/var/empty2 -v /root/dcompose/${dirName}:/var/empty"
-        }
-    }
+    
     stages {
+        
         stage("Build")
         {
-            steps
-            {
-                sh "npm --version"
-                sh "node --version"
-                sh "npm install --no-optional"
-                script {
-                    if (env.BRANCH_NAME == "${branchNameDev}")
-                    {
-                        load "$JENKINS_HOME/.env.development"
-                        sh "npm run build:development"
-                    }else if (env.BRANCH_NAME == "${branchNamePreprod}")
-                    {
-
-                        load "$JENKINS_HOME/.env.staging"
-                        sh "cat .env.staging"
-                        sh "npm run build:staging"
-                    }else if (env.BRANCH_NAME == "${branchNameProd}")
-                    {
-                        sh "npm run build:production"
+                agent {
+                        docker {
+                            image "node:16"
+                        }
                     }
-
+            steps
+            {   
+                script {
+                    if (env.BRANCH_NAME == "${development_branch}")
+                    {
+                        sh "npm install"
+                        sh "CI='false' npm run build:development"
+                        stash includes: 'build/**/*', name: 'BUILD'
+                    }
                 }
             }
         }
@@ -56,38 +53,33 @@ pipeline {
             steps
             {
                 script {
-                    if (env.BRANCH_NAME == "${branchNameDev}")
+                    unstash 'BUILD'
+                    if (env.BRANCH_NAME == "${development_branch}" && env.NODE_LABEL != "master")
                     {
-                        echo "Deleting the old build.  "
-                        sh "rm -r /var/empty2/* || ls"
-                        echo "Old build deleted, Deploying new build"
-                        sh "cp -a build/. /var/empty2/"
-                        echo "Build Deployed. "
-                    }else if (env.BRANCH_NAME == "${branchNamePreprod}")
-                    {   
-                        echo "Deleting the old build.  "
-                        sh "rm -r /var/empty2/* || ls"
-                        echo "Old build deleted, Deploying new build"
-                        sh "cp -a build/. /var/empty2/"
-                        echo "Build Deployed. "
-                    }else if (env.BRANCH_NAME == "${branchNameProd}")
-                    {   
-                        echo "Deleting the old build.  "
-                        sh "rm -r /var/empty2/* || ls"
-                        echo "Old build deleted, Deploying new build"
-                        sh "cp -a build/. /var/empty2/"
-                        echo "Build Deployed. "
+                        sshagent ( ["${agentName}"]) {
+                            sh "ls build"
+                            sh "apt update && apt -y install rsync"
+                            sh "rsync -avrHP -e 'ssh -o StrictHostKeyChecking=no' --delete build/ ${user}@${ip_address}:${deploy_path}"
+                            sh "docker system prune -f"
+                        }
                     }
-                
+                    else if (env.BRANCH_NAME == "${production_branch}" && env.NODE_LABEL != "master" )
+                    {   
+                        sshagent ( ["${agentName}"]) {
+                            sh "ls build"
+                            sh "apt update && apt -y install rsync"
+                            sh "rsync -avrHP -e 'ssh -o StrictHostKeyChecking=no' --delete build/ ${user}@${ip_address}:${deploy_path}"
+                            sh "docker system prune -f"
+                        }
+                    }
                 }
             }
-            
         }
     }
     post { 
         always {
-            slackSend channel: 'deployments', color: COLOR_MAP[currentBuild.currentResult], message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Status: ${currentBuild.currentResult}*"  
-        	cleanWs()
+            slackSend channel: 'deployments', color: COLOR_MAP[currentBuild.currentResult], message: "*Job*: ${env.JOB_NAME} (${env.BUILD_URL}console) \n *Build Number:* ${env.BUILD_NUMBER} \n *Status: ${currentBuild.currentResult}* \n *URL : ${ipAddr}*"  
+            cleanWs()
         }
     }
 }
