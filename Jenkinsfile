@@ -10,7 +10,7 @@ if (env.BRANCH_NAME == "${development_branch}")
   agentName = 'RetailhubDev'
   ip_address = 'dev1.retailhub.ai'
   user = 'mehulbudasna'
-  deploy_path = '/usr/share/nginx/html/retailhub-fe-test'
+  deploy_path = '/usr/share/nginx/html/retailhub-fe'
 }
 if (env.BRANCH_NAME == "${production_branch}")
 {
