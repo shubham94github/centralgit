@@ -1,5 +1,6 @@
 def project_name = 'retailhub-fe'
 def production_branch = 'production'
+def beta_branch = 'preprod'
 def development_branch = 'developement_wip'
 def COLOR_MAP = [
     'SUCCESS': 'good', 
@@ -9,6 +10,13 @@ if (env.BRANCH_NAME == "${development_branch}")
 {
   agentName = 'RetailhubDev'
   ip_address = 'dev1.retailhub.ai'
+  user = 'mehulbudasna'
+  deploy_path = '/usr/share/nginx/html/retailhub-fe'
+}
+if (env.BRANCH_NAME == "${beta_branch}")
+{
+  agentName = 'RetailhubBeta'
+  ip_address = 'beta.retailhub.ai'
   user = 'mehulbudasna'
   deploy_path = '/usr/share/nginx/html/retailhub-fe'
 }
@@ -44,6 +52,18 @@ pipeline {
                         sh "CI='false' npm run build:development"
                         stash includes: 'build/**/*', name: 'BUILD'
                     }
+                    else if (env.BRANCH_NAME == "${beta_branch}")
+                    {
+                        sh "npm install"
+                        sh "CI='false' npm run build:staging"
+                        stash includes: 'build/**/*', name: 'BUILD'
+                    }
+                    else if (env.BRANCH_NAME == "${production_branch}")
+                    {
+                        sh "npm install"
+                        sh "CI='false' npm run build:production"
+                        stash includes: 'build/**/*', name: 'BUILD'
+                    }
                 }
             }
         }
@@ -54,17 +74,6 @@ pipeline {
             {
                 script {
                     unstash 'BUILD'
-                    if (env.BRANCH_NAME == "${development_branch}" && env.NODE_LABEL != "master")
-                    {
-                        sshagent ( ["${agentName}"]) {
-                            sh "ls build"
-                            sh "apt update && apt -y install rsync"
-                            sh "rsync -avrHP -e 'ssh -o StrictHostKeyChecking=no' --delete build/ ${user}@${ip_address}:${deploy_path}"
-                            sh "docker system prune -f"
-                        }
-                    }
-                    else if (env.BRANCH_NAME == "${production_branch}" && env.NODE_LABEL != "master" )
-                    {   
                         sshagent ( ["${agentName}"]) {
                             sh "ls build"
                             sh "apt update && apt -y install rsync"
