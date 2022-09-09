@@ -1,4 +1,4 @@
-def project_name = 'retailhub-fe-test'
+def project_name = 'retailhub-fe'
 def production_branch = 'production'
 def development_branch = 'developement_wip'
 def COLOR_MAP = [
