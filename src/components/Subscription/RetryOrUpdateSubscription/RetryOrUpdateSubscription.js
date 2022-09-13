@@ -82,7 +82,8 @@ const RetryOrUpdateSubscription = ({
         )}
         {isTrial && (
           <div className="backButton" onClick={gotoHome}>
-            <span>&#60;</span>Back to Home
+            <span>&#60;</span>
+            <p>Back to Home</p>
           </div>
         )}
       </div>
