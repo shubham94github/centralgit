@@ -213,8 +213,10 @@ const Header = ({
   ]);
 
   const openChatHandler = () => {
-    if ((isRetailer || isMember) && isTrial) setWarningOfChatRestriction();
-    else history.push(Routes.MESSAGES.INDEX);
+    if ((isRetailer || isMember) && isTrial) {
+      history.push(Routes.SUBSCRIPTION.INDEX);
+      // setWarningOfChatRestriction();
+    } else history.push(Routes.MESSAGES.INDEX);
   };
 
   useEffect(() => {
@@ -473,14 +475,16 @@ const Header = ({
                             setDefaultFieldForFilter();
                             history.push(link.path);
                             break;
-                          case "modal":
+                          case "modal": {
                             setDefaultFieldForFilter();
-
-                            //here we have to create a model
-                            //history.push(link.path);
-                            OpenClosePopup(link.name);
-
+                            debugger;
+                            if (isTrial) {
+                              history.push(Routes.SUBSCRIPTION.INDEX);
+                            } else {
+                              OpenClosePopup(link.name);
+                            }
                             break;
+                          }
                           default: {
                             break;
                           }
@@ -707,7 +711,7 @@ export default connect(
         !isAdmin &&
         !isStartup &&
         ////// need to get the changed data from here for trial  purpose
-        user[isRetailer ? "retailer" : "member"].stripePaymentSettings?.isTrial,
+        user?.trial,
       trialData,
       isLoading: isLoadingHome || isLoadingCommon,
     };

@@ -44,7 +44,7 @@ const mapStateToProps = ({ auth }) => {
     stripeSubscriptionId:
       auth.user &&
       auth.user[propName].stripePaymentSettings.stripeSubscriptionId,
-    isTrial: auth.user && auth.user[propName].stripePaymentSettings.isTrial,
+    isTrial: auth.user && auth.user.trial,
     isCompletedGettingStarted:
       auth.user?.status ===
       enums.gettingStartedStatuses.completedGettingStarted,
