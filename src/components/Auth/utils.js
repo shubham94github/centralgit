@@ -17,7 +17,6 @@ const {
 } = enums;
 
 export const redirectToCorrectPageByStatus = (user) => {
-  debugger;
   if (!user) return <Redirect to={Routes.AUTH.SIGN_IN} />;
 
   const { role, status } = user;
@@ -28,13 +27,11 @@ export const redirectToCorrectPageByStatus = (user) => {
   const isSubscriptionPaid =
     !isAdmin &&
     !isStartup &&
-    (!!user[isRetailer ? "retailer" : "member"].stripePaymentSettings
-      ?.isTrial ||
+    (!!user.trial ||
       (!isStartup &&
         user[isRetailer ? "retailer" : "member"].stripePaymentSettings
-          ?.isSubscriptionPaid &&
-        !user[isRetailer ? "retailer" : "member"].stripePaymentSettings
-          .isTrial));
+          ?.stripeSubscriptionId &&
+        !user.trial));
 
   if (isStartup) {
     switch (status) {
@@ -134,6 +131,7 @@ export const redirectToCorrectPageByStatus = (user) => {
         case companyInfo:
           return <Redirect to={Routes.AUTH.GETTING_STARTED.BILLING_DETAILS} />;
         case completedGettingStarted: {
+          console.log("isSubscriptionPaid", isSubscriptionPaid);
           if (!isSubscriptionPaid)
             return <Redirect to={Routes.SUBSCRIPTION.RETRY_OR_UPDATE} />;
 

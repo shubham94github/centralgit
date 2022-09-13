@@ -56,8 +56,8 @@ export const SignIn = ({ checkTwoFa, isAuthenticated, isLoading, user }) => {
     isAuthenticated &&
     user?.status === gettingStartedStatuses.completedGettingStarted &&
     user[propName] &&
-    !user[propName].stripePaymentSettings.isSubscriptionPaid &&
-    !user[propName].stripePaymentSettings.isTrial
+    !user[propName].stripePaymentSettings.stripeSubscriptionId &&
+    !user.trial
   )
     return <Redirect to={Routes.SUBSCRIPTION.INDEX} />;
 

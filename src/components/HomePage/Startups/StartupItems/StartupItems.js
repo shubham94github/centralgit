@@ -111,8 +111,7 @@ StartupItems.propTypes = {
 export default connect(
   ({ common: { trialData }, auth: { user } }) => ({
     trialData,
-    isTrial:
-      user?.retailer?.stripePaymentSettings?.isTrial || trialData?.isTrial,
+    isTrial: user?.trial || trialData?.isTrial,
   }),
   {
     setFieldOutsideForFilter,

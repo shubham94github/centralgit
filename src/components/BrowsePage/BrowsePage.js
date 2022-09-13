@@ -32,7 +32,7 @@ const ListOfStartupBrowseHOC = withSuspense(
 
 const BrowsePage = ({
   isLoading,
-  isTrial,
+  // isTrial,
   setFieldForFilter,
   filterClientName,
 }) => {
@@ -57,14 +57,14 @@ const BrowsePage = ({
           <div className="browse-page-content">
             <Navbar />
             <SearchForStartups />
-            {isTrial && (
+            {/* {isTrial && (
               <P16 className="trial-message">
                 During the trial period, you have restrictions on the number of
                 searches
                 <br />
                 and the number of Startup profiles you can view.
               </P16>
-            )}
+            )} */}
             <SortForStartupsBrowseHOC />
             <ListOfStartupBrowseHOC />
           </div>
@@ -76,14 +76,14 @@ const BrowsePage = ({
 
 BrowsePage.propTypes = {
   isLoading: bool,
-  isTrial: bool,
+  // isTrial: bool,
   filterClientName: string,
   setFieldForFilter: func.isRequired,
 };
 
 BrowsePage.defaultProps = {
   isLoading: false,
-  isTrial: false,
+  // isTrial: false,
   filterClientName: "",
 };
 
@@ -97,7 +97,7 @@ const mapStateToProps = ({
 
   return {
     isLoading,
-    isTrial: user[propName].stripePaymentSettings?.isTrial,
+    // isTrial: user[propName].stripePaymentSettings?.isTrial,
     filterClientName: filterCategories.filterClientName,
   };
 };
