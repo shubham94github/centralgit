@@ -100,7 +100,6 @@ function ChooseBusinessType({
   };
 
   const onSubmit = (values) => {
-    debugger;
     const signupPayload = {
       data: {
         ...values,
@@ -126,7 +125,7 @@ function ChooseBusinessType({
     signUp(signupPayload);
   };
   // const onSubmit = async ({ businessType, firstName, lastName, password }) => {
-  //   debugger;
+
   //   setItemToSessionStorage("businessType", businessType);
   //   console.log(firstName, lastName, password);
   //   history.push(

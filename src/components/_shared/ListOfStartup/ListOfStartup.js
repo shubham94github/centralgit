@@ -20,7 +20,7 @@ const ListOfStartup = ({
   page,
   setFieldForFilter,
   trialData,
-  isTrial,
+  // isTrial,
   openChat,
   setWarningOfProfileRestriction,
   setWarningOfChatRestriction,
@@ -68,10 +68,11 @@ const ListOfStartup = ({
 
   return (
     <div className="list-of-startup-wrapper" ref={ref}>
-      {isEmpty(startups) && !isLoading ? (
-        isTrial && !trialData?.isTrialSearch ? (
-          <P16 className="error-messages">{trialPeriodSearchWarning}</P16>
-        ) : (
+      {
+        isEmpty(startups) && !isLoading ? (
+          // isTrial && !trialData?.isTrialSearch ? (
+          //   <P16 className="error-messages">{trialPeriodSearchWarning}</P16>
+          // ) : (
           <div className={errorMessageClasses}>
             <P16>
               {!!emptyStartupsMessage ? (
@@ -85,31 +86,32 @@ const ListOfStartup = ({
               )}
             </P16>
           </div>
-        )
-      ) : isTrial && !trialData?.isTrialSearch && !isLoading ? (
-        <P16 className="error-messages">{trialPeriodSearchWarning}</P16>
-      ) : (
-        <>
-          <div className="d-inline-block" style={{ width }}>
-            {startups.map((startup) => (
-              <div key={startup.id}>
-                <ItemStartup
-                  trialData={trialData}
-                  startup={startup}
-                  isTrial={isTrial}
-                  openChat={openChat}
-                  setWarningOfProfileRestriction={
-                    setWarningOfProfileRestriction
-                  }
-                  setWarningOfChatRestriction={setWarningOfChatRestriction}
-                  setIsBookmark={setIsBookmark}
-                  isAdmin={isAdmin}
-                />
-                <div className="separator-horizontal" />
-              </div>
-            ))}
-          </div>
-          {!isTrial && (
+        ) : (
+          // )
+          // isTrial && !trialData?.isTrialSearch && !isLoading ? (
+          //   <P16 className="error-messages">{trialPeriodSearchWarning}</P16>
+          // ) : (
+          <>
+            <div className="d-inline-block" style={{ width }}>
+              {startups.map((startup) => (
+                <div key={startup.id}>
+                  <ItemStartup
+                    trialData={trialData}
+                    startup={startup}
+                    // isTrial={isTrial}
+                    openChat={openChat}
+                    setWarningOfProfileRestriction={
+                      setWarningOfProfileRestriction
+                    }
+                    setWarningOfChatRestriction={setWarningOfChatRestriction}
+                    setIsBookmark={setIsBookmark}
+                    isAdmin={isAdmin}
+                  />
+                  <div className="separator-horizontal" />
+                </div>
+              ))}
+            </div>
+            {/* {!isTrial && ( */}
             <div>
               <div className={paginateClasses}>
                 <Paginate
@@ -122,9 +124,11 @@ const ListOfStartup = ({
                 />
               </div>
             </div>
-          )}
-        </>
-      )}
+            {/* )} */}
+          </>
+        )
+        // )
+      }
       {isLoading && <LoadingOverlay />}
     </div>
   );
@@ -132,7 +136,7 @@ const ListOfStartup = ({
 
 ListOfStartup.defaultProps = {
   isAdmin: false,
-  isTrial: false,
+  // isTrial: false,
   width: "100%",
 };
 
@@ -144,7 +148,7 @@ ListOfStartup.propTypes = {
   pageSize: number,
   setFieldForFilter: func.isRequired,
   trialData: object,
-  isTrial: bool,
+  // isTrial: bool,
   openChat: func,
   setWarningOfProfileRestriction: func,
   setWarningOfChatRestriction: func,

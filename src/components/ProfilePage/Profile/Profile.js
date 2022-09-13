@@ -216,8 +216,7 @@ Profile.defaultProps = {
 
 export default connect(
   ({ auth: { user }, common: { trialData } }) => ({
-    isTrial:
-      user?.retailer?.stripePaymentSettings?.isTrial || trialData?.isTrial,
+    isTrial: user?.trial || trialData?.isTrial,
     isAuthRoleRetailer: user?.role.includes("RETAILER"),
     isStartup: !!user.startup,
   }),

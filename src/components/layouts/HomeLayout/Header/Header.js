@@ -706,6 +706,7 @@ export default connect(
         !!user &&
         !isAdmin &&
         !isStartup &&
+        ////// need to get the changed data from here for trial  purpose
         user[isRetailer ? "retailer" : "member"].stripePaymentSettings?.isTrial,
       trialData,
       isLoading: isLoadingHome || isLoadingCommon,

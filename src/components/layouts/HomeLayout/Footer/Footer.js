@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer className="footer-wrapper">
       <div className="footer-container">
-        {!isAuthneticationProcess ? (
+        {/* {!isAuthneticationProcess ? (
           <Row>
             <Col
               xs={6}
@@ -83,18 +83,18 @@ const Footer = () => {
               </div>
             </Col>
           </Row>
-        ) : (
-          <div className="footer-lower d-flex  justify-content-around">
-            <div>
-              © 2021 Retail Hub Srl | Registered office and operational
-              headquarters: 65 Gloucester Pl Marylebone, London W1U 8JL
-            </div>
-            <div>
-              PI: 10819380964 | REA: MI – 2559507 | Share capital: € 10,000.00
-              iv | Privacy Policy | Cookie Policy
-            </div>
+        ) : ( */}
+        <div className="footer-lower d-flex  justify-content-around">
+          <div>
+            © 2021 Retail Hub Srl | Registered office and operational
+            headquarters: 65 Gloucester Pl Marylebone, London W1U 8JL
           </div>
-        )}
+          <div>
+            PI: 10819380964 | REA: MI – 2559507 | Share capital: € 10,000.00 iv
+            | Privacy Policy | Cookie Policy
+          </div>
+        </div>
+        {/* )} */}
       </div>
     </footer>
   );

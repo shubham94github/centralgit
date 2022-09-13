@@ -1,28 +1,28 @@
-@import '/src/styles/colors';
-
+@import "/src/styles/colors";
 .settings-container {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	background: $white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: $white;
 
-	.form-container {
-		background: $gray-05;
+  .form-container {
+    background: $gray-80;
 
-		.form-wrapper {
-			border: none;
-		}
+    .form-wrapper {
+      border: none;
+    }
 
-		.accordion-custom {
-			width: 1210px;
-		}
-	}
+    .accordion-custom {
+      width: 1210px;
+    }
+  }
 
-	.company-info-container {
-		padding: 30px 40px !important;
-	}
+  .company-info-container {
+    padding: 30px 40px !important;
+  }
 
-	.plan-description, .form-actions {
-		justify-content: unset;
-	}
+  .plan-description,
+  .form-actions {
+    justify-content: unset;
+  }
 }
