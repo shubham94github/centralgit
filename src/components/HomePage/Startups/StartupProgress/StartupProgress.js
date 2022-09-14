@@ -30,7 +30,7 @@ const StartupProgress = ({ progress }) => {
   };
   return (
     <>
-      {progress === 100 || !visible ? (
+      {progress == 100 || !visible ? (
         <></>
       ) : (
         <div className="progressBarContainer">

@@ -835,9 +835,10 @@ export function* verifyEmailWorker({
   try {
     yield setIsLoading(true);
 
-    if (isMember) yield call(verifyMemberEmail, token);
-    else if (!isRetailer) yield call(verifyStartupEmail, token);
-    else yield call(verifyRetailerEmail, token);
+    // if (isMember) yield call(verifyMemberEmail, token);
+    // else if (!isRetailer) yield call(verifyStartupEmail, token);
+    // else
+    yield call(verifyRetailerEmail, token);
 
     yield put({
       type: SET_IS_EMAIL_VERIFIED,

@@ -362,8 +362,22 @@ const PaymentForm = ({
               onClick={() => setIsprivacyAccepted(!isprivacyAccepted)}
             />
             <p className="p-2">
-              By checking the box below, you agree to our <span>Terms</span> and
-              that you have read and understood our <span>Data Policy</span>.
+              By checking the box below, you agree to our &nbsp;
+              <span>
+                <a href="https://retailhub.ai/terms-service" target="blank">
+                  Terms
+                </a>
+              </span>
+              &nbsp; and that you have read and understood our &nbsp;
+              <span>
+                <a
+                  href="https://retailhub.ai/terms-service#13-privacy-and-data-protection"
+                  target="blank"
+                >
+                  Data policy
+                </a>
+              </span>
+              .
             </p>
           </div>
         </Row>
