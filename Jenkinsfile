@@ -13,16 +13,16 @@ if (env.BRANCH_NAME == "${development_branch}") {
   deploy_path = '/usr/share/nginx/html/retailhub-fe'
 }
 if (env.BRANCH_NAME == "${beta_branch}") {
-  agentName = 'RetailhubBeta'
+  agentName = 'RetailhubPreProd'
   ip_address = 'beta.retailhub.ai'
   user = 'mehulbudasna'
   deploy_path = '/usr/share/nginx/html/retailhub-fe'
 }
 if (env.BRANCH_NAME == "${production_branch}") {
-  deploy_path = ''
-  agentName = ''
-  ip_address = ''
-  user = ''
+  agentName = 'RetailhubProd'
+  ip_address = 'app.retailhub.ai'
+  user = 'mehulbudasna'
+  deploy_path = '/usr/share/nginx/html/retailhub-fe'
 }
 
 pipeline {
