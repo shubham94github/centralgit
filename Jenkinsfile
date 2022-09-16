@@ -26,6 +26,7 @@ if (env.BRANCH_NAME == "${production_branch}") {
 }
 
 pipeline {
+
   agent any
   options {
     buildDiscarder(logRotator(numToKeepStr: "7"))
