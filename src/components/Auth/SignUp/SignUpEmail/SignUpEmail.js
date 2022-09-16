@@ -83,8 +83,8 @@ const SignUpEmail = ({
   }, [isEmailExists, isBlockedDomain, setError, clearErrors]);
 
   const onSubmit = async (data) => {
-    resetEmailExistenceError();
-    resetBlockedDomainError();
+    // resetEmailExistenceError();
+    // resetBlockedDomainError();
 
     await checkEmail({
       data,

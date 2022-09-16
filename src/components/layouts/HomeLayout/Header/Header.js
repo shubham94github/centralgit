@@ -477,7 +477,7 @@ const Header = ({
                             break;
                           case "modal": {
                             setDefaultFieldForFilter();
-                            debugger;
+
                             if (isTrial) {
                               history.push(Routes.SUBSCRIPTION.INDEX);
                             } else {
