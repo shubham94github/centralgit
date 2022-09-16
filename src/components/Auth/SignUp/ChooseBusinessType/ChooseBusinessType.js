@@ -403,6 +403,7 @@ function ChooseBusinessType({
                     ? true
                     : false
                 }
+                isLoading={isLoadingSubmitForm}
               />
             </Col>
           </Row>
