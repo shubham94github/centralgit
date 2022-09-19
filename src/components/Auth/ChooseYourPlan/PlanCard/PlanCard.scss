@@ -5,8 +5,6 @@
   background-color: rgba(217, 217, 217, 0.19) !important;
 }
 .plan-card {
-  // width: 330px;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -28,9 +26,41 @@
   .contact-us-link a {
     text-decoration: underline;
   }
+  .plan-card_box {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+
+    .btn-container {
+      justify-content: center;
+      padding-bottom: 10px;
+      width: 100%;
+      color: #000000;
+    }
+    .select-btn {
+      padding: 10px;
+      width: 200px;
+      border: none;
+
+      background-color: $primary-color;
+    }
+    .contact-btn {
+      text-align: center;
+      padding: 10px;
+      width: 200px;
+      border: none;
+
+      background-color: $primary-color;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
   &__sub-header {
     width: 100%;
-    padding-top: 15px;
+    padding-top: 10px;
     text-align: center;
     color: $primary-color;
     font-size: 20px;
@@ -41,7 +71,7 @@
     // padding: 30px 30px 15px 30px;
     text-align: center;
     font-weight: 800;
-    font-size: 40px;
+    font-size: 35px;
   }
   &__duration {
     font-size: 12px;

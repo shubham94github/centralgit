@@ -126,11 +126,18 @@
   }
 
   .edit-payment-plan-modal {
+    overflow-y: scroll;
+    .modal-container {
+      background: $gray-80;
+      padding: 0px !important;
+      height: 100%;
+    }
     .choose-your-plan {
       width: 100%;
-      margin: 0 auto;
+      min-height: 100%;
+      margin: 0 auto !important;
       margin-top: -15px;
-      padding: 0;
+      padding: 0 !important;
       border: unset;
     }
   }
@@ -164,6 +171,7 @@
 }
 
 .confirm-subscription {
+  background-color: $gray-80;
   .confirm {
     width: 530px;
   }

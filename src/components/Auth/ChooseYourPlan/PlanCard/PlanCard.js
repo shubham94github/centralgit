@@ -33,6 +33,7 @@ import cn from "classnames";
 
 import "./PlanCard.scss";
 import CustomDropDown from "./UserSelectionDDR";
+import { Button } from "react-bootstrap";
 
 const checkMarkIcon = Icons.singleTick(colors.grass60);
 const enterpriseType = "ENTERPRISE";
@@ -153,19 +154,37 @@ const PlanCard = ({
       className={`${mainClass}`}
       onClick={(e) => {
         setSelectedPlanId(plans[0]?.id);
+        e.stopPropagation();
       }}
     >
       <div className="plan-card__sub-header">{column.title}</div>
       {PlanTitleComp()}
       {PlanDurationComp()}
       {isPlanMultiUser && UserNumberSelectionDropDown()}
-      <div className="plan-card__features-list">
-        {features.map((feature, index) => (
-          <div className="feature-item" key={`${feature}-${index}`}>
-            <p>{feature.title}</p>
-            <div className="feature-icon ">{checkMarkIcon}</div>
-          </div>
-        ))}
+      <div className="d-flex plan-card_box">
+        <div className="plan-card__features-list">
+          {features.map((feature, index) => (
+            <div className="feature-item" key={`${feature}-${index}`}>
+              <p>{feature.title}</p>
+              <div className="feature-icon ">{checkMarkIcon}</div>
+            </div>
+          ))}
+        </div>
+        <div className="d-flex btn-container">
+          {plans?.length ? (
+            <button className="select-btn rounded-pill" type="button">
+              SELECT
+            </button>
+          ) : (
+            <a
+              className="contact-btn rounded-pill"
+              href="https://retailhub.ai/contact/"
+              target={"_blank"}
+            >
+              CONTATCT US
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

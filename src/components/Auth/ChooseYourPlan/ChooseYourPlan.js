@@ -192,7 +192,7 @@ const ChooseYourPlan = ({
       <GridContainer customClassName="form-header">
         <P16 className="title" bold>
           {!isModal &&
-            (<span>Upgrade</span>)` your account choose the best plans for you`}
+            (<span>Upgrade</span>)` account choose the best plans for you`}
         </P16>
       </GridContainer>
       <div className="plans">

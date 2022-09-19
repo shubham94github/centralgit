@@ -49,13 +49,13 @@ const RetryOrUpdateSubscription = ({
           <p className="description">
             !
             <br />
-            <span>Upgrade </span> now your account to use this feature!
+            <span>Upgrade </span> your account to use this feature!
           </p>
         ) : (
           <p className="description">
             <span>!</span>
             <br />
-            <span>Your trial has ended, </span>
+            <span>Your trial has ended,</span>
             <br></br> we hope you enjoyed it. If you want to continue please
             complete the following and add a payment
           </p>
@@ -65,7 +65,7 @@ const RetryOrUpdateSubscription = ({
         {!isMember && (
           <div className="retry-subscription-actions">
             <PrimaryButton
-              text="Update your info"
+              text="Update your plan"
               onClick={update}
               isOutline
               className="rounded-pill"
