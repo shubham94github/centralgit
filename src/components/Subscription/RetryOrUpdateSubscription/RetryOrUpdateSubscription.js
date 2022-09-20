@@ -22,7 +22,7 @@ const RetryOrUpdateSubscription = ({
 }) => {
   const history = useHistory();
   // const update = () => history.push(Routes.SUBSCRIPTION.UPDATE_CARD);
-  const update = () => history.push(Routes.SETTINGS.INDEX);
+  const update = () => history.push(Routes.SETTINGS.BILLING_DETAILS);
   const retry = () => retryPayment(stripeSubscriptionId);
   const gotoHome = () => {
     return history.push(Routes.HOME);
