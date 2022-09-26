@@ -46,7 +46,7 @@ const {
 function GettingStarted({ location, user }) {
   if (
     user?.status === gettingStartedStatuses.completedGettingStarted &&
-    user.isApprovedByAdmin &&
+    // user.isApprovedByAdmin &&
     location.pathname !== RETAIL_HUB_REGISTRATION_APPROVAL
   ) {
     if (
