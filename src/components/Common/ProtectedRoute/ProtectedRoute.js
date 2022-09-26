@@ -43,7 +43,10 @@ const ProtectedRoute = ({
           ?.stripeSubscriptionId &&
         !user.trial &&
         !location.pathname.includes(Routes.SUBSCRIPTION.INDEX) &&
-        !location.pathname.includes(Routes.SETTINGS.INDEX)
+        !location.pathname.includes(Routes.SETTINGS.INDEX) &&
+        !location.pathname.includes(
+          Routes.AUTH.GETTING_STARTED.RETAIL_HUB_REGISTRATION_APPROVAL
+        )
       ) {
         return <Redirect to={Routes.SUBSCRIPTION.INDEX} />;
       }
@@ -56,7 +59,7 @@ const ProtectedRoute = ({
 
       if (
         user?.status === gettingStartedStatuses.completedGettingStarted &&
-        !user.isApprovedByAdmin &&
+        // !user.isApprovedByAdmin &&
         !isAdmin &&
         location.pathname !== RETAIL_HUB_REGISTRATION_APPROVAL
       )
