@@ -39,7 +39,7 @@ const RegistrationApprovalShutter = ({ userRole, trial }) => {
         backgroundSize: "cover",
         backgroundPosition: isStartup ? "center" : "left top",
         backgroundColor: colors.darkblue90,
-        backgroundImage: `url(${backgroundRetailer})`,
+        backgroundImage: `url(${backgroundRetailer}) `,
       };
 
   return isRetailerCompany ? (

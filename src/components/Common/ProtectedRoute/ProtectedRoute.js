@@ -35,35 +35,34 @@ const ProtectedRoute = ({
         return <Redirect to={Routes.ADMIN_PANEL.INDEX} />;
       if (
         user?.status === gettingStartedStatuses.completedGettingStarted &&
-        !isAdmin &&
-        !isStartup &&
-        !!user[isRetailer ? "retailer" : "member"] &&
-        user[isRetailer ? "retailer" : "member"].stripePaymentSettings &&
-        !user[isRetailer ? "retailer" : "member"].stripePaymentSettings
-          ?.stripeSubscriptionId &&
-        !user.trial &&
-        !location.pathname.includes(Routes.SUBSCRIPTION.INDEX) &&
-        !location.pathname.includes(Routes.SETTINGS.INDEX) &&
-        !location.pathname.includes(
-          Routes.AUTH.GETTING_STARTED.RETAIL_HUB_REGISTRATION_APPROVAL
-        )
+        !isAdmin
       ) {
-        return <Redirect to={Routes.SUBSCRIPTION.INDEX} />;
+        if (
+          !user.isApprovedByAdmin &&
+          location.pathname !== RETAIL_HUB_REGISTRATION_APPROVAL
+        ) {
+          return <Redirect to={RETAIL_HUB_REGISTRATION_APPROVAL} />;
+        }
+        if (
+          !isStartup &&
+          !!user[isRetailer ? "retailer" : "member"] &&
+          !user[isRetailer ? "retailer" : "member"].stripePaymentSettings
+            ?.stripeSubscriptionId &&
+          !user.trial &&
+          !location.pathname.includes(Routes.SUBSCRIPTION.INDEX) &&
+          !location.pathname.includes(Routes.SETTINGS.INDEX) &&
+          location.pathname !== RETAIL_HUB_REGISTRATION_APPROVAL
+        ) {
+          return <Redirect to={Routes.SUBSCRIPTION.INDEX} />;
+        }
       }
+
       if (
         user?.status !== gettingStartedStatuses.completedGettingStarted &&
         !isAdmin &&
         !location.pathname.includes(Routes.AUTH.GETTING_STARTED.INDEX)
       )
         return <Redirect to={INDEX} />;
-
-      if (
-        user?.status === gettingStartedStatuses.completedGettingStarted &&
-        // !user.isApprovedByAdmin &&
-        !isAdmin &&
-        location.pathname !== RETAIL_HUB_REGISTRATION_APPROVAL
-      )
-        return <Redirect to={RETAIL_HUB_REGISTRATION_APPROVAL} />;
 
       const localUser = getItemFromStorage("user");
 
