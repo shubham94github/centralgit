@@ -159,10 +159,10 @@ export const signUp = (data) => ({
   payload: data,
 });
 
-export const checkEmail = ({ data, setError }) => {
+export const checkEmail = ({ data, setError, startup = false }) => {
   return {
     type: CHECK_EMAIL,
-    payload: { data, setError },
+    payload: { data, setError, startup },
   };
 };
 

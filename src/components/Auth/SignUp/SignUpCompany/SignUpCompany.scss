@@ -1,70 +1,28 @@
-@import 'src/styles/colors';
-@import 'src/styles/mixins';
+@import "src/styles/colors";
+@import "src/styles/mixins";
 
 .sign-up-page-container .signup-company-wrapper {
-	max-width: 630px;
-	padding-right: 30px;
-	padding-left: 30px;
+  max-width: 630px;
+  padding-right: 30px;
+  padding-left: 30px;
+  background: #353535 !important;
+  & > :not(:last-child) {
+    margin-bottom: 15px;
+  }
 
-	& > :not(:last-child) {
-		margin-bottom: 15px;
-	}
+  .primary-button {
+    max-width: fit-content;
+  }
 
-	.primary-button {
-		max-width: fit-content;
-	}
+  .mr-15 {
+    margin-right: 15px;
+  }
 
-	.mr-15 {
-		margin-right: 15px;
-	}
+  .radio-button-container {
+    margin-right: 0;
+  }
 
-	.radio-button-container {
-		margin-right: 0;
-	}
-
-	.back-btn {
-		cursor: pointer;
-	}
-}
-
-.sign-up-member-page-container {
-	width: 500px;
-	padding-right: 30px;
-	padding-left: 30px;
-
-	.blue-link {
-		@include textStyle(14px, $darkblue-50, 20px);
-
-		text-decoration: none;
-		display: inline-block;
-		cursor: pointer;
-		position: relative;
-
-		&::after {
-			content: '';
-			position: absolute;
-			left: 0;
-			bottom: 2px;
-			width: 100%;
-			border-bottom: 0.7px solid $darkblue-50;
-		}
-	}
-
-	.pt-15 {
-		padding-top: 15px;
-	}
-
-	.error-container {
-		.icon {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-bottom: 15px;
-		}
-
-		.title {
-			padding-bottom: 10px;
-			text-align: center;
-		}
-	}
+  .back-btn {
+    cursor: pointer;
+  }
 }

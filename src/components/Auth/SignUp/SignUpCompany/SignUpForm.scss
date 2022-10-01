@@ -1,0 +1,78 @@
+.signup-company-wrapper {
+  background: #353535 !important;
+
+  .checkbox-container {
+    padding-bottom: 10px;
+  }
+  .form-group {
+    padding: 4px 10px;
+  }
+  label {
+    color: white;
+    font-size: 0.8em;
+  }
+  p,
+  .s12 {
+    color: white;
+    padding-bottom: 10px;
+  }
+  input,
+  textarea {
+    background: #777777;
+    color: white;
+    border: none;
+  }
+  input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255, 255, 255, 0.563);
+  }
+
+  input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 0.563);
+  }
+
+  input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(255, 255, 255, 0.563);
+  }
+  input:focus {
+    background: #777777;
+    color: white;
+  }
+  .warning-text {
+    padding-bottom: 4px;
+    text-align: left;
+    color: #d22d2d;
+    margin: unset;
+  }
+}
+.PhoneInputInput {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.PhoneInputCountryIcon {
+  color: white;
+}
+.confirmPrivacy {
+  display: flex;
+  align-items: center;
+  div {
+    padding-top: 10px;
+  }
+  p {
+    padding: 0px;
+    padding-left: 1em;
+  }
+}

@@ -1,240 +1,265 @@
-import React, { useState, memo } from 'react';
-import { arrayOf, bool, func, object, objectOf, string } from 'prop-types';
-import { P12, P14, P16, S12 } from '@components/_shared/text';
-import TextInput from '@components/_shared/form/TextInput';
-import TooltipForPassword from '../TooltipForPassword';
-import PasswordHint from '@components/Auth/SignUp/SignUpCompany/PasswordHint';
-import Select from '@components/_shared/form/Select';
-import Checkbox from '@components/_shared/form/Checkbox';
-import PrimaryButton from '@components/_shared/buttons/PrimaryButton';
-import { isEmpty } from '@utils/js-helpers';
-import FormWrapper from '@components/_shared/form/FormWrapper';
-import { onSelectChange } from '@utils/onSelectChange';
-import GridContainer from '@components/layouts/GridContainer';
-import { selectValueType } from '@constants/types';
-import { chevronLeft, submitBtnText, privacyPolicyText } from './constants';
+import React, { useState, memo, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { connect } from "react-redux";
+import { bool, func, string } from "prop-types";
+import PhoneInputWithCountry from "react-phone-number-input/react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import PrimaryButton from "@components/_shared/buttons/PrimaryButton";
+import { isEmpty } from "@utils/js-helpers";
+import FormWrapper from "@components/_shared/form/FormWrapper";
+import {
+  removeItemFromSessionStorage,
+  setItemToSessionStorage,
+} from "@utils/sessionStorage";
+
+import {
+  signUp,
+  checkEmail,
+  resetEmailExistenceError,
+  resetBlockedDomainError,
+} from "@ducks/auth/actions";
+import {
+  emailExistenceErrorText,
+  emailBlockedDomainErrorText,
+} from "@components/Auth/constants";
+import { privacyPolicyText, SubmitStartup, startupLabel } from "./constants";
+import { schemaStartup } from "./schema.js";
+import "react-phone-number-input/style.css";
+import "./SignUpForm.scss";
 
 const SignUpForm = ({
-	goBack,
-	isStartup,
-	register,
-	errors,
-	email,
-	isCompanyType,
-	control,
-	countries,
-	isIndividuals,
-	watch,
-	checkIsMember,
-	isLoading,
-	setError,
-	setValue,
-	clearErrors,
+  resetEmailExistenceError,
+  isBlockedDomain,
+  resetBlockedDomainError,
+  isEmailExists,
+  checkEmail,
+  isLoading,
+  signUp,
 }) => {
-	const textTitle = isStartup ? 'Add Startup' : 'Add Company';
-	const [isPasswordFieldActive, setIsPasswordFieldActive] = useState(false);
+  const [policyConfirm, setPolicyConfirm] = useState(false);
+  const [errorType, setErrorType] = useState(null);
+  const [IsMemberRegisterError, setIsMemberRegisterError] = useState(null);
 
-	const togglePasswordFieldState = state => setIsPasswordFieldActive(state);
+  // useEffect(() => {
+  //   resetEmailExistenceError();
+  //   resetBlockedDomainError();
+  // }, [resetEmailExistenceError, resetBlockedDomainError]);
 
-	const onBlurPasswordHandler = () => togglePasswordFieldState(false);
+  useEffect(() => {
+    debugger;
+    if (isEmailExists) setError("email", { message: emailExistenceErrorText });
+    else if (isBlockedDomain)
+      setError("email", { message: emailBlockedDomainErrorText });
+    else clearErrors("email");
+  }, [isBlockedDomain, setError, clearErrors, isEmailExists]);
 
-	const onFocusPasswordHandler = () => togglePasswordFieldState(true);
+  const { register, errors, control, handleSubmit, setError, clearErrors } =
+    useForm({
+      resolver: yupResolver(schemaStartup),
+      defaultValues: {
+        ...schemaStartup.default(),
+      },
+      mode: "onTouched",
+    });
 
-	return (
-		<FormWrapper className='signup-company-wrapper'>
-			<GridContainer gap='15px'>
-				<GridContainer gap='0px' template='10px auto'>
-					<div className='back-btn' onClick={goBack}>
-						{chevronLeft}
-					</div>
-					<div>
-						<P16 className='text-center' bold>
-							{textTitle}
-						</P16>
-					</div>
-				</GridContainer>
-				<div>
-					<P14>
-						Account information
-					</P14>
-				</div>
-			</GridContainer>
-			<GridContainer template='270px 270px' gap='15px 30px'>
-				<div>
-					<TextInput
-						id='firstName'
-						type='text'
-						name='firstName'
-						isLightTheme
-						placeholder='First name'
-						register={register({ required: true })}
-						error={errors.firstName?.message}
-						setValue={setValue}
-					/>
-					<P12 className='warning-text'>{!!errors.firstName && errors.firstName.message}</P12>
-				</div>
-				<div>
-					<TextInput
-						id='lastName'
-						type='text'
-						name='lastName'
-						isLightTheme
-						placeholder='Last name'
-						register={register({ required: true })}
-						error={errors.lastName?.message}
-						setValue={setValue}
-					/>
-					<P12 className='warning-text'>{!!errors.lastName && errors.lastName.message}</P12>
-				</div>
-				<div>
-					<TextInput
-						id='email'
-						type='email'
-						name='email'
-						isLightTheme
-						placeholder='E-mail'
-						readOnly={true}
-						register={register({ required: true })}
-						error={errors.email?.message}
-						value={email}
-					/>
-					<P12 className='warning-text'>{!!errors.email && errors.email.message}</P12>
-				</div>
-				<div>
-					<TooltipForPassword
-						placement='top'
-						component={PasswordHint}
-						isVisibleTooltip={!!errors.password?.message && isPasswordFieldActive}
-					>
-						<TextInput
-							id='password'
-							type='password'
-							name='password'
-							isLightTheme
-							placeholder='Password'
-							register={register({ required: true })}
-							error={errors.password?.message}
-							onBlur={onBlurPasswordHandler}
-							onFocus={onFocusPasswordHandler}
-						/>
-					</TooltipForPassword>
-					<P12 className='warning-text'>{!!errors.password && errors.password.message}</P12>
-				</div>
-			</GridContainer>
-			<GridContainer gap='15px 30px'>
-				<div>
-					<P14>
-						Company details
-					</P14>
-				</div>
-				<GridContainer
-					template={isCompanyType ? '270px 270px' : 'auto'}
-					gap={isCompanyType ? '15px 30px' : '0px 30px'}
-				>
-					<div>
-						<Select
-							id='countryId'
-							name='countryId'
-							control={control}
-							register={register({ required: true })}
-							options={countries}
-							placeholder='Country'
-							value={watch('countryId')}
-							onChange={onSelectChange({
-								fieldName: 'countryId',
-								setError,
-								setValue,
-								clearErrors,
-							})}
-							isClearable
-							isError={!!errors?.countryId?.message}
-							isFilterForStart
-							isTopPlaceholder
-						/>
-						<P12 className='warning-text'>
-							{!!errors?.countryId?.message && errors.countryId.message}
-						</P12>
-					</div>
-					<div>
-						{!isStartup && !isIndividuals
-							&& <TextInput
-								id='emailDomain'
-								type='text'
-								name='emailDomain'
-								isLightTheme
-								placeholder='Company E-mail domain'
-								register={register}
-								readOnly={true}
-							/>
-						}
-					</div>
-				</GridContainer>
-				<div>
-					<TextInput
-						id='companyLegalName'
-						type='text'
-						name='companyLegalName'
-						isLightTheme
-						placeholder='Legal name'
-						register={register({ required: true })}
-						error={errors.companyLegalName?.message}
-					/>
-					<P12 className='warning-text'>
-						{!!errors.companyLegalName && errors.companyLegalName.message}
-					</P12>
-				</div>
-				<div>
-					<TextInput
-						id='companyShortName'
-						type='text'
-						name='companyShortName'
-						isLightTheme
-						register={register({ required: true })}
-						placeholder='Brand name'
-						error={errors.companyShortName?.message}
-					/>
-					<P12 className='warning-text'>
-						{!!errors.companyShortName && errors.companyShortName.message}
-					</P12>
-				</div>
-				<div>
-					<Checkbox
-						type='checkbox'
-						name='policyConfirmed'
-						register={register({ required: true })}
-						label={<S12>{privacyPolicyText}</S12>}
-					/>
-				</div>
-				<div className='d-flex justify-content-center'>
-					<PrimaryButton
-						onClick={checkIsMember}
-						text={submitBtnText}
-						isFullWidth={true}
-						disabled={!watch('policyConfirmed') || !watch('countryId') || !isEmpty(errors)}
-						isLoading={isLoading}
-					/>
-				</div>
-			</GridContainer>
-		</FormWrapper>
-	);
+  const onEmailBlur = async (event) => {
+    const email = event.target.value;
+    resetEmailExistenceError();
+    resetBlockedDomainError();
+    const data = { email };
+    await checkEmail({
+      data,
+      setError,
+      startup: true,
+    });
+    removeItemFromSessionStorage("signUpEmail");
+    setItemToSessionStorage("signUpEmail", data.email);
+  };
+
+  const onSubmit = (values) => {
+    const signupPayload = {
+      data: {
+        ...values,
+        businessType: startupLabel,
+        companyShortName: values.startup,
+        policyConfirmed: true,
+        retailerId: null,
+      },
+      isRetail: false,
+
+      role: startupLabel,
+
+      isMember: false,
+      setIsMemberRegisterError,
+      setErrorType,
+    };
+
+    signUp(signupPayload);
+  };
+
+  // const [isPasswordFieldActive, setIsPasswordFieldActive] = useState(false);
+
+  // const togglePasswordFieldState = (state) => setIsPasswordFieldActive(state);
+
+  // const onBlurPasswordHandler = () => togglePasswordFieldState(false);
+
+  // const onFocusPasswordHandler = () => togglePasswordFieldState(true);
+
+  return (
+    <FormWrapper className="signup-company-wrapper">
+      <div className="row">
+        <div className="form-group col-lg-12">
+          <label>Startup Name(Company Name)</label>
+          <input
+            className="form-control"
+            type="text"
+            name="startup"
+            id="startup"
+            placeholder="Startup Name"
+            ref={register}
+          />
+          {errors.startup && (
+            <p className="warning-text">
+              {!!errors.startup && errors.startup.message}
+            </p>
+          )}
+        </div>
+
+        <div className="form-group col-lg-12">
+          <label>URL</label>
+          <input
+            className="form-control"
+            placeholder="http://"
+            name="website"
+            id="website"
+            ref={register}
+          />
+          {errors.website && (
+            <p className="warning-text">
+              {!!errors.website && errors.website.message}
+            </p>
+          )}
+        </div>
+        <div className="form-group col-lg-12">
+          <label>Email</label>
+          <input
+            className="form-control"
+            placeholder="E-mail"
+            name="email"
+            id="email"
+            ref={register}
+            onBlur={onEmailBlur}
+          />
+          {errors.email && (
+            <p className="warning-text">
+              {!!errors.email && errors.email.message}
+            </p>
+          )}
+        </div>
+        <div className=" form-group col-md-6">
+          <label>First Name</label>
+          <input
+            className="form-control"
+            id="firstName"
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            ref={register}
+          />
+          {errors.firstName && (
+            <p className="warning-text">
+              {!!errors.firstName && errors.firstName.message}
+            </p>
+          )}
+        </div>
+        <div className=" form-group  col-md-6">
+          <label>Last Name</label>
+          <input
+            className="form-control"
+            id="lastName"
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            ref={register}
+          />
+          {errors.lastName && (
+            <p className="warning-text">
+              {!!errors.lastName && errors.lastName.message}
+            </p>
+          )}
+        </div>
+
+        <div className="form-group col-md-6">
+          <label>Set your password</label>
+          <input
+            className="form-control"
+            type="password"
+            name="password"
+            placeholder="Password"
+            ref={register}
+          />
+          {errors.password && (
+            <p className="warning-text">
+              {!!errors.password && errors.password.message}
+            </p>
+          )}
+        </div>
+        <div className="form-group col-md-6">
+          <label>Phone Number</label>
+          <PhoneInputWithCountry
+            name="phone"
+            control={control}
+            rules={{ required: true }}
+          />
+
+          {errors.phone && (
+            <p className="warning-text">
+              {!!errors.phone && errors.phone.message}
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div className="confirmPrivacy">
+        <input
+          type="checkbox"
+          name="policyConfirmed"
+          value={policyConfirm}
+          onChange={() => {
+            return setPolicyConfirm(!policyConfirm);
+          }}
+        />
+        <p>{privacyPolicyText}</p>
+      </div>
+      <div className="d-flex justify-content-center">
+        <PrimaryButton
+          className={"rounded-pill"}
+          text={SubmitStartup}
+          disabled={!policyConfirm || !isEmpty(errors)}
+          isLoading={isLoading}
+          onClick={handleSubmit(onSubmit)}
+        />
+      </div>
+    </FormWrapper>
+  );
 };
 
 SignUpForm.propTypes = {
-	goBack: func.isRequired,
-	isStartup: bool.isRequired,
-	errors: objectOf(object).isRequired,
-	register: func.isRequired,
-	email: string,
-	isCompanyType: bool.isRequired,
-	control: object.isRequired,
-	countries: arrayOf(selectValueType),
-	isIndividuals: bool.isRequired,
-	watch: func.isRequired,
-	checkIsMember: func.isRequired,
-	isLoading: bool,
-	setError: func.isRequired,
-	setValue: func.isRequired,
-	clearErrors: func.isRequired,
+  signUp: func,
+  checkEmail: func,
+  isLoading: bool,
+  isEmailExists: bool,
+  isBlockedDomain: bool,
 };
-
-export default memo(SignUpForm);
+// export default memo(SignUpForm);
+export default connect(
+  ({ auth }) => {
+    const { isLoading, isEmailExists, isBlockedDomain } = auth;
+    return {
+      isEmailExists,
+      isLoading,
+      isBlockedDomain,
+    };
+  },
+  { checkEmail, resetEmailExistenceError, resetBlockedDomainError, signUp }
+)(memo(SignUpForm));

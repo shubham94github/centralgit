@@ -121,7 +121,7 @@ function ChooseBusinessType({
       setIsMemberRegisterError,
       setErrorType,
     };
-    console.log(signupPayload);
+    // console.log(signupPayload);
     signUp(signupPayload);
   };
   // const onSubmit = async ({ businessType, firstName, lastName, password }) => {

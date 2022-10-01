@@ -74,7 +74,7 @@
 		"react-input-mask": "^2.0.4",
 		"react-masonry-css": "^1.0.16",
 		"react-paginate": "^7.1.2",
-		"react-phone-number-input": "^3.1.25",
+		"react-phone-number-input": "^3.2.11",
 		"react-player": "^2.9.0",
 		"react-quill": "^2.0.0-beta.4",
 		"react-router": "^5.2.0",

@@ -705,9 +705,10 @@ export function* handleSignUpWorker({
     setErrorType,
   },
 }) {
+  debugger;
   try {
     yield setIsLoading(true);
-    console.log(data);
+    // console.log(data);
     const reqData = {
       ...data,
       // countryId: data.countryId.id,
@@ -775,8 +776,75 @@ export function* handleSignUpWorker({
     yield setIsLoading(false);
   }
 }
+//for new
+export function* handleSignUpWorkerForStartup({
+  payload: {
+    data,
+    isRetail,
+    role,
+    isMember,
+    setIsMemberRegisterError,
+    setErrorType,
+  },
+}) {
+  try {
+    yield setIsLoading(true);
+    console.log(data);
+    const reqData = {
+      ...data,
+      // countryId: data.countryId.id,
 
-export function* checkEmailWorker({ payload: { data } }) {
+      companyLegalName: data.companyLegalName,
+      role,
+    };
+
+    const signUp = signUpAsStartup;
+
+    // console.log(reqData);
+    const { data: user } = yield call(signUp, reqData);
+
+    setItemToLocalStorage("resendVerificationToken", user.token);
+    setItemToSessionStorage("user", user);
+
+    yield all([
+      put({
+        type: SET_USER,
+        payload: {
+          user,
+        },
+      }),
+      put({
+        type: SET_COMPANY_INFO,
+        payload: {
+          companyInfo: {
+            companyLegalName: data.companyLegalName,
+            companyShortName: data.companyShortName,
+            // countryId: data.countryId,
+            // position: data.position,
+          },
+        },
+      }),
+    ]);
+    history.push(
+      isMember
+        ? Routes.AUTH.SIGN_UP.EEMAIL_VERIFICATION_PROCEED
+        : Routes.AUTH.SIGN_UP.EMAIL_VERIFICATION_PROCEED
+    );
+  } catch (e) {
+    if (
+      isMember &&
+      (maxCountOfMemberErrors.includes(e?.response?.data?.code) ||
+        e?.response?.data?.code === trialPeriodError)
+    ) {
+      setIsMemberRegisterError(true);
+      setErrorType(e?.response?.data?.code);
+    } else yield fork(onServerErrorHandler, e);
+  } finally {
+    yield setIsLoading(false);
+  }
+}
+
+export function* checkEmailWorker({ payload: { data, startup } }) {
   try {
     yield setIsLoading(true);
 
@@ -798,8 +866,7 @@ export function* checkEmailWorker({ payload: { data } }) {
         email: data.email,
       },
     });
-
-    history.push(Routes.AUTH.SIGN_UP.CHOOSE_BUSINESS_TYPE);
+    if (!startup) history.push(Routes.AUTH.SIGN_UP.CHOOSE_BUSINESS_TYPE);
   } catch (e) {
     if (e.response.data.code === emailExistenceError) {
       yield put({

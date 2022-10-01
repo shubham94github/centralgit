@@ -9,7 +9,8 @@ import {
 import { Routes } from "@constants/routes";
 import AddRetailCompany from "@components/Auth/AddRetailCompany";
 import SignUpEmail from "@components/Auth/SignUp/SignUpEmail/SignUpEmail";
-import SignUpCompany from "@components/Auth/SignUp/SignUpCompany/SignUpCompany";
+// import SignUpCompany from "@components/Auth/SignUp/SignUpCompany/SignUpCompany";
+import SignUpForm from "@components/Auth/SignUp/SignUpCompany";
 import ChooseYourPlan from "@components/Auth/ChooseYourPlan/ChooseYourPlan";
 import EmailVerificationProceed from "../EmailVerificationProceed";
 import EmailVerification from "../EmailVerification";
@@ -27,22 +28,7 @@ const SignUp = ({ isStartup, isMember }) => {
   const location = useLocation();
   const history = useHistory();
 
-  const renderStep = (pathname) => {
-    switch (pathname) {
-      case Routes.AUTH.SIGN_UP.ADD_RETAIL_COMPANY:
-        return "Step 1 of 3";
-      case Routes.AUTH.SIGN_UP.CHOOSE_YOUR_PLAN:
-        return "Step 2 of 3";
-      case Routes.AUTH.SIGN_UP.RETAIL_BILLING_DETAILS:
-        return "Step 3 of 3";
-      default:
-        return "";
-    }
-  };
-
   const cssStyle = {
-    // backgroundPosition: isStartup ? "center" : "left top",
-
     backgroundImage: `url(${
       isStartup ? backgroundStartup : backgroundRetailer
     })`,
@@ -84,14 +70,13 @@ const SignUp = ({ isStartup, isMember }) => {
             exact
           />
           <Route path={Routes.AUTH.SIGN_UP.ADD_EMAIL} component={SignUpEmail} />
-          <Route
+          {/* <Route
             path={Routes.AUTH.SIGN_UP.ADD_RETAIL_COMPANY}
             component={SignUpCompany}
-          />
+          /> */}
           <Route
             path={Routes.AUTH.SIGN_UP.ADD_STARTUP_COMPANY}
-            component={SignUpCompany}
-            exact
+            component={SignUpForm}
           />
           <Route
             path={Routes.AUTH.SIGN_UP.CHOOSE_YOUR_PLAN}
