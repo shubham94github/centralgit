@@ -1,0 +1,22 @@
+@import "src/styles/colors";
+.welcome {
+  padding: 20px;
+  width: 100%;
+  background-color: #353535 !important;
+  color: white;
+  text-align: center;
+  p {
+    color: white;
+  }
+  h1 {
+    padding-bottom: 20px;
+    font-weight: bold;
+    span {
+      color: $primary-color;
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 20px 50px;
+  }
+}
