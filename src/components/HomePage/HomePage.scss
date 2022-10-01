@@ -1,82 +1,85 @@
-@import 'src/styles/colors';
-@import 'src/styles/mixins';
+@import "src/styles/colors";
+@import "src/styles/mixins";
 
 .home-page-wrapper {
-	width: 100%;
-	background: $white;
+  width: 100%;
+  background: $white;
 
-	.full-img {
-		width: 100%;
-	}
+  .full-img {
+    width: 100%;
+  }
 
-	.border-img {
-		border-radius: 8px;
-	}
+  .border-img {
+    border-radius: 8px;
+  }
 
-	.truncate-text {
-		@include truncate-text(2);
-	}
+  .truncate-text {
+    @include truncate-text(2);
+  }
 
-	.clickable {
-		cursor: pointer;
-	}
+  .clickable {
+    cursor: pointer;
+  }
 }
 
-.home-page-wrapper-startup, .home-page-container-startup {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: $darkblue-05-background;
+.home-page-wrapper-startup,
+.home-page-container-startup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $darkblue-05-background;
 
-	.feedbacks-container {
-		padding-left: 30px;
-		padding-right: 30px;
-		padding-bottom: 30px;
-	}
+  .feedbacks-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+  }
 
-	.home-notification {
-		max-width: 630px;
-		width: 100%;
-		border-radius: 20px;
-		padding: 40px;
-		background: $gray-05;
-		margin: 0 12px;
+  .contact-as-modal {
+    .modal-dialog .modal-container {
+      max-width: 5000px !important;
+    }
 
-		&.welcome {
-			padding: 0 40px;
-		}
+    .modal-title {
+      font-weight: 400;
+    }
 
-		@media (max-width: 576px) {
-			padding: 20px 50px
-		}
-	}
+    .textarea-full-width {
+      width: 100%;
 
-	.contact-as-modal {
+      .textarea {
+        width: 100%;
+        max-height: 145px;
+      }
+    }
+  }
 
-		.modal-dialog.modal-container {
-			max-width: 630px !important;
-		}
+  .success-message-as-modal {
+    margin-bottom: 50px;
 
-		.modal-title {
-			font-weight: 400;
-		}
-
-		.textarea-full-width {
-			width: 100%;
-
-			.textarea {
-				width: 100%;
-				max-height: 145px;
-			}
-		}
-	}
-
-	.success-message-as-modal {
-		margin-bottom: 50px;
-
-		.modal-dialog.modal-container {
-			max-width: 400px !important;
-		}
-	}
+    .modal-dialog .modal-container {
+      background: #353535 !important;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 20px;
+    }
+  }
+  .welcome-modal {
+    width: 100%;
+    .modal-container,
+    .modal-dialog {
+      max-width: 500px;
+      background-color: #353535;
+      border-radius: 20px;
+      .modal-body {
+        padding: 0px;
+      }
+    }
+    .close-icon {
+      top: 0;
+      right: 0;
+    }
+  }
 }

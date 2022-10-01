@@ -6,6 +6,17 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  p,
+  .P16,
+  h2 {
+    color: white;
+    font-weight: bold;
+  }
+  h2 {
+    span {
+      color: $primary-color;
+    }
+  }
   .registration-approval-content {
     max-width: 500px;
     background-color: #353535;
@@ -32,7 +43,7 @@
     }
     &.modal-startup {
       max-width: 500px;
-      padding: 30px;
+      padding: 50px;
     }
 
     .p16 {

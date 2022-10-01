@@ -30,7 +30,7 @@ const AppModal = ({
   const modalDialogRef = useRef();
   const closeIcon = isDarkModal
     ? Icons.removeBoldIcon(colors.white)
-    : Icons.removeIcon(colors.darkblue70);
+    : Icons.removeIcon(colors.white);
   const modalContainerClasses = cn("modal-overlay", {
     dark: isDarkModal,
     [className]: !!className,

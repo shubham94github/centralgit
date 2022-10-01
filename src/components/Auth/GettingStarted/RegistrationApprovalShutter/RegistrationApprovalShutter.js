@@ -48,7 +48,9 @@ const RegistrationApprovalShutter = ({ userRole, trial }) => {
     <div className="registration-approval-container" style={cssStyle}>
       <div className={classes}>
         {isStartup ? (
-          <P16>Thank you for adding your company!</P16>
+          <h2>
+            <span>Thank you </span>for adding your company!
+          </h2>
         ) : (
           <p className="approvel-title">
             Your <span>account registration</span> is being
