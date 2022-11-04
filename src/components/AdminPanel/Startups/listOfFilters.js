@@ -89,11 +89,11 @@ export const listOfFilters = [
     type: 'string',
     property: 'companyStatus',
     options: [
-      // { value: 'STEALTH', label: 'Stealth' },
-      { value: 'STARTUP', label: 'Startup' },
+      { value: 'STEALTH', label: 'Stealth' },
+      { value: 'START_UP', label: 'Startup' },
       { value: 'GROWTH', label: 'Growth' },
-      { value: 'SCALEUP', label: 'Scale up' },
-      { value: 'UNICORN', label: 'Unicorn' }
+      { value: 'SCALE_UP', label: 'Scale up' },
+      { value: 'ESTABLISHED', label: 'Unicorn' }
     ]
   },
   {
