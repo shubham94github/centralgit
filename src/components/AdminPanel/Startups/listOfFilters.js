@@ -90,7 +90,7 @@ export const listOfFilters = [
     property: 'companyStatus',
     options: [
       { value: 'STEALTH', label: 'Stealth' },
-      { value: 'START_UP', label: 'Startup' },
+      { value: 'STARTUP', label: 'Startup' },
       { value: 'GROWTH', label: 'Growth' },
       { value: 'SCALE_UP', label: 'Scale up' },
       { value: 'ESTABLISHED', label: 'Unicorn' }
