@@ -1,16 +1,16 @@
-import React, { memo, useEffect, useState } from "react";
-import ItemStartup from "./ItemStartup";
-import { array, bool, func, number, object, string } from "prop-types";
-import { useLocation } from "react-router-dom";
+import React, { memo, useEffect, useState } from 'react'
+import ItemStartup from './ItemStartup'
+import { array, bool, func, number, object, string } from 'prop-types'
+import { useLocation } from 'react-router-dom'
 
-import LoadingOverlay from "@components/_shared/LoadingOverlay";
-import Paginate from "@components/_shared/Paginate";
-import { isEmpty } from "@utils/js-helpers";
-import { P16 } from "@components/_shared/text";
-import cn from "classnames";
+import LoadingOverlay from '@components/_shared/LoadingOverlay'
+import Paginate from '@components/_shared/Paginate'
+import { isEmpty } from '@utils/js-helpers'
+import { P16 } from '@components/_shared/text'
+import cn from 'classnames'
 
-import "./ListOfStartup.scss";
-import { setWarningOfProfileRestriction } from "@ducks/profile/actions";
+import './ListOfStartup.scss'
+import { setWarningOfProfileRestriction } from '@ducks/profile/actions'
 
 const ListOfStartup = ({
   startups,
@@ -27,47 +27,44 @@ const ListOfStartup = ({
   setIsBookmark,
   width,
   emptyStartupsMessage,
-  isAdmin,
+  isAdmin
 }) => {
-  const [pageCount, setPageCount] = useState(0);
-  const trialPeriodSearchWarning = `You have reached daily trial period limitations (${trialData?.trialSearchMax} Searches).`;
-  const paginateClasses = cn("browse-paginate", { "p-50": !isAdmin });
-  const errorMessageClasses = cn("error-messages", {
-    center: !!emptyStartupsMessage,
-  });
-  const search = useLocation().search;
-  const ref = React.createRef();
-  const searchedClient = new URLSearchParams(search).get("client");
-  const handlePageClick = (page) => {
+  const [pageCount, setPageCount] = useState(0)
+  const trialPeriodSearchWarning = `You have reached daily trial period limitations (${trialData?.trialSearchMax} Searches).`
+  const paginateClasses = cn('browse-paginate', { 'p-50': !isAdmin })
+  const errorMessageClasses = cn('error-messages', {
+    center: !!emptyStartupsMessage
+  })
+  const search = useLocation().search
+  const ref = React.createRef()
+  const searchedClient = new URLSearchParams(search).get('client')
+  const handlePageClick = page => {
     const data = {
-      field: "page",
+      field: 'page',
       data: page.selected + 1,
-      filterClientName: searchedClient,
-    };
-    setFieldForFilter(data);
+      filterClientName: searchedClient
+    }
+    setFieldForFilter(data)
     ref.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
 
-  const changePageSizeHandler = (size) => {
+  const changePageSizeHandler = size => {
     const data = {
-      field: "pageSize",
+      field: 'pageSize',
       data: size,
-      filterClientName: searchedClient,
-    };
-    console.log(data);
-    setFieldForFilter(data);
-  };
+      filterClientName: searchedClient
+    }
 
-  useEffect(
-    () => setPageCount(Math.ceil(countOfRecords / pageSize)),
-    [countOfRecords, setPageCount, pageSize]
-  );
+    setFieldForFilter(data)
+  }
+
+  useEffect(() => setPageCount(Math.ceil(countOfRecords / pageSize)), [countOfRecords, setPageCount, pageSize])
 
   return (
-    <div className="list-of-startup-wrapper" ref={ref}>
+    <div className='list-of-startup-wrapper' ref={ref}>
       {
         isEmpty(startups) && !isLoading ? (
           // isTrial && !trialData?.isTrialSearch ? (
@@ -92,22 +89,20 @@ const ListOfStartup = ({
           //   <P16 className="error-messages">{trialPeriodSearchWarning}</P16>
           // ) : (
           <>
-            <div className="d-inline-block" style={{ width }}>
-              {startups.map((startup) => (
+            <div className='d-inline-block' style={{ width }}>
+              {startups.map(startup => (
                 <div key={startup.id}>
                   <ItemStartup
                     trialData={trialData}
                     startup={startup}
                     // isTrial={isTrial}
                     openChat={openChat}
-                    setWarningOfProfileRestriction={
-                      setWarningOfProfileRestriction
-                    }
+                    setWarningOfProfileRestriction={setWarningOfProfileRestriction}
                     setWarningOfChatRestriction={setWarningOfChatRestriction}
                     setIsBookmark={setIsBookmark}
                     isAdmin={isAdmin}
                   />
-                  <div className="separator-horizontal" />
+                  <div className='separator-horizontal' />
                 </div>
               ))}
             </div>
@@ -131,14 +126,14 @@ const ListOfStartup = ({
       }
       {isLoading && <LoadingOverlay />}
     </div>
-  );
-};
+  )
+}
 
 ListOfStartup.defaultProps = {
   isAdmin: false,
   // isTrial: false,
-  width: "100%",
-};
+  width: '100%'
+}
 
 ListOfStartup.propTypes = {
   startups: array.isRequired,
@@ -155,7 +150,7 @@ ListOfStartup.propTypes = {
   setIsBookmark: func.isRequired,
   width: string,
   emptyStartupsMessage: string,
-  isAdmin: bool,
-};
+  isAdmin: bool
+}
 
-export default memo(ListOfStartup);
+export default memo(ListOfStartup)

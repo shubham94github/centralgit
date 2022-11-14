@@ -1,57 +1,45 @@
-import React, { memo, useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { useLocation } from "react-router-dom";
-import {
-  array,
-  arrayOf,
-  bool,
-  func,
-  number,
-  object,
-  shape,
-  string,
-} from "prop-types";
-import cn from "classnames";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { colors } from "@colors";
-import AppModal from "@components/Common/AppModal";
-import CardsInfo from "@components/Auth/GettingStarted/BillingDetails/CardsInfo";
-import FormWrapper from "@components/_shared/form/FormWrapper";
-import { P12, P14, P16, S14 } from "@components/_shared/text";
-import TextInput from "@components/_shared/form/TextInput";
-import Select from "@components/_shared/form/Select";
-import PrimaryButton from "@components/_shared/buttons/PrimaryButton";
-import { isEmpty } from "@utils/js-helpers";
-import {
-  normalizeString,
-  separateCamelCase,
-  dateFormatCorrection,
-} from "@utils";
-import LoadingOverlay from "@components/_shared/LoadingOverlay";
-import enums from "@constants/enums";
-import ChooseYourPlan from "@components/Auth/ChooseYourPlan";
-import GridContainer from "@components/layouts/GridContainer";
-import { Icons } from "@icons";
-import { userType } from "@constants/types";
-import { Routes } from "@routes";
+import React, { memo, useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { useLocation } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import { array, arrayOf, bool, func, number, object, shape, string } from 'prop-types'
+import cn from 'classnames'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { colors } from '@colors'
+import AppModal from '@components/Common/AppModal'
+import CardsInfo from '@components/Auth/GettingStarted/BillingDetails/CardsInfo'
+import FormWrapper from '@components/_shared/form/FormWrapper'
+import { P12, P14, P16, S14 } from '@components/_shared/text'
+import TextInput from '@components/_shared/form/TextInput'
+import Select from '@components/_shared/form/Select'
+import PrimaryButton from '@components/_shared/buttons/PrimaryButton'
+import { isEmpty } from '@utils/js-helpers'
+import { normalizeString, separateCamelCase, dateFormatCorrection } from '@utils'
+import LoadingOverlay from '@components/_shared/LoadingOverlay'
+import enums from '@constants/enums'
+import ChooseYourPlan from '@components/Auth/ChooseYourPlan'
+import GridContainer from '@components/layouts/GridContainer'
+import { Icons } from '@icons'
+import { userType } from '@constants/types'
+import { Routes } from '@routes'
 import {
   billingMessage,
   changePlanMessage,
   subscriptionResumeText,
   subscriptionStopText,
   subscriptionResumeTitle,
-  subscriptionStopTitle,
-} from "./constants";
-import PaymentFormWithProvider from "@components/_shared/PaymentFormWithProvider";
-import SliderCheckbox from "@components/_shared/form/SliderCheckbox";
-import Confirm from "@components/_shared/ModalComponents/Confirm";
-import { toggleIsCancelledSubscription } from "@ducks/settings/actions";
+  subscriptionStopTitle
+} from './constants'
+import PaymentFormWithProvider from '@components/_shared/PaymentFormWithProvider'
+import SliderCheckbox from '@components/_shared/form/SliderCheckbox'
+import Confirm from '@components/_shared/ModalComponents/Confirm'
+import { toggleIsCancelledSubscription } from '@ducks/settings/actions'
 
-import "./BillingDetails.scss";
+import './BillingDetails.scss'
 
-const plusIcon = Icons.plus();
-const infoIcon = Icons.infoIcon(colors.grass50);
+const plusIcon = Icons.plus()
+const infoIcon = Icons.infoIcon(colors.grass50)
 
 function BillingDetails({
   schema,
@@ -77,363 +65,373 @@ function BillingDetails({
   isAdmin,
   onClose,
   user,
-  toggleIsCancelledSubscription,
+  toggleIsCancelledSubscription
 }) {
-  const propName = !!user?.retailer ? "retailer" : "member";
-  const isCancelledSubscription =
-    user[propName].stripePaymentSettings?.isCancelled;
+  const propName = !!user?.retailer ? 'retailer' : 'member'
+  const isCancelledSubscription = user[propName].stripePaymentSettings?.isCancelled
   const subscriptionEndsAt =
-    dateFormatCorrection(
-      new Date(user[propName].stripePaymentSettings?.nextPaymentDate),
-      "MMM d, yyyy"
-    ) || "...";
-  const location = useLocation();
-  const defaultValues = schema.default();
-  const classContainer = cn("billing-details-container", {
-    "container-modal": isAdmin,
-  });
-  const submitButtonText = isAdmin ? "Update" : "Save";
-  const isGettingStarted = location.pathname.includes(
-    Routes.AUTH.GETTING_STARTED.INDEX
-  );
-  const [isAddNewCardModal, setIsAddNewCardModal] = useState(false);
-  const [isSubscriptionModal, setIsSubscriptionModal] = useState(false);
+    dateFormatCorrection(new Date(user[propName].stripePaymentSettings?.nextPaymentDate), 'MMM d, yyyy') || '...'
+  const location = useLocation()
+  const defaultValues = schema.default()
+  const classContainer = cn('billing-details-container', {
+    'container-modal': isAdmin
+  })
+  const submitButtonText = isAdmin ? 'Update' : 'Save'
+  const isGettingStarted = location.pathname.includes(Routes.AUTH.GETTING_STARTED.INDEX)
+  const [isAddNewCardModal, setIsAddNewCardModal] = useState(false)
+  const [isSubscriptionModal, setIsSubscriptionModal] = useState(false)
 
-  const toggleAddCardModal = () => setIsAddNewCardModal(!isAddNewCardModal);
-  const toggleSubscriptionModal = () =>
-    setIsSubscriptionModal(!isSubscriptionModal);
+  const toggleAddCardModal = () => setIsAddNewCardModal(!isAddNewCardModal)
+  const toggleSubscriptionModal = () => setIsSubscriptionModal(!isSubscriptionModal)
 
-  const {
-    clearErrors,
-    control,
-    errors,
-    getValues,
-    handleSubmit,
-    register,
-    reset,
-    setError,
-    setValue,
-    watch,
-    trigger,
-  } = useForm({
-    resolver: yupResolver(schema),
-    mode: enums.validationMode.onTouched,
-    defaultValues: {
-      ...defaultValues,
-      companyLegalName: client.companyLegalName
-        ? client.companyLegalName
-        : companyLegalName,
-      city: city ? city : user.city,
-      countryId: user?.country
-        ? countries.find((country) => country.id === user.country.id)
-        : countryId
-        ? countries.find((country) => country.id === countryId)
-        : null,
-      address: client.address ? client.address : address,
-      postZipCode: client.postZipCode ? client.postZipCode : postZipCode,
-      vatNumber: client.vatNumber ? client.vatNumber : vatNumber,
-    },
-  });
+  const { clearErrors, control, errors, getValues, handleSubmit, register, reset, setError, setValue, watch, trigger } =
+    useForm({
+      resolver: yupResolver(schema),
+      mode: enums.validationMode.onTouched,
+      defaultValues: {
+        ...defaultValues,
+        companyLegalName: client.companyLegalName ? client.companyLegalName : companyLegalName,
+        city: city ? city : user.city,
+        countryId: user?.country
+          ? countries.find(country => country.id === user.country.id)
+          : countryId
+          ? countries.find(country => country.id === countryId)
+          : null,
+        address: client.address ? client.address : address,
+        postZipCode: client.postZipCode ? client.postZipCode : postZipCode,
+        vatNumber: client.vatNumber ? client.vatNumber : vatNumber
+      }
+    })
 
   const handleToggleSubscription = () => {
-    toggleIsCancelledSubscription({ isCancelledSubscription });
-    toggleSubscriptionModal();
-  };
+    toggleIsCancelledSubscription({ isCancelledSubscription })
+    toggleSubscriptionModal()
+  }
 
   useEffect(() => {
     /* eslint-disable react/prop-types */
     if ((user?.country || countryId) && countries?.length) {
       setValue(
-        "countryId",
+        'countryId',
         user?.country
-          ? countries.find((country) => country.id === user.country.id)
-          : countries.find((country) => country.id === countryId)
-      );
+          ? countries.find(country => country.id === user.country.id)
+          : countries.find(country => country.id === countryId)
+      )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [countries]);
+  }, [countries])
 
-  const editIcon = Icons.edit(!isEmpty(errors) && colors.gray20);
+  const editIcon = Icons.edit(!isEmpty(errors) && colors.gray20)
 
-  const closeModal = () => setIsEditPaymentPlanModal(false);
+  const closeModal = () => setIsEditPaymentPlanModal(false)
 
   const openEditPaymentPlanModal = async () => {
-    const isFormFilled = await trigger();
+    const isFormFilled = await trigger()
 
-    if (isFormFilled && !isEditPaymentPlanModal)
-      setIsEditPaymentPlanModal(true);
-  };
+    if (isFormFilled && !isEditPaymentPlanModal) setIsEditPaymentPlanModal(true)
+  }
 
-  const trimFormValues = (fieldName) => (value) =>
-    setValue(fieldName, value.trim(), { shouldValidate: true });
+  const trimFormValues = fieldName => value => setValue(fieldName, value.trim(), { shouldValidate: true })
 
-  const onSelectChange = (fieldName) => (option) => {
+  const onSelectChange = fieldName => option => {
     if (!option) {
-      const separatedName = separateCamelCase(fieldName);
+      const separatedName = separateCamelCase(fieldName)
 
       setError(fieldName, {
-        message: `${normalizeString(separatedName)}  is required field`,
-      });
-    } else clearErrors(fieldName);
+        message: `${normalizeString(separatedName)}  is required field`
+      })
+    } else clearErrors(fieldName)
 
-    setValue(fieldName, option);
-  };
+    setValue(fieldName, option)
+  }
 
-  const onSelectMenuClose = (fieldName) => () => {
+  const onSelectMenuClose = fieldName => () => {
     if (!getValues()[fieldName]) {
-      const separatedName = separateCamelCase(fieldName);
+      const separatedName = separateCamelCase(fieldName)
 
       setError(fieldName, {
-        message: `${normalizeString(separatedName)}  is required field`,
-      });
+        message: `${normalizeString(separatedName)}  is required field`
+      })
     }
-  };
+  }
 
   const handleCopyCompanyInfo = () => {
     const {
       city,
       companyLegalName,
-      country: { id: countryId },
-    } = client;
+      country: { id: countryId }
+    } = client
 
     reset({
       companyLegalName,
       city,
-      countryId: countries.find((country) => country.id === countryId),
-      address: watch("address"),
-      vatNumber: watch("vatNumber"),
-      postZipCode: watch("postZipCode"),
-    });
-  };
+      countryId: countries.find(country => country.id === countryId),
+      address: watch('address'),
+      vatNumber: watch('vatNumber'),
+      postZipCode: watch('postZipCode')
+    })
+  }
 
   const resetValues = () =>
     reset({
       companyLegalName,
       city,
-      countryId: countries.find((country) => country.id === countryId),
+      countryId: countries.find(country => country.id === countryId),
       address,
       postZipCode,
-      vatNumber,
-    });
+      vatNumber
+    })
 
-  const addCard = () => toggleAddCardModal();
-
+  const addCard = () => toggleAddCardModal()
+  const [creditPayment, setCreditPayment] = useState(true)
+  const toggleCreditPayment = () => setCreditPayment(prevState => !prevState)
   return (
     <FormWrapper className={classContainer} onSubmit={onSubmit}>
       {isSubscriptionModal && (
         <AppModal
-          className="confirm-subscription"
+          className='confirm-subscription'
           onClose={toggleSubscriptionModal}
-          title={
-            !isCancelledSubscription
-              ? subscriptionStopTitle
-              : subscriptionResumeTitle
-          }
+          title={!isCancelledSubscription ? subscriptionStopTitle : subscriptionResumeTitle}
           outerProps={{
             successConfirm: handleToggleSubscription,
             onClose: toggleSubscriptionModal,
-            text: !isCancelledSubscription
-              ? subscriptionStopText(subscriptionEndsAt)
-              : subscriptionResumeText,
+            text: !isCancelledSubscription ? subscriptionStopText(subscriptionEndsAt) : subscriptionResumeText
           }}
           component={Confirm}
-          width="630px"
+          width='630px'
         />
       )}
       {isAddNewCardModal && (
         <AppModal
           component={PaymentFormWithProvider}
-          className="add-new-card-modal"
+          className='add-new-card-modal'
           outerProps={{
             isModal: true,
             isUpdating: false,
-            toggleModal: toggleAddCardModal,
+            toggleModal: toggleAddCardModal
           }}
-          title=""
+          title=''
           onClose={toggleAddCardModal}
           staticBackdrop={false}
-          width="668px"
+          width='668px'
           isDarkModal
         />
       )}
       {stepText && (
         <GridContainer>
-          <P14 className="step-style">{stepText}</P14>
+          <P14 className='step-style'>{stepText}</P14>
         </GridContainer>
       )}
       {!isAdmin && (
         <GridContainer>
-          <P16 bold={true} className="mb-3 form-title">
+          <P16 bold={true} className='mb-3 form-title'>
             Billing details
           </P16>
-          <S14 className="copy-from" onClick={handleCopyCompanyInfo}>
+          <S14 className='copy-from' onClick={handleCopyCompanyInfo}>
             Copy from company details
           </S14>
         </GridContainer>
       )}
-      <GridContainer template="570px">
+      <GridContainer template='570px'>
         <div>
           <TextInput
-            type="text"
-            name="companyLegalName"
-            placeholder="Legal name"
+            type='text'
+            name='companyLegalName'
+            placeholder='Legal name'
             register={register}
             isLightTheme
             isError={!!errors.companyLegalName}
             control={control}
-            onBlur={trimFormValues("companyLegalName")}
+            onBlur={trimFormValues('companyLegalName')}
           />
-          <P12 className="warning-text">
-            {errors.companyLegalName && errors.companyLegalName.message}
-          </P12>
+          <P12 className='warning-text'>{errors.companyLegalName && errors.companyLegalName.message}</P12>
         </div>
       </GridContainer>
-      <GridContainer template="270px 270px">
+      <GridContainer template='270px 270px'>
         <div>
           <Select
-            name="countryId"
+            name='countryId'
             control={control}
             register={register}
             options={countries}
-            placeholder="Country"
-            value={watch("countryId")}
-            onChange={onSelectChange("countryId")}
-            onMenuClose={onSelectMenuClose("countryId")}
+            placeholder='Country'
+            value={watch('countryId')}
+            onChange={onSelectChange('countryId')}
+            onMenuClose={onSelectMenuClose('countryId')}
             isError={!!errors.countryId}
             isSearchable
             isCreatable={false}
             isFilterForStart
             isTopPlaceholder
           />
-          <P12 className="warning-text">
-            {errors.countryId && errors.countryId.message}
-          </P12>
+          <P12 className='warning-text'>{errors.countryId && errors.countryId.message}</P12>
         </div>
         <div>
           <TextInput
-            type="text"
-            name="city"
-            placeholder="City"
+            type='text'
+            name='city'
+            placeholder='City'
             register={register}
             isLightTheme
             isError={!!errors.city}
             control={control}
-            onBlur={trimFormValues("city")}
+            onBlur={trimFormValues('city')}
             setValue={setValue}
           />
-          <P12 className="warning-text">
-            {errors.city && errors.city.message}
-          </P12>
+          <P12 className='warning-text'>{errors.city && errors.city.message}</P12>
         </div>
       </GridContainer>
-      <GridContainer template="570px">
+      <GridContainer template='570px'>
         <div>
           <TextInput
-            type="text"
-            name="address"
-            placeholder="Address"
+            type='text'
+            name='address'
+            placeholder='Address'
             register={register}
             isLightTheme
             isError={!!errors.address}
             control={control}
-            onBlur={trimFormValues("address")}
+            onBlur={trimFormValues('address')}
           />
-          <P12 className="warning-text">
-            {errors.address && errors.address.message}
-          </P12>
+          <P12 className='warning-text'>{errors.address && errors.address.message}</P12>
         </div>
       </GridContainer>
-      <GridContainer template="270px 270px">
+      <GridContainer template='270px 270px'>
         <div>
           <TextInput
-            type="text"
-            name="vatNumber"
-            placeholder="VAT number"
+            type='text'
+            name='vatNumber'
+            placeholder='VAT number'
             register={register}
             isLightTheme
             isError={!!errors.vatNumber}
             control={control}
-            onBlur={trimFormValues("vatNumber")}
+            onBlur={trimFormValues('vatNumber')}
           />
-          <P12 className="warning-text">
-            {errors.vatNumber && errors.vatNumber.message}
-          </P12>
+          <P12 className='warning-text'>{errors.vatNumber && errors.vatNumber.message}</P12>
         </div>
         <div>
           <TextInput
-            type="text"
-            name="postZipCode"
-            placeholder="Post/Zip Code"
+            type='text'
+            name='postZipCode'
+            placeholder='Post/Zip Code'
             register={register}
             isLightTheme
             isError={!!errors.postZipCode}
             control={control}
-            onBlur={trimFormValues("postZipCode")}
+            onBlur={trimFormValues('postZipCode')}
             setValue={setValue}
           />
-          <P12 className="warning-text">
-            {errors.postZipCode && errors.postZipCode.message}
-          </P12>
+          <P12 className='warning-text'>{errors.postZipCode && errors.postZipCode.message}</P12>
         </div>
       </GridContainer>
+      {
+        <>
+          <P16 bold>Choose payment method:</P16>
+          <GridContainer template='570px' customClassName={'mb-3 mt-1'}>
+            <div>
+              <Form.Check type={'radio'} id={`payment-method`}>
+                <Form.Check.Input
+                  checked={creditPayment}
+                  onChange={toggleCreditPayment}
+                  type={'radio'}
+                  isValid={creditPayment}
+                />
+                <Form.Check.Label>Credit Card</Form.Check.Label>
+              </Form.Check>
+            </div>
+            <div>
+              <Form.Check type={'radio'} id={`payment`}>
+                <Form.Check.Input
+                  checked={!creditPayment}
+                  type={'radio'}
+                  onChange={toggleCreditPayment}
+                  isValid={!creditPayment}
+                />
+                <Form.Check.Label>Bank Transfer</Form.Check.Label>
+              </Form.Check>
+            </div>
+          </GridContainer>
+        </>
+      }
       {!isAdmin && (
-        <GridContainer template="270px 270px">
+        <GridContainer template='270px 270px'>
           {isEmpty(cardsInfo) ? (
-            <div className="add-card">
+            <div className='add-card'>
               <P16 bold>Billing</P16>
               {!isGettingStarted && (
-                <div className="add-card-container">
+                <div className='add-card-container'>
                   <P14>Please add at least one valid banking card</P14>
-                  <div className="add-card-btn" onClick={addCard}>
+                  <div className='add-card-btn' onClick={addCard}>
                     {plusIcon}
                   </div>
                 </div>
               )}
             </div>
           ) : (
-            <div className="card-info">
+            <div className='card-info'>
               <P16 bold>Billing</P16>
-              <CardsInfo
-                cards={cardsInfo}
-                defaultPaymentMethodId={defaultPaymentMethodId}
-                isGettingStarted={isGettingStarted}
-                nextPaymentDate={
-                  user?.retailer?.stripePaymentSettings?.nextPaymentDate
-                }
-              />
+              {creditPayment ? (
+                <CardsInfo
+                  cards={cardsInfo}
+                  defaultPaymentMethodId={defaultPaymentMethodId}
+                  isGettingStarted={isGettingStarted}
+                  nextPaymentDate={user?.retailer?.stripePaymentSettings?.nextPaymentDate}
+                />
+              ) : (
+                //FIXME:: remove the text and add the actual details for bank transfer
+                <>
+                  <S14 className='current-plan'>
+                    <b>Account name:&nbsp;</b>
+                    Retail Hub Ltd
+                  </S14>{' '}
+                  <S14 className='current-plan'>
+                    <b>Bank:&nbsp;</b>
+                    Barclays
+                  </S14>{' '}
+                  <S14 className='current-plan'>
+                    <b>Swift Code:&nbsp;</b>
+                    brclay
+                  </S14>{' '}
+                  <S14 className='current-plan'>
+                    <b>IBAN:&nbsp;</b>
+                    123456779012e4567890{' '}
+                  </S14>
+                </>
+              )}
             </div>
           )}
           <div>
             {!isGettingStarted && (
-              <div className="toggle-subscription">
+              <div className='toggle-subscription'>
                 Subscription on/off&nbsp;
-                <SliderCheckbox
-                  checked={!isCancelledSubscription}
-                  onChange={toggleSubscriptionModal}
-                />
+                <SliderCheckbox checked={!isCancelledSubscription} onChange={toggleSubscriptionModal} />
               </div>
             )}
-            <S14 className="current-plan">
+            <S14 className='current-plan'>
               Current Plan:&nbsp;
               <b>{activePaymentPlan?.uiName}</b>
               {!isGettingStarted && (
                 <span
-                  className={cn("edit", {
-                    "disabled-action": !isEmpty(errors),
+                  className={cn('edit', {
+                    'disabled-action': !isEmpty(errors)
                   })}
-                  onClick={openEditPaymentPlanModal}
-                >
+                  onClick={openEditPaymentPlanModal}>
                   {editIcon}
                 </span>
               )}
+            </S14>
+            <S14 className='current-plan'>
+              Amount:&nbsp;
+              <b>USD {client?.paymentPlan?.price?.unitAmount / 100}</b>
             </S14>
           </div>
         </GridContainer>
       )}
       {!isAdmin && (
-        <GridContainer template="570px">
+        <GridContainer template='570px'>
           {formattedNextPaymentDate && !isEmpty(cardsInfo) && (
-            <div className="next-payment">
+            <div className='next-payment'>
               <span>
                 Your next billing date is&nbsp;
                 {formattedNextPaymentDate}
@@ -443,7 +441,7 @@ function BillingDetails({
               {isGettingStarted && (
                 <>
                   <br />
-                  <span className="change-plan-message">
+                  <span className='change-plan-message'>
                     {infoIcon}&nbsp;{changePlanMessage}
                   </span>
                 </>
@@ -452,17 +450,14 @@ function BillingDetails({
           )}
         </GridContainer>
       )}
-      <GridContainer
-        customClassName="flex-end"
-        template={isAdmin ? "270px 270px" : "auto 270px"}
-      >
+      <GridContainer customClassName='flex-end' template={isAdmin ? '270px 270px' : 'auto 270px'}>
         {!isAdmin &&
           (isResetButton ? (
             <PrimaryButton
-              className="billing-button"
+              className='billing-button'
               onClick={resetValues}
               isDarkTheme={false}
-              text="Reset"
+              text='Reset'
               disabled={isEmpty(getValues())}
               isOutline
             />
@@ -470,19 +465,13 @@ function BillingDetails({
             <div />
           ))}
         {isAdmin && (
-          <PrimaryButton
-            className="billing-button"
-            onClick={onClose}
-            isDarkTheme={false}
-            text="Cancel"
-            isOutline
-          />
+          <PrimaryButton className='billing-button' onClick={onClose} isDarkTheme={false} text='Cancel' isOutline />
         )}
         <PrimaryButton
-          className="billing-button float-end"
+          className='billing-button float-end'
           onClick={handleSubmit(onSubmit)}
           isDarkTheme={false}
-          text={submitButtonText}
+          text={'Save For Payment'}
           disabled={!isEmpty(errors)}
         />
       </GridContainer>
@@ -490,30 +479,30 @@ function BillingDetails({
         <AppModal
           component={ChooseYourPlan}
           outerProps={{
-            submitButtonText: "Update",
+            submitButtonText: 'Update',
             isModal: true,
             setPaymentPlanId,
             closeModal,
             withCancelButton: true,
-            activePaymentPlan,
+            activePaymentPlan
           }}
-          title="Upgrade your account Choose the best plan for you"
-          className="edit-payment-plan-modal"
+          title='Upgrade your account Choose the best plan for you'
+          className='edit-payment-plan-modal'
           onClose={closeModal}
-          width="100%"
+          width='100%'
           isDarkModal={true}
         />
       )}
       {isLoading && <LoadingOverlay isCentered={false} />}
     </FormWrapper>
-  );
+  )
 }
 
 BillingDetails.defaultProps = {
   isRetailer: false,
   isResetButton: false,
-  isAdmin: false,
-};
+  isAdmin: false
+}
 
 BillingDetails.propTypes = {
   schema: object.isRequired,
@@ -533,7 +522,7 @@ BillingDetails.propTypes = {
     shape({
       brand: string,
       last4: string,
-      paymentMethodId: string,
+      paymentMethodId: string
     })
   ),
   defaultPaymentMethodId: string,
@@ -548,9 +537,9 @@ BillingDetails.propTypes = {
   isAdmin: bool,
   onClose: func,
   user: userType,
-  toggleIsCancelledSubscription: func,
-};
+  toggleIsCancelledSubscription: func
+}
 
 export default connect(null, {
-  toggleIsCancelledSubscription,
-})(memo(BillingDetails));
+  toggleIsCancelledSubscription
+})(memo(BillingDetails))

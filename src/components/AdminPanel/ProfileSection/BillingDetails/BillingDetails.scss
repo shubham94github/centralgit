@@ -1,36 +1,46 @@
 @import 'src/styles/mixins';
 
 .billing-details-admin-container {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-	& > :first-child {
-		margin-right: 40px;
-		width: 175px;
-	}
+  & > :first-child {
+    margin-right: 40px;
+    width: 175px;
+  }
 
-	> div {
-		& > :first-child {
-			padding-bottom: 15px;
-		}
+  > div {
+    & > :first-child {
+      padding-bottom: 15px;
+    }
 
-		& > :not(:last-child):not(:first-child) {
-			margin-bottom: 5px;
-		}
-	}
+    & > :not(:last-child):not(:first-child) {
+      margin-bottom: 5px;
+    }
+  }
 
-	.edit-icon {
-		padding-left: 10px;
-		cursor: pointer;
-	}
+  .edit-icon {
+    padding-left: 10px;
+    cursor: pointer;
+  }
 
-	.card-center {
-		display: flex;
-		justify-content: start;
-		align-items: center;
-	}
+  .card-center {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
 
-	.word-break {
-		word-break: break-all;
-	}
+  .word-break {
+    word-break: break-all;
+  }
+}
+
+.modal {
+  border-radius: 45px;
+  &_no-border {
+    border: none !important;
+  }
+  &_btn {
+    width: 48%;
+  }
 }

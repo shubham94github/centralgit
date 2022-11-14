@@ -1,17 +1,17 @@
-import React, { memo, useEffect, useState } from "react";
-import { H1, P16 } from "@components/_shared/text";
-import { isEmpty } from "@utils/js-helpers";
-import TagButtons from "@components/_shared/buttons/TagButtons";
-import { array, arrayOf, bool, number, shape, string } from "prop-types";
-import ReactPlayer from "react-player";
-import { getVideoAttributes } from "@api/commonApi";
-import { getFileThumbnails } from "@api/fileUploadingApi";
-import LoadingOverlay from "@components/_shared/LoadingOverlay";
-import { Icons } from "@icons";
-import { openWebsite } from "@utils/openWebsiteHelper";
-import { Link } from "react-router-dom";
-const tractionIcon = Icons.tractionIcon();
-const overviewIcon = Icons.overviewIcon();
+import React, { memo, useEffect, useState } from 'react'
+import { H1, P16 } from '@components/_shared/text'
+import { isEmpty } from '@utils/js-helpers'
+import TagButtons from '@components/_shared/buttons/TagButtons'
+import { array, arrayOf, bool, number, shape, string } from 'prop-types'
+import ReactPlayer from 'react-player'
+import { getVideoAttributes } from '@api/commonApi'
+import { getFileThumbnails } from '@api/fileUploadingApi'
+import LoadingOverlay from '@components/_shared/LoadingOverlay'
+import { Icons } from '@icons'
+import { openWebsite } from '@utils/openWebsiteHelper'
+import { Link } from 'react-router-dom'
+const tractionIcon = Icons.tractionIcon()
+const overviewIcon = Icons.overviewIcon()
 
 const ProfileLeftSide = ({
   isRetailer,
@@ -27,12 +27,12 @@ const ProfileLeftSide = ({
   presenceInCountries,
   tags,
   videoInterview,
-  documents,
+  documents
 }) => {
-  const [isPlayVideo, setIsPlayVideo] = useState(false);
-  const [videoAttributes, setVideoAttributes] = useState(null);
-  const [isLoadingThumbnails, setIsLoadingThumbnails] = useState(false);
-  const [profileDocuments, setProfileDocuments] = useState(documents);
+  const [isPlayVideo, setIsPlayVideo] = useState(false)
+  const [videoAttributes, setVideoAttributes] = useState(null)
+  const [isLoadingThumbnails, setIsLoadingThumbnails] = useState(false)
+  const [profileDocuments, setProfileDocuments] = useState(documents)
 
   const isVisibleTraction =
     !isRetailer &&
@@ -40,123 +40,121 @@ const ProfileLeftSide = ({
       integrationTiming ||
       !!numberOfClients ||
       !!clientsList.length ||
-      !!presenceInCountries.length);
+      !!presenceInCountries.length)
 
-  const onStopVideo = () => setIsPlayVideo(false);
+  const onStopVideo = () => setIsPlayVideo(false)
 
   const getVideoInfo = async () => {
-    if (!videoInterview.link) return;
+    if (!videoInterview.link) return
 
-    const videoAttributes = await getVideoAttributes(videoInterview.link);
+    const videoAttributes = await getVideoAttributes(videoInterview.link)
 
-    setVideoAttributes(videoAttributes);
-  };
+    setVideoAttributes(videoAttributes)
+  }
 
   useEffect(() => {
-    const fetchThumbnailsForDocuments = async (documents) => {
+    const fetchThumbnailsForDocuments = async documents => {
       try {
-        setIsLoadingThumbnails(true);
-        const fileIds = documents.map((file) => file.thumbnailId);
+        setIsLoadingThumbnails(true)
+        const fileIds = documents.map(file => file.thumbnailId)
 
-        if (isEmpty(fileIds)) return setIsLoadingThumbnails(false);
+        if (isEmpty(fileIds)) return setIsLoadingThumbnails(false)
 
-        const thumbnails = await getFileThumbnails(fileIds);
+        const thumbnails = await getFileThumbnails(fileIds)
 
         setProfileDocuments([
           ...profileDocuments,
-          ...documents.map((file) => ({
+          ...documents.map(file => ({
             ...file,
-            thumbnail: thumbnails.find(
-              (item) => item.thumbnailId === file.thumbnailId
-            ).image,
-          })),
-        ]);
+            thumbnail: thumbnails.find(item => item.thumbnailId === file.thumbnailId).image
+          }))
+        ])
       } finally {
-        setIsLoadingThumbnails(false);
+        setIsLoadingThumbnails(false)
       }
-    };
+    }
 
-    const getVideoAttr = async (videoUrl) => {
-      if (!videoUrl?.length) return;
+    const getVideoAttr = async videoUrl => {
+      if (!videoUrl?.length) return
 
-      await getVideoInfo();
-    };
+      await getVideoInfo()
+    }
 
-    if (!isEmpty(documents)) fetchThumbnailsForDocuments(documents);
+    if (!isEmpty(documents)) fetchThumbnailsForDocuments(documents)
 
-    if (videoInterview?.link) getVideoAttr(videoInterview.link);
+    if (videoInterview?.link) getVideoAttr(videoInterview.link)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   const playVideo = () => {
-    if (!videoAttributes) return;
+    if (!videoAttributes) return
 
-    setIsPlayVideo(true);
-  };
+    setIsPlayVideo(true)
+  }
 
-  const openCompanyWebsite = () => openWebsite(urlOfCompanyWebsite);
+  const openCompanyWebsite = () => openWebsite(urlOfCompanyWebsite)
 
   return (
-    <div className="left-side-profile">
-      <H1 className="text-gray text-start pb-3" bold>
-        <span className="me-1">{overviewIcon}</span>
+    <div className='left-side-profile'>
+      <H1 className='text-gray text-start pb-3' bold>
+        <span className='me-1'>{overviewIcon}</span>
         Overview
       </H1>
       {isRetailer && (
-        <div className="blue-link truncate" onClick={openCompanyWebsite}>
+        <div className='blue-link truncate' onClick={openCompanyWebsite}>
           {urlOfCompanyWebsite}
         </div>
       )}
       {!isRetailer && (
-        <div className="company-short-info-wrapper">
+        <div className='company-short-info-wrapper'>
           {companyType && (
-            <div className="flex-item">
-              <div className="title">
-                <P16 className="text-gray" bold>
+            <div className='flex-item'>
+              <div className='title'>
+                <P16 className='text-gray' bold>
                   Company type
                 </P16>
               </div>
-              <div className="content">
-                <P16 className="text-gray">{companyType}</P16>
+              <div className='content'>
+                <P16 className='text-gray'>{companyType}</P16>
               </div>
             </div>
           )}
           {businessModel && (
-            <div className="flex-item">
-              <div className="title">
-                <P16 className="text-gray" bold>
+            <div className='flex-item'>
+              <div className='title'>
+                <P16 className='text-gray' bold>
                   Business model
                 </P16>
               </div>
-              <div className="content">
-                <P16 className="text-gray">{businessModel}</P16>
+              <div className='content'>
+                <P16 className='text-gray'>{businessModel}</P16>
               </div>
             </div>
           )}
           {companyStatus && (
-            <div className="flex-item">
-              <div className="title">
-                <P16 className="text-gray" bold>
+            <div className='flex-item'>
+              <div className='title'>
+                <P16 className='text-gray' bold>
                   Status
                 </P16>
               </div>
-              <div className="content">
-                <P16 className="text-gray">{companyStatus}</P16>
+              <div className='content'>
+                <P16 className='text-gray'>{companyStatus}</P16>
               </div>
             </div>
           )}
           {!!targetMarket.length && (
-            <div className="flex-item">
-              <div className="title">
-                <P16 className="text-gray" bold>
+            <div className='flex-item'>
+              <div className='title'>
+                <P16 className='text-gray' bold>
                   Target markets
                 </P16>
               </div>
-              <div className="content">
-                <P16 className="text-gray">
+              <div className='content'>
+                <P16 className='text-gray'>
                   {targetMarket.map((market, index) => (
                     <span key={market + index}>
-                      {index !== 0 && ", "}
+                      {index !== 0 && ', '}
                       {market}
                     </span>
                   ))}
@@ -166,22 +164,22 @@ const ProfileLeftSide = ({
           )}
           {isVisibleTraction && (
             <>
-              <H1 className="text-gray text-start mt-40 pb-3" bold>
-                <span className="me-1">{tractionIcon}</span>
+              <H1 className='text-gray text-start mt-40 pb-3' bold>
+                <span className='me-1'>{tractionIcon}</span>
                 Information
               </H1>
               {!!platformPartners.length && (
-                <div className="flex-item">
-                  <div className="title">
-                    <P16 className="text-gray" bold>
+                <div className='flex-item'>
+                  <div className='title'>
+                    <P16 className='text-gray' bold>
                       Platform Partners
                     </P16>
                   </div>
-                  <div className="content">
-                    <P16 className="text-gray">
+                  <div className='content'>
+                    <P16 className='text-gray'>
                       {platformPartners.map((platform, index) => (
                         <span key={platform + index}>
-                          {index !== 0 && ", "}
+                          {index !== 0 && ', '}
                           {platform}
                         </span>
                       ))}
@@ -190,18 +188,18 @@ const ProfileLeftSide = ({
                 </div>
               )}
               {integrationTiming && (
-                <div className="flex-item">
-                  <div className="title">
-                    <P16 className="text-gray" bold>
+                <div className='flex-item'>
+                  <div className='title'>
+                    <P16 className='text-gray' bold>
                       Integration Timing
                     </P16>
                   </div>
-                  <div className="content">
-                    <P16 className="text-gray">{integrationTiming}</P16>
+                  <div className='content'>
+                    <P16 className='text-gray'>{integrationTiming}</P16>
                   </div>
                 </div>
               )}
-              {!!numberOfClients && (
+              {/* {!!numberOfClients && (
                 <div className="flex-item">
                   <div className="title">
                     <div className="d-inline-block">
@@ -216,22 +214,20 @@ const ProfileLeftSide = ({
                     </div>
                   </div>
                 </div>
-              )}
+              )} */}
               {!!clientsList.length && (
-                <div className="flex-item">
-                  <div className="title">
-                    <P16 className="text-gray" bold>
+                <div className='flex-item'>
+                  <div className='title'>
+                    <P16 className='text-gray' bold>
                       Clients
                     </P16>
                   </div>
-                  <div className="content">
-                    <P16 className="text-gray">
+                  <div className='content'>
+                    <P16 className='text-gray'>
                       {clientsList.map((exampleItem, index) => (
                         <span key={exampleItem + index}>
-                          {index !== 0 && ", "}
-                          <Link to={`/browse-page?client=${exampleItem}`}>
-                            {exampleItem}
-                          </Link>
+                          {index !== 0 && ', '}
+                          <Link to={`/browse-page?client=${exampleItem}`}>{exampleItem}</Link>
                         </span>
                       ))}
                     </P16>
@@ -239,17 +235,17 @@ const ProfileLeftSide = ({
                 </div>
               )}
               {!!presenceInCountries.length && (
-                <div className="flex-item">
-                  <div className="title">
-                    <P16 className="text-gray" bold>
+                <div className='flex-item'>
+                  <div className='title'>
+                    <P16 className='text-gray' bold>
                       Presence in other Countries
                     </P16>
                   </div>
-                  <div className="content">
-                    <P16 className="text-gray">
+                  <div className='content'>
+                    <P16 className='text-gray'>
                       {presenceInCountries.map((country, index) => (
                         <span key={country.id}>
-                          {index !== 0 && ", "}
+                          {index !== 0 && ', '}
                           {country.name}
                         </span>
                       ))}
@@ -263,20 +259,20 @@ const ProfileLeftSide = ({
       )}
       {!isEmpty(tags) && !videoInterview && (
         <>
-          <H1 className="text-black text-start mt-40 pb-3" bold>
+          <H1 className='text-black text-start mt-40 pb-3' bold>
             Associated tags
           </H1>
           <TagButtons tags={tags} />
         </>
       )}
       {videoInterview && (
-        <div className="video-preview-poster">
+        <div className='video-preview-poster'>
           {isPlayVideo ? (
             <div className={`player`}>
               <ReactPlayer
                 url={videoInterview.link}
-                height="100%"
-                width="100%"
+                height='100%'
+                width='100%'
                 playing={isPlayVideo}
                 onEnded={onStopVideo}
                 controls={true}
@@ -284,10 +280,8 @@ const ProfileLeftSide = ({
             </div>
           ) : (
             <>
-              {videoAttributes?.thumbnail && (
-                <img src={videoAttributes.thumbnail} alt={"video-poster"} />
-              )}
-              <span className="default-video-icon" onClick={playVideo}>
+              {videoAttributes?.thumbnail && <img src={videoAttributes.thumbnail} alt={'video-poster'} />}
+              <span className='default-video-icon' onClick={playVideo}>
                 {Icons.video()}
               </span>
             </>
@@ -296,8 +290,8 @@ const ProfileLeftSide = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 ProfileLeftSide.propTypes = {
   isRetailer: bool.isRequired,
@@ -317,14 +311,14 @@ ProfileLeftSide.propTypes = {
       id: number,
       filename: string,
       extension: string,
-      size: number,
+      size: number
     })
   ),
   videoInterview: shape({
     link: string,
     id: number,
-    title: string,
-  }),
-};
+    title: string
+  })
+}
 
-export default memo(ProfileLeftSide);
+export default memo(ProfileLeftSide)
