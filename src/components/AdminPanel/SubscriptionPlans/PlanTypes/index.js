@@ -1,1 +1,1 @@
-export { default } from './PlanTypes';
+export { default } from './PlanTypes'

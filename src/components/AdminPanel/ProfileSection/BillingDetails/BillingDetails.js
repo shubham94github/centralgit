@@ -12,11 +12,13 @@ import AppModal from '@components/Common/AppModal'
 import PrimaryButton from '@components/_shared/buttons/PrimaryButton'
 import PaymentModalReceipt from '@components/_shared/PaymentModalReceipt'
 import { subscriptionPlanType } from '@constants/types'
-import { getSubscriptionPlans } from '@ducks/admin/actions'
+import { getSubscriptionPlans, getPaymentReceipts } from '@ducks/admin/actions'
 import { isEmpty } from '@utils/js-helpers'
 import { updateSubscriptionPlan } from '@api/subscriptionPansApi'
 import { SET_UPDATED_PROFILE } from '@ducks/admin/index'
 import './BillingDetails.scss'
+// import SubscriptionPlansTable from '../../SubscriptionPlans/SubscriptionPlansTab/SubscriptionPlansTable/SubscriptionPlansTable'
+import MainTable from '@components/_shared/MainTable'
 
 const editIcon = Icons.editIcon(colors.darkblue70)
 const PlusIcon = Icons.plus(colors.darkblue70)
@@ -36,12 +38,58 @@ const BillingDetails = ({
   uiName,
   id,
   subscriptionPlans,
+  paymentReceipts,
   paymentPlan,
   amount
 }) => {
+  const columns = [
+    // {
+    //   name: 'Client Name',
+    //   selector: row => row.id
+    // },
+    {
+      name: 'Client ID',
+      selector: row => row?.clientId,
+      width: '100px'
+    },
+    {
+      name: 'Plan',
+      selector: row => row?.paymentPlanOutDto.uiName,
+      width: '370px'
+    },
+
+    {
+      name: 'Reference',
+      selector: row => row?.payment_reference,
+      width: '100px'
+    },
+    {
+      name: 'Amount',
+      selector: row => `USD ${row?.paymentPlanOutDto.price.unitAmount / 100}`,
+      width: '100px'
+    },
+    {
+      name: 'Payment Date',
+      selector: row => new Date(row?.createdAt).toLocaleDateString(),
+      width: '130px'
+    },
+    {
+      name: 'Expiry Date',
+      selector: row => new Date(row?.planexpirydate).toLocaleDateString(),
+      width: '130px'
+    },
+    {
+      name: 'Method',
+      selector: row => row?.payment_Method,
+      width: '150px'
+    }
+  ]
+
+  console.log('paymentReceipts =>', paymentReceipts)
   const dispatch = useDispatch()
   useEffect(() => {
     if (isEmpty(subscriptionPlans)) dispatch(getSubscriptionPlans())
+    dispatch(getPaymentReceipts(id))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const paymentCardIcon = enums.paymentCardLogos[brand]
@@ -52,6 +100,12 @@ const BillingDetails = ({
   const [billingName, setBillingName] = useState('')
   const [updateId, setUpdateId] = useState('')
   const [loading, setLoading] = useState(false)
+  const [paymentMethod, setPaymentMethod] = useState(true)
+  const [price, setPrice] = useState('')
+  const [status, setStatus] = useState('')
+  const [expDate, setExpDate] = useState('')
+  const [date, setDate] = useState('')
+  const [receiptLoading, setReceiptLoading] = useState(false)
 
   const toggleBillingAddressEditModal = () => setIsEditBillingAddress(prevState => !prevState)
   const toggleBillingPlan = () => setBillingPlan(prevState => !prevState)
@@ -72,6 +126,11 @@ const BillingDetails = ({
       toggleBillingPlan()
     }
   }
+  const handleReceipt = () => {
+    console.log('called')
+    setReceiptLoading(true)
+  }
+  const togglePaymentMethod = () => setPaymentMethod(prevState => !prevState)
   return (
     <>
       <PaymentModalReceipt
@@ -80,6 +139,18 @@ const BillingDetails = ({
         companyName={companyLegalName}
         planName={uiName}
         clientId={id}
+        paymentMethod={paymentMethod}
+        togglePaymentMethod={togglePaymentMethod}
+        price={price}
+        setPrice={setPrice}
+        status={status}
+        setStatus={setStatus}
+        expDate={expDate}
+        setExpDate={setExpDate}
+        date={date}
+        setDate={setDate}
+        handleReceipt={handleReceipt}
+        receiptLoading={receiptLoading}
       />
       {isEditBillingAddress && (
         <AppModal
@@ -218,15 +289,15 @@ const BillingDetails = ({
             </P12>
           )}
         </div>
-        <div>
-          <P16 bold>Payment Receipts</P16>
-          <P12>
-            <b></b>&nbsp;
-            <span className='edit-icon' onClick={togglePaymentDetails}>
-              {PlusIcon}
-            </span>
-          </P12>
-        </div>
+      </div>
+      <div className='mt-3'>
+        <P16 bold>
+          Payment Receipts <b></b>&nbsp;
+          <span className='edit-icon' onClick={togglePaymentDetails}>
+            {PlusIcon}
+          </span>
+        </P16>
+        <MainTable columns={columns} data={paymentReceipts} />
       </div>
     </>
   )
@@ -249,7 +320,7 @@ BillingDetails.propTypes = {
   uiName: string
 }
 
-export default connect(({ admin: { subscriptionPlans, profile }, auth }) => {
+export default connect(({ admin: { subscriptionPlans, profile, paymentReceipts }, auth }) => {
   const { listOfPermissions } = auth
 
   const {
@@ -287,6 +358,7 @@ export default connect(({ admin: { subscriptionPlans, profile }, auth }) => {
     uiName: paymentPlan?.uiName,
     paymentPlan,
     amount: paymentPlan?.price?.unitAmount,
-    subscriptionPlans
+    subscriptionPlans,
+    paymentReceipts
   }
 })(memo(BillingDetails))

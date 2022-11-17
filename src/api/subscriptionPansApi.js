@@ -44,3 +44,5 @@ export const editEnterpriseCode = ({ id, enterpriseCode: { code, paymentPlan } }
 export const hidePaymentPlan = planId => client.delete(`${ADMIN_SERVER_URL}/v1/admin/payment/plans/hide/${planId}`)
 
 export const unHidePaymentPlan = planId => client.delete(`${ADMIN_SERVER_URL}/v1/admin/payment/plans/unhide/${planId}`)
+
+export const getPaymentReceipts = userId => client.post(`${ADMIN_SERVER_URL}/v1/admin/payment/all/${userId}`)
