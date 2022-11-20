@@ -1664,7 +1664,7 @@ export function* getPaymentReceiptsWorker({ payload: { userId } }) {
     yield setIsLoading(false)
   }
 }
-export function* createPaymentReceiptWorker(payload) {
+export function* createPaymentReceiptWorker({ payload }) {
   try {
     yield setIsLoading(true)
     const receipts = yield call(createPaymentReceipt, payload)

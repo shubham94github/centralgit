@@ -37,11 +37,11 @@ export const columns = [
   }
 ]
 export const receiptColumns = [
-  {
-    name: 'Client Name',
-    selector: row => row.id,
-    width: '150px'
-  },
+  // {
+  //   name: 'Client Name',
+  //   selector: row => row.id,
+  //   width: '150px'
+  // },
   {
     name: 'Client ID',
     selector: row => row?.clientId,
