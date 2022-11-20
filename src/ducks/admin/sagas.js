@@ -39,6 +39,8 @@ import {
   SET_FEATURES,
   SET_ENTERPRISE_CODES,
   SET_PAYMENT_RECEIPTS,
+  CREATE_PAYMENT_RECEIPTS,
+  ADD_PAYMENT_RECEIPTS,
   SET_ALL_PAYMENT_RECEIPTS
 } from './index'
 import { call, put, all, select, fork } from 'redux-saga/effects'
@@ -1667,14 +1669,13 @@ export function* getPaymentReceiptsWorker({ payload: { userId } }) {
 export function* createPaymentReceiptWorker({ payload }) {
   try {
     yield setIsLoading(true)
-    const receipts = yield call(createPaymentReceipt, payload)
-    console.log('response =>', receipts)
-    // yield put({
-    //   type: SET_PAYMENT_RECEIPTS,
-    //   payload: {
-    //     receipts
-    //   }
-    // })
+    const receipt = yield call(createPaymentReceipt, payload)
+    yield put({
+      type: ADD_PAYMENT_RECEIPTS,
+      payload: {
+        receipt
+      }
+    })
   } catch (e) {
     yield fork(onServerErrorHandler, e)
   } finally {

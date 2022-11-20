@@ -114,13 +114,13 @@ const paymentModalReceipt = props => {
               <Col>
                 <Form.Group className='mb-3' controlId='formBasicPassword'>
                   <Form.Label>Date</Form.Label>
-                  <Form.Control value={date} onChange={e => setDate(e.target.value)} type='date' />
+                  <Form.Control value={date} onChange={e => setDate(e.target.value)} type='datetime-local' />
                 </Form.Group>
               </Col>
               <Col>
                 <Form.Group className='mb-3' controlId='formBasicPassword'>
                   <Form.Label>Expiration Date</Form.Label>
-                  <Form.Control value={expDate} onChange={e => setExpDate(e.target.value)} type='date' />
+                  <Form.Control value={expDate} onChange={e => setExpDate(e.target.value)} type='datetime-local' />
                 </Form.Group>
               </Col>
             </Row>

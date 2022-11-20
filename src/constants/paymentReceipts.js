@@ -17,8 +17,9 @@ export const columns = [
   },
   {
     name: 'Amount',
-    selector: row => `USD ${row?.paymentPlanOutDto.price.unitAmount / 100}`,
-    width: '100px'
+    selector: row => row.price,
+    // selector: row => `USD ${row?.paymentPlanOutDto.price.unitAmount / 100}`,
+    width: '120px'
   },
   {
     name: 'Payment Date',

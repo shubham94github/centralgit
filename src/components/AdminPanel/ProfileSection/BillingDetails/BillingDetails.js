@@ -43,7 +43,6 @@ const BillingDetails = ({
   paymentPlan,
   amount
 }) => {
-  console.log('paymentReceipts =>', paymentReceipts)
   const dispatch = useDispatch()
   useEffect(() => {
     if (isEmpty(subscriptionPlans)) dispatch(getSubscriptionPlans())
@@ -77,27 +76,34 @@ const BillingDetails = ({
         payload: { profile: response }
       })
     } catch (error) {
-      // TOTO::fixme and add a proper error
-      console.log('response =>', error)
     } finally {
       setLoading(false)
       toggleBillingPlan()
     }
   }
+  const handleReset = () => {
+    setPaymentMethod('')
+    setPrice('')
+    setStatus('')
+    setExpDate('')
+    setDate('')
+    setReceiptLoading(false)
+    togglePaymentDetails()
+  }
   const handleReceipt = () => {
-    console.log('called')
     setReceiptLoading(true)
     dispatch(
       createPaymentReceipts({
-        clientId: id,
-        paymentReference: id,
-        date,
-        expDate,
-        status,
-        price,
-        paymentMethod: paymentMethod ? 'credit card' : 'bank transfer'
+        clienId: id,
+        paymentMethod: paymentMethod ? 'Credit card' : 'Bank Transfer',
+        price: `USD ${price}`,
+        paymentReference: id.toString(),
+        date: new Date(date).toISOString().slice(0, 10) + ' ' + new Date(date).toISOString().slice(11, 19),
+        expiryDate: new Date(expDate).toISOString().slice(0, 10) + ' ' + new Date(expDate).toISOString().slice(11, 19),
+        paymentStatus: status
       })
     )
+    handleReset()
   }
   const togglePaymentMethod = () => setPaymentMethod(prevState => !prevState)
   return (

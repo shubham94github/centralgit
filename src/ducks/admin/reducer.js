@@ -43,7 +43,8 @@ import {
   SET_UPDATED_PROFILE,
   SET_PAYMENT_RECEIPTS,
   SET_ALL_PAYMENT_RECEIPTS,
-  CREATE_PAYMENT_RECEIPTS
+  CREATE_PAYMENT_RECEIPTS,
+  ADD_PAYMENT_RECEIPTS
 } from './index'
 import { pageSize } from '@constants/pagination'
 import {
@@ -288,8 +289,9 @@ const adminReducer = (state = new InitialState(), action) => {
     case SET_PAYMENT_RECEIPTS:
       return state.set('paymentReceipts', payload.receipts)
 
-    // case CREATE_PAYMENT_RECEIPTS:
-    //   return state.set('allPaymentReceipts', payload.receipts)
+    case ADD_PAYMENT_RECEIPTS:
+      const output = [...state.get('paymentReceipts'), payload.receipt]
+      return state.set('paymentReceipts', output)
 
     case SET_ALL_PAYMENT_RECEIPTS:
       return state.set('allPaymentReceipts', payload.receipts)

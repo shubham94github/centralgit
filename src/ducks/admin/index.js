@@ -98,6 +98,7 @@ export const DELETE_MEMBER_GROUP = `${appName}/${moduleName}/DELETE_MEMBER_GROUP
 export const GET_SUBSCRIPTION_PLANS = `${appName}/${moduleName}/GET_SUBSCRIPTION_PLANS`
 export const GET_PAYMENT_RECEIPTS = `${appName}/${moduleName}/GET_PAYMENT_RECEIPTS`
 export const SET_PAYMENT_RECEIPTS = `${appName}/${moduleName}/SET_PAYMENT_RECEIPTS`
+export const ADD_PAYMENT_RECEIPTS = `${appName}/${moduleName}/ADD_PAYMENT_RECEIPTS`
 export const SET_ALL_PAYMENT_RECEIPTS = `${appName}/${moduleName}/SET_ALL_PAYMENT_RECEIPTS`
 export const CREATE_PAYMENT_RECEIPTS = `${appName}/${moduleName}/CREATE_PAYMENT_RECEIPTS`
 export const GET_ALL_PAYMENT_RECEIPTS = `${appName}/${moduleName}/GET_ALL_PAYMENT_RECEIPTS`
