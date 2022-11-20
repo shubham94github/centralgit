@@ -41,7 +41,9 @@ import {
   SET_FEATURES,
   SET_ENTERPRISE_CODES,
   SET_UPDATED_PROFILE,
-  SET_PAYMENT_RECEIPTS
+  SET_PAYMENT_RECEIPTS,
+  SET_ALL_PAYMENT_RECEIPTS,
+  CREATE_PAYMENT_RECEIPTS
 } from './index'
 import { pageSize } from '@constants/pagination'
 import {
@@ -99,6 +101,7 @@ const InitialState = Record({
     }
   },
   paymentReceipts: [],
+  allPaymentReceipts: [],
   reportsCount: 0,
   categoriesActivity: [],
   categoriesActivityCount: 0,
@@ -284,6 +287,12 @@ const adminReducer = (state = new InitialState(), action) => {
 
     case SET_PAYMENT_RECEIPTS:
       return state.set('paymentReceipts', payload.receipts)
+
+    // case CREATE_PAYMENT_RECEIPTS:
+    //   return state.set('allPaymentReceipts', payload.receipts)
+
+    case SET_ALL_PAYMENT_RECEIPTS:
+      return state.set('allPaymentReceipts', payload.receipts)
 
     case SET_ALL_PAYMENT_PLANS_NAMES:
       return state.set('paymentPlansNames', payload.paymentPlansNames)

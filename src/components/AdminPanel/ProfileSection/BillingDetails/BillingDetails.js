@@ -12,14 +12,15 @@ import AppModal from '@components/Common/AppModal'
 import PrimaryButton from '@components/_shared/buttons/PrimaryButton'
 import PaymentModalReceipt from '@components/_shared/PaymentModalReceipt'
 import { subscriptionPlanType } from '@constants/types'
-import { getSubscriptionPlans, getPaymentReceipts } from '@ducks/admin/actions'
+import { getSubscriptionPlans, getPaymentReceipts, createPaymentReceipts } from '@ducks/admin/actions'
 import { isEmpty } from '@utils/js-helpers'
 import { updateSubscriptionPlan } from '@api/subscriptionPansApi'
 import { SET_UPDATED_PROFILE } from '@ducks/admin/index'
 import './BillingDetails.scss'
 // import SubscriptionPlansTable from '../../SubscriptionPlans/SubscriptionPlansTab/SubscriptionPlansTable/SubscriptionPlansTable'
 import MainTable from '@components/_shared/MainTable'
-
+import { columns } from '@constants/paymentReceipts'
+columns
 const editIcon = Icons.editIcon(colors.darkblue70)
 const PlusIcon = Icons.plus(colors.darkblue70)
 const BillingDetails = ({
@@ -42,49 +43,6 @@ const BillingDetails = ({
   paymentPlan,
   amount
 }) => {
-  const columns = [
-    // {
-    //   name: 'Client Name',
-    //   selector: row => row.id
-    // },
-    {
-      name: 'Client ID',
-      selector: row => row?.clientId,
-      width: '100px'
-    },
-    {
-      name: 'Plan',
-      selector: row => row?.paymentPlanOutDto.uiName,
-      width: '370px'
-    },
-
-    {
-      name: 'Reference',
-      selector: row => row?.payment_reference,
-      width: '100px'
-    },
-    {
-      name: 'Amount',
-      selector: row => `USD ${row?.paymentPlanOutDto.price.unitAmount / 100}`,
-      width: '100px'
-    },
-    {
-      name: 'Payment Date',
-      selector: row => new Date(row?.createdAt).toLocaleDateString(),
-      width: '130px'
-    },
-    {
-      name: 'Expiry Date',
-      selector: row => new Date(row?.planexpirydate).toLocaleDateString(),
-      width: '130px'
-    },
-    {
-      name: 'Method',
-      selector: row => row?.payment_Method,
-      width: '150px'
-    }
-  ]
-
   console.log('paymentReceipts =>', paymentReceipts)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -129,6 +87,17 @@ const BillingDetails = ({
   const handleReceipt = () => {
     console.log('called')
     setReceiptLoading(true)
+    dispatch(
+      createPaymentReceipts({
+        clientId: id,
+        paymentReference: id,
+        date,
+        expDate,
+        status,
+        price,
+        paymentMethod: paymentMethod ? 'credit card' : 'bank transfer'
+      })
+    )
   }
   const togglePaymentMethod = () => setPaymentMethod(prevState => !prevState)
   return (

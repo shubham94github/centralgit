@@ -45,4 +45,7 @@ export const hidePaymentPlan = planId => client.delete(`${ADMIN_SERVER_URL}/v1/a
 
 export const unHidePaymentPlan = planId => client.delete(`${ADMIN_SERVER_URL}/v1/admin/payment/plans/unhide/${planId}`)
 
-export const getPaymentReceipts = userId => client.post(`${ADMIN_SERVER_URL}/v1/admin/payment/all/${userId}`)
+export const getPaymentReceipts = userId => client.get(`${ADMIN_SERVER_URL}/v1/admin/payment/all/${userId}`)
+export const getAllPaymentReceipts = () => client.get(`${ADMIN_SERVER_URL}/v1/admin/payment/allPayment`)
+export const createPaymentReceipt = payload =>
+  client.post(`${ADMIN_SERVER_URL}/v1/admin/payment/insertPayment`, payload)

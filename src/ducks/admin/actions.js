@@ -67,7 +67,9 @@ import {
   GET_ENTERPRISE_CODES,
   EDIT_ENTERPRISE_CODE,
   CHANGE_PAYMENT_PLAN_STATUS,
-  GET_PAYMENT_RECEIPTS
+  GET_PAYMENT_RECEIPTS,
+  CREATE_PAYMENT_RECEIPTS,
+  GET_ALL_PAYMENT_RECEIPTS
 } from './index'
 import { checkEmailForExisting } from '@api/auth'
 import { onServerErrorHandler } from '@ducks/common/sagas'
@@ -441,8 +443,15 @@ export const getPaymentReceipts = userId => ({
   type: GET_PAYMENT_RECEIPTS,
   payload: { userId }
 })
+export const createPaymentReceipts = payload => ({
+  type: CREATE_PAYMENT_RECEIPTS,
+  payload
+})
 export const getAllPaymentPlanNames = () => ({
   type: GET_ALL_PAYMENT_PLANS_NAMES
+})
+export const getAllPaymentReceipts = () => ({
+  type: GET_ALL_PAYMENT_RECEIPTS
 })
 
 export const getPrices = () => ({

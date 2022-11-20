@@ -38,7 +38,8 @@ import {
   SET_MEMBER_GROUPS,
   SET_FEATURES,
   SET_ENTERPRISE_CODES,
-  SET_PAYMENT_RECEIPTS
+  SET_PAYMENT_RECEIPTS,
+  SET_ALL_PAYMENT_RECEIPTS
 } from './index'
 import { call, put, all, select, fork } from 'redux-saga/effects'
 import {
@@ -143,7 +144,9 @@ import {
   hidePaymentPlan,
   unHidePaymentPlan,
   updatePaymentPlan,
-  getPaymentReceipts
+  getPaymentReceipts,
+  createPaymentReceipt,
+  getAllPaymentReceipts
 } from '@api/subscriptionPansApi'
 import { emptyCategoryImportedError, emptyCategoryIncompleteError } from '@constants/errorCodes'
 
@@ -1651,6 +1654,40 @@ export function* getPaymentReceiptsWorker({ payload: { userId } }) {
     const receipts = yield call(getPaymentReceipts, userId)
     yield put({
       type: SET_PAYMENT_RECEIPTS,
+      payload: {
+        receipts
+      }
+    })
+  } catch (e) {
+    yield fork(onServerErrorHandler, e)
+  } finally {
+    yield setIsLoading(false)
+  }
+}
+export function* createPaymentReceiptWorker(payload) {
+  try {
+    yield setIsLoading(true)
+    const receipts = yield call(createPaymentReceipt, payload)
+    console.log('response =>', receipts)
+    // yield put({
+    //   type: SET_PAYMENT_RECEIPTS,
+    //   payload: {
+    //     receipts
+    //   }
+    // })
+  } catch (e) {
+    yield fork(onServerErrorHandler, e)
+  } finally {
+    yield setIsLoading(false)
+  }
+}
+export function* getAllPaymentReceiptsWorker() {
+  try {
+    yield setIsLoading(true)
+    const receipts = yield call(getAllPaymentReceipts)
+
+    yield put({
+      type: SET_ALL_PAYMENT_RECEIPTS,
       payload: {
         receipts
       }
