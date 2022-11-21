@@ -12,15 +12,20 @@ import AppModal from '@components/Common/AppModal'
 import PrimaryButton from '@components/_shared/buttons/PrimaryButton'
 import PaymentModalReceipt from '@components/_shared/PaymentModalReceipt'
 import { subscriptionPlanType } from '@constants/types'
-import { getSubscriptionPlans, getPaymentReceipts, createPaymentReceipts } from '@ducks/admin/actions'
+import {
+  getSubscriptionPlans,
+  getPaymentReceipts,
+  createPaymentReceipts,
+  updatePaymentReceipts
+} from '@ducks/admin/actions'
 import { isEmpty } from '@utils/js-helpers'
 import { updateSubscriptionPlan } from '@api/subscriptionPansApi'
 import { SET_UPDATED_PROFILE } from '@ducks/admin/index'
 import './BillingDetails.scss'
 // import SubscriptionPlansTable from '../../SubscriptionPlans/SubscriptionPlansTab/SubscriptionPlansTable/SubscriptionPlansTable'
 import MainTable from '@components/_shared/MainTable'
-import { columns } from '@constants/paymentReceipts'
-columns
+import { generateColumns } from '@constants/paymentReceipts'
+
 const editIcon = Icons.editIcon(colors.darkblue70)
 const PlusIcon = Icons.plus(colors.darkblue70)
 const BillingDetails = ({
@@ -56,8 +61,10 @@ const BillingDetails = ({
   const [paymentDetails, setPaymentDetails] = useState(false)
   const [billingName, setBillingName] = useState('')
   const [updateId, setUpdateId] = useState('')
+  const [paymentReceiptId, setPaymentReceiptId] = useState('')
   const [loading, setLoading] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState(true)
+  const [update, setUpdate] = useState(false)
   const [price, setPrice] = useState('')
   const [status, setStatus] = useState('')
   const [expDate, setExpDate] = useState('')
@@ -66,7 +73,26 @@ const BillingDetails = ({
 
   const toggleBillingAddressEditModal = () => setIsEditBillingAddress(prevState => !prevState)
   const toggleBillingPlan = () => setBillingPlan(prevState => !prevState)
-  const togglePaymentDetails = () => setPaymentDetails(prevState => !prevState)
+  const togglePaymentDetails = () => {
+    setPaymentDetails(prevState => {
+      if (prevState) {
+        handleReset()
+        setUpdate(false)
+      }
+      return !prevState
+    })
+  }
+  const handleEdit = item => {
+    setPaymentReceiptId(item.id)
+    setPrice(item.price.split(' ')[1])
+    setStatus(item.payment_status)
+    setPaymentMethod(item.payment_Method === 'Bank Transfer' ? false : true)
+    setExpDate(new Date(item.planexpirydate.replace(' ', 'T')).toISOString().split('.')[0])
+    setDate(new Date(item.planexpirydate.replace(' ', 'T')).toISOString().split('.')[0])
+    setUpdate(true)
+    togglePaymentDetails()
+  }
+  const columns = generateColumns({ handleEdit })
   const handleUpdate = async () => {
     setLoading(true)
     try {
@@ -88,7 +114,6 @@ const BillingDetails = ({
     setExpDate('')
     setDate('')
     setReceiptLoading(false)
-    togglePaymentDetails()
   }
   const handleReceipt = () => {
     setReceiptLoading(true)
@@ -104,6 +129,24 @@ const BillingDetails = ({
       })
     )
     handleReset()
+    togglePaymentDetails()
+  }
+  const handleUpdateReceipt = () => {
+    setReceiptLoading(true)
+    dispatch(
+      updatePaymentReceipts({
+        id: paymentReceiptId,
+        clienId: id,
+        paymentMethod: paymentMethod ? 'Credit card' : 'Bank Transfer',
+        price: `USD ${price}`,
+        paymentReference: id.toString(),
+        date: new Date(date).toISOString().slice(0, 10) + ' ' + new Date(date).toISOString().slice(11, 19),
+        expiryDate: new Date(expDate).toISOString().slice(0, 10) + ' ' + new Date(expDate).toISOString().slice(11, 19),
+        paymentStatus: status
+      })
+    )
+    handleReset()
+    togglePaymentDetails()
   }
   const togglePaymentMethod = () => setPaymentMethod(prevState => !prevState)
   return (
@@ -124,7 +167,8 @@ const BillingDetails = ({
         setExpDate={setExpDate}
         date={date}
         setDate={setDate}
-        handleReceipt={handleReceipt}
+        handleReceipt={update ? handleUpdateReceipt : handleReceipt}
+        isUpdate={update}
         receiptLoading={receiptLoading}
       />
       {isEditBillingAddress && (

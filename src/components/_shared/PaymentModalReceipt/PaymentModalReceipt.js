@@ -24,9 +24,9 @@ const paymentModalReceipt = props => {
     setExpDate,
     price,
     handleReceipt,
-    setPrice
+    setPrice,
+    isUpdate
   } = props
-
   return (
     <Modal size='lg' className='modal' centered show={show} onHide={onHide}>
       <Modal.Header className='modal_no-border'>
@@ -132,7 +132,7 @@ const paymentModalReceipt = props => {
         <PrimaryButton
           className={'modal_btn'}
           disabled={isEmpty(date) || isEmpty(expDate) || isEmpty(status) || isEmpty(price)}
-          text='Update'
+          text={isUpdate ? 'Update' : 'Save'}
           isDarkTheme={false}
           onClick={handleReceipt}
           isLoading={receiptLoading}

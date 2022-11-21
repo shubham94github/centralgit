@@ -41,7 +41,8 @@ import {
   SET_PAYMENT_RECEIPTS,
   CREATE_PAYMENT_RECEIPTS,
   ADD_PAYMENT_RECEIPTS,
-  SET_ALL_PAYMENT_RECEIPTS
+  SET_ALL_PAYMENT_RECEIPTS,
+  UPDATED_PAYMENT_RECEIPTS
 } from './index'
 import { call, put, all, select, fork } from 'redux-saga/effects'
 import {
@@ -148,7 +149,8 @@ import {
   updatePaymentPlan,
   getPaymentReceipts,
   createPaymentReceipt,
-  getAllPaymentReceipts
+  getAllPaymentReceipts,
+  updatePaymentReceipt
 } from '@api/subscriptionPansApi'
 import { emptyCategoryImportedError, emptyCategoryIncompleteError } from '@constants/errorCodes'
 
@@ -1672,6 +1674,22 @@ export function* createPaymentReceiptWorker({ payload }) {
     const receipt = yield call(createPaymentReceipt, payload)
     yield put({
       type: ADD_PAYMENT_RECEIPTS,
+      payload: {
+        receipt
+      }
+    })
+  } catch (e) {
+    yield fork(onServerErrorHandler, e)
+  } finally {
+    yield setIsLoading(false)
+  }
+}
+export function* updatePaymentReceiptWorker({ payload }) {
+  try {
+    yield setIsLoading(true)
+    const receipt = yield call(updatePaymentReceipt, payload)
+    yield put({
+      type: UPDATED_PAYMENT_RECEIPTS,
       payload: {
         receipt
       }

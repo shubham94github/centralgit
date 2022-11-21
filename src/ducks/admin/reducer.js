@@ -44,7 +44,8 @@ import {
   SET_PAYMENT_RECEIPTS,
   SET_ALL_PAYMENT_RECEIPTS,
   CREATE_PAYMENT_RECEIPTS,
-  ADD_PAYMENT_RECEIPTS
+  ADD_PAYMENT_RECEIPTS,
+  UPDATED_PAYMENT_RECEIPTS
 } from './index'
 import { pageSize } from '@constants/pagination'
 import {
@@ -298,6 +299,12 @@ const adminReducer = (state = new InitialState(), action) => {
 
     case SET_ALL_PAYMENT_PLANS_NAMES:
       return state.set('paymentPlansNames', payload.paymentPlansNames)
+
+    case UPDATED_PAYMENT_RECEIPTS:
+      return state.set(
+        'paymentReceipts',
+        state.get('paymentReceipts').map(item => (item.id === payload.receipt.id ? payload.receipt : item))
+      )
 
     case SET_PRICES:
       return state.set('prices', payload.prices)

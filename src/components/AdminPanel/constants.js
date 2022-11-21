@@ -51,11 +51,6 @@ export const enterpriseItem = {
       isHidden: false
     },
     {
-      title: 'Payment Receipts',
-      route: PAYMENT_RECEIPTS,
-      isHidden: false
-    },
-    {
       title: 'Discount coupons',
       route: DISCOUNT_COUPONS,
       isHidden: false
@@ -152,5 +147,17 @@ export const sideMenuItems = [
     ],
     roles: [superAdmin]
   },
-  enterpriseItem
+  enterpriseItem,
+  {
+    mainTitle: 'Finance',
+    isExpanded: true,
+    items: [
+      {
+        title: 'Payment Receipts',
+        route: PAYMENT_RECEIPTS,
+        isHidden: false
+      }
+    ],
+    roles: [superAdmin]
+  }
 ]

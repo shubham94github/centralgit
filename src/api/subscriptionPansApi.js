@@ -49,3 +49,7 @@ export const getPaymentReceipts = userId => client.get(`${ADMIN_SERVER_URL}/v1/a
 export const getAllPaymentReceipts = () => client.get(`${ADMIN_SERVER_URL}/v1/admin/payment/allPayment`)
 export const createPaymentReceipt = payload =>
   client.post(`${ADMIN_SERVER_URL}/v1/admin/payment/insertPayment`, payload)
+export const updatePaymentReceipt = payload => {
+  const { id } = payload
+  return client.post(`${ADMIN_SERVER_URL}/v1/admin/payment/updatePayment/${id}`, payload)
+}
