@@ -52,11 +52,11 @@ export const generateNavbarLinks = (isStartup, profileRole, idProfile, profile) 
     name: 'Rated',
     path: `/admin-panel/profile/${profileRole}/${idProfile || profile.id}/rated-startups`,
     roles: ['user']
+  },
+  {
+    id: 'article',
+    name: 'Article',
+    path: `/admin-panel/profile/${profileRole}/${idProfile || profile.id}/article`,
+    roles: ['user', 'startup']
   }
-  //   {
-  //     id: 'article',
-  //     name: 'Article',
-  //     path: `/admin-panel/profile/${profileRole}/${idProfile || profile.id}/article`,
-  //     roles: ['user', 'startup']
-  //   }
 ]

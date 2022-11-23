@@ -15,6 +15,7 @@ import GalleryInfo from '@components/AdminPanel/ProfileSection/GalleryInfo'
 import BillingDetails from './BillingDetails'
 import ListOfStartupBookmarksHOC from './BookmarksStartup'
 import ListOfRatedStartupsHOC from './RatedStartups'
+import ListOfArticleHOC from './Article'
 import { generateNavbarLinks } from '@utils/generateNavbarLinks'
 import ProtectedRoute from '@components/Common/ProtectedRoute/ProtectedRoute'
 import CompanyMembers from '@components/AdminPanel/ProfileSection/CompanyMembers'
@@ -62,6 +63,7 @@ const ProfileSection = ({
         <ProtectedRoute path={PROFILE.BILLING_DETAILS} component={BillingDetails} exact />
         <ProtectedRoute path={PROFILE.BOOKMARKS_STARTUP} component={ListOfStartupBookmarksHOC} exact />
         <ProtectedRoute path={PROFILE.RATED_STARTUPS} component={ListOfRatedStartupsHOC} exact />
+        <ProtectedRoute path={PROFILE.ARTICLE} component={ListOfArticleHOC} exact />
         <ProtectedRoute path={PROFILE.COMPANY_MEMBERS} component={CompanyMembers} exact />
       </Switch>
     </div>

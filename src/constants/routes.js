@@ -87,7 +87,8 @@ export const Routes = {
       BILLING_DETAILS: '/admin-panel/profile/:role/:id/billing-details',
       COMPANY_MEMBERS: '/admin-panel/profile/:role/:id/company-members',
       BOOKMARKS_STARTUP: '/admin-panel/profile/:role/:id/bookmarks-startup',
-      RATED_STARTUPS: '/admin-panel/profile/:role/:id/rated-startups'
+      RATED_STARTUPS: '/admin-panel/profile/:role/:id/rated-startups',
+      ARTICLE: '/admin-panel/profile/:role/:id/article'
     },
     RETAIL_HUB_TEAM: '/admin-panel/retail-hub-team'
   },

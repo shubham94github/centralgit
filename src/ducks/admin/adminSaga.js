@@ -67,7 +67,8 @@ import {
   GET_PAYMENT_RECEIPTS,
   CREATE_PAYMENT_RECEIPTS,
   GET_ALL_PAYMENT_RECEIPTS,
-  UPDATE_PAYMENT_RECEIPTS
+  UPDATE_PAYMENT_RECEIPTS,
+  GET_ARTICLES
 } from './index'
 
 import {
@@ -138,7 +139,8 @@ import {
   getPaymentReceiptsWorker,
   createPaymentReceiptWorker,
   getAllPaymentReceiptsWorker,
-  updatePaymentReceiptWorker
+  updatePaymentReceiptWorker,
+  getArticlesWorker
 } from './sagas'
 
 export function* authSaga() {
@@ -185,6 +187,7 @@ export function* authSaga() {
     yield takeEvery(GET_CATEGORIES_ACTIVITY, getCategoriesActivityWorker),
     yield takeEvery(GET_PROFILES_ACTIVITY, getProfilesActivityWorker),
     yield takeLatest(GET_BOOKMARKS_STARTUPS, getBookmarksStartupsWorker),
+    yield takeLatest(GET_ARTICLES, getArticlesWorker),
     yield takeLatest(CHANGE_FILTER_OF_BOOKMARKS, changeFilterBookmarksStartupsWorker),
     yield takeLatest(GET_RATED_STARTUPS, getRatedStartupsWorker),
     yield takeLatest(CHANGE_FILTER_OF_RATED_STARTUPS, changeFilterRatedStartupsWorker),

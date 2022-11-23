@@ -42,7 +42,8 @@ import {
   CREATE_PAYMENT_RECEIPTS,
   ADD_PAYMENT_RECEIPTS,
   SET_ALL_PAYMENT_RECEIPTS,
-  UPDATED_PAYMENT_RECEIPTS
+  UPDATED_PAYMENT_RECEIPTS,
+  SET_USER_ARTICLE
 } from './index'
 import { call, put, all, select, fork } from 'redux-saga/effects'
 import {
@@ -104,7 +105,8 @@ import {
   deleteFeature,
   createNewMemberGroup,
   editMemberGroup,
-  deleteMemberGroup
+  deleteMemberGroup,
+  getUserArticles
 } from '@api/adminApi'
 import { getFeedback, getCountFeedback, getProfileRating } from '@api/profileApi'
 import { onServerErrorHandler, setSnackbar } from '@ducks/common/sagas'
@@ -122,6 +124,7 @@ import {
   selectStartupsTableMeta,
   selectRetailersTableMeta,
   selectUserIdForProfile,
+  selectStartupId,
   selectUploadedDocuments,
   selectReportsTableMeta,
   selectFilterBookmarks,
@@ -484,7 +487,6 @@ export function* getRetailerProfileWorker({ payload: { id } }) {
 export function* handleProfileStartupActivationWorker({ payload: { ids, isBlocked } }) {
   try {
     yield setIsLoading(true)
-
     const { startup, id: userId } = yield select(selectProfile)
     const isStartup = !!startup
     const unBlockApi = isStartup ? unBlockStartup : unBlockRetailer
@@ -1533,6 +1535,26 @@ export function* getBookmarksStartupsWorker({ payload: { filterBookmarks } }) {
     yield fork(onServerErrorHandler, e)
   } finally {
     yield setIsLoadingListOfStartups(false)
+  }
+}
+export function* getArticlesWorker({ payload }) {
+  try {
+    yield setIsLoading(true)
+
+    const userId = yield select(selectStartupId)
+
+    const articles = yield call(getUserArticles, userId)
+
+    yield put({
+      type: SET_USER_ARTICLE,
+      payload: {
+        articles
+      }
+    })
+  } catch (e) {
+    yield fork(onServerErrorHandler, e)
+  } finally {
+    yield setIsLoading(false)
   }
 }
 

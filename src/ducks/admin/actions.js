@@ -70,7 +70,8 @@ import {
   GET_PAYMENT_RECEIPTS,
   CREATE_PAYMENT_RECEIPTS,
   GET_ALL_PAYMENT_RECEIPTS,
-  UPDATE_PAYMENT_RECEIPTS
+  UPDATE_PAYMENT_RECEIPTS,
+  GET_ARTICLES
 } from './index'
 import { checkEmailForExisting } from '@api/auth'
 import { onServerErrorHandler } from '@ducks/common/sagas'
@@ -375,6 +376,10 @@ export const getProfilesActivity = meta => ({
 
 export const getBookmarksStartup = data => ({
   type: GET_BOOKMARKS_STARTUPS,
+  payload: data
+})
+export const getArticles = data => ({
+  type: GET_ARTICLES,
   payload: data
 })
 

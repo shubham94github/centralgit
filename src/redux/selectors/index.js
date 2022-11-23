@@ -1,72 +1,74 @@
-export const selectUser = state => state.auth.user;
+export const selectUser = state => state.auth.user
 
 export const selectChannelByParticipantId = async (id, role) => {
-	return state => state.messaging.channels.find(channel => {
-		if (role.includes('RETAILER')) return channel.participant.id === id;
+  return state =>
+    state.messaging.channels.find(channel => {
+      if (role.includes('RETAILER')) return channel.participant.id === id
 
-		return channel.creator.id === id;
-	});
-};
+      return channel.creator.id === id
+    })
+}
 
 export const selectParticipantProfile = (state, participantId) => {
-	const startupProfile = state.browse.startups.find(item => item.user.id === participantId);
+  const startupProfile = state.browse.startups.find(item => item.user.id === participantId)
 
-	if (state.profile.profile === null && startupProfile)
-		return startupProfile.user;
+  if (state.profile.profile === null && startupProfile) return startupProfile.user
 
-	return state.profile.profile.user;
-};
+  return state.profile.profile.user
+}
 
-export const selectChannels = state => state.messaging.channels;
+export const selectChannels = state => state.messaging.channels
 
-export const selectActiveChannelId = state => state.messaging.activeChannelId;
+export const selectActiveChannelId = state => state.messaging.activeChannelId
 
-export const selectMessages = state => state.messaging.messages;
+export const selectMessages = state => state.messaging.messages
 
-export const selectMeta = state => state.messaging.meta;
+export const selectMeta = state => state.messaging.meta
 
-export const selectStartupsTableMeta = state => state.admin.startupsTableMeta;
+export const selectStartupsTableMeta = state => state.admin.startupsTableMeta
 
-export const selectRetailersTableMeta = state => state.admin.retailersTableMeta;
+export const selectRetailersTableMeta = state => state.admin.retailersTableMeta
 
-export const selectProfile = state => state.admin.profile;
+export const selectProfile = state => state.admin.profile
 
-export const selectProfileVideo = state => state.admin.profile.marketingVideo;
+export const selectProfileVideo = state => state.admin.profile.marketingVideo
 
-export const selectUserIdForProfile = state => state.admin.profile.id;
+export const selectUserIdForProfile = state => state.admin.profile.id
 
-export const selectUploadedDocuments = state => state.admin.profile.startup.documents;
+export const selectStartupId = state => state.admin.profile.startup.id
 
-export const selectChannelsMeta = state => state.messaging.channelsMeta;
+export const selectUploadedDocuments = state => state.admin.profile.startup.documents
 
-export const selectNotifications = state => state.notifications.notificationsList;
+export const selectChannelsMeta = state => state.messaging.channelsMeta
 
-export const selectCountOfNewNotifications = state => state.notifications.countOfNewNotifications;
+export const selectNotifications = state => state.notifications.notificationsList
 
-export const selectCountAllNotifications = state => state.notifications.countAllNotifications;
+export const selectCountOfNewNotifications = state => state.notifications.countOfNewNotifications
 
-export const selectPageNotifications = state => state.notifications.page;
+export const selectCountAllNotifications = state => state.notifications.countAllNotifications
 
-export const selectUserId = state => state.auth.user.id;
+export const selectPageNotifications = state => state.notifications.page
 
-export const selectTrialData = state => state.common.trialData;
+export const selectUserId = state => state.auth.user.id
 
-export const selectListOfStartupsBrowse = state => state.browse.startups;
+export const selectTrialData = state => state.common.trialData
 
-export const selectStartupProfile = state => state.profile.profile;
+export const selectListOfStartupsBrowse = state => state.browse.startups
 
-export const selectFilterCategories = state => state.browse.filterCategories;
+export const selectStartupProfile = state => state.profile.profile
 
-export const selectSavedSearchHistory = state => state.browse.savedSearchHistory;
+export const selectFilterCategories = state => state.browse.filterCategories
 
-export const selectReportsTableMeta = state => state.admin.reportsTableMeta;
+export const selectSavedSearchHistory = state => state.browse.savedSearchHistory
 
-export const selectFilterBookmarks = state => state.admin.filterBookmarks;
+export const selectReportsTableMeta = state => state.admin.reportsTableMeta
 
-export const selectFilterRated = state => state.admin.filterRated;
+export const selectFilterBookmarks = state => state.admin.filterBookmarks
 
-export const selectRememberMe = state => state.auth.rememberMe;
+export const selectFilterRated = state => state.admin.filterRated
 
-export const selectPaymentPlans = state => state.common.paymentPlans;
+export const selectRememberMe = state => state.auth.rememberMe
 
-export const selectFeatures = state => state.common.plansFeatures;
+export const selectPaymentPlans = state => state.common.paymentPlans
+
+export const selectFeatures = state => state.common.plansFeatures

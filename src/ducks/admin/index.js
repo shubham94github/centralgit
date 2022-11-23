@@ -117,5 +117,7 @@ export const SET_ENTERPRISE_CODES = `${appName}/${moduleName}/SET_ENTERPRISE_COD
 export const EDIT_ENTERPRISE_CODE = `${appName}/${moduleName}/EDIT_ENTERPRISE_CODE`
 export const CHANGE_PAYMENT_PLAN_STATUS = `${appName}/${moduleName}/CHANGE_PAYMENT_PLAN_STATUS`
 export const SET_UPDATED_PROFILE = `${appName}/${moduleName}/SET_UPDATED_PROFILE`
+export const GET_ARTICLES = `${appName}/${moduleName}/GET_ARTICLES`
+export const SET_USER_ARTICLE = `${appName}/${moduleName}/SET_USER_ARTICLE`
 
 export { default } from './reducer'

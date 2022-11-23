@@ -45,7 +45,8 @@ import {
   SET_ALL_PAYMENT_RECEIPTS,
   CREATE_PAYMENT_RECEIPTS,
   ADD_PAYMENT_RECEIPTS,
-  UPDATED_PAYMENT_RECEIPTS
+  UPDATED_PAYMENT_RECEIPTS,
+  SET_USER_ARTICLE
 } from './index'
 import { pageSize } from '@constants/pagination'
 import {
@@ -94,6 +95,7 @@ const InitialState = Record({
   isAdminNotificationSending: false,
   categories: [],
   reports: [],
+  articles: [],
   reportsTableMeta: {
     page: 1,
     pageSize,
@@ -308,6 +310,9 @@ const adminReducer = (state = new InitialState(), action) => {
 
     case SET_PRICES:
       return state.set('prices', payload.prices)
+
+    case SET_USER_ARTICLE:
+      return state.set('articles', payload.articles)
 
     case SET_ENTERPRISE_CODES:
       return state.set('enterpriseCodes', payload.enterpriseCodes)

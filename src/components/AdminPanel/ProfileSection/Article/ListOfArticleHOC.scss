@@ -1,0 +1,20 @@
+.admin-bookmarks-container {
+  .sort-section {
+    max-width: 1030px;
+  }
+}
+.clickable {
+  cursor: pointer;
+}
+.edit-icon-container {
+  position: relative;
+
+  .edit-icon {
+    position: absolute;
+    top: 0;
+    right: -20px;
+    &.center {
+      top: 20px;
+    }
+  }
+}
