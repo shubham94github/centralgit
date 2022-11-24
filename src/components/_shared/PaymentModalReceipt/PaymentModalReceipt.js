@@ -104,8 +104,24 @@ const paymentModalReceipt = props => {
               </Col>
               <Col>
                 <Form.Group className='mb-3' controlId='formBasicPassword'>
+                  {/* <Form.Label>Status</Form.Label> */}
+                  {/* <Form.Control value={status} onChange={e => setStatus(e.target.value)} type='text' /> */}
                   <Form.Label>Status</Form.Label>
-                  <Form.Control value={status} onChange={e => setStatus(e.target.value)} type='text' />
+
+                  <Form.Select
+                    value={status}
+                    onChange={e => setStatus(e.target.value)}
+                    aria-label='Default select example'>
+                    <option disabled>Status </option>
+                    <option value='Draft'>Draft</option>
+                    <option value='Paid'>Paid</option>
+                    <option value='Paid by Stripe'>Paid by Stripe</option>
+                    <option value='Delete'>Delete</option>
+                    {/* Draft (we do nothing)
+Paid (set the user record as Paid)
+Paid by Stripe (when the payment is done by Stripe)
+Delete (if they need to delete the record) */}
+                  </Form.Select>
                 </Form.Group>
               </Col>
             </Row>
