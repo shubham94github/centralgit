@@ -68,7 +68,8 @@ import {
   CREATE_PAYMENT_RECEIPTS,
   GET_ALL_PAYMENT_RECEIPTS,
   UPDATE_PAYMENT_RECEIPTS,
-  GET_ARTICLES
+  GET_ARTICLES,
+  EDIT_ARTICLE
 } from './index'
 
 import {
@@ -140,7 +141,8 @@ import {
   createPaymentReceiptWorker,
   getAllPaymentReceiptsWorker,
   updatePaymentReceiptWorker,
-  getArticlesWorker
+  getArticlesWorker,
+  editArticleWorker
 } from './sagas'
 
 export function* authSaga() {
@@ -213,7 +215,8 @@ export function* authSaga() {
     yield takeLeading(DELETE__SUBSCRIPTION_PLAN, deleteSubscriptionPlanWorker),
     yield takeLeading(GET_ENTERPRISE_CODES, getEnterpriseCodesWorker),
     yield takeLeading(EDIT_ENTERPRISE_CODE, editEnterpriseCodeWorker),
-    yield takeLeading(CHANGE_PAYMENT_PLAN_STATUS, changePaymentPlanStatusWorker)
+    yield takeLeading(CHANGE_PAYMENT_PLAN_STATUS, changePaymentPlanStatusWorker),
+    yield takeLeading(EDIT_ARTICLE, editArticleWorker)
   ])
 }
 

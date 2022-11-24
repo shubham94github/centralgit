@@ -1,11 +1,11 @@
-import React, { memo, useEffect } from "react";
-import { connect } from "react-redux";
-import { schema } from "./schema";
-import BillingDetails from "@components/Auth/GettingStarted/BillingDetails";
-import { getCountries } from "@ducks/common/actions";
-import { array, bool, func, object, string } from "prop-types";
-import { handleUpdateBillingAddress } from "@ducks/admin/actions";
-import { userType } from "@constants/types";
+import React, { memo, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { schema } from './schema'
+import BillingDetails from '@components/Auth/GettingStarted/BillingDetails'
+import { getCountries } from '@ducks/common/actions'
+import { array, bool, func, object, string } from 'prop-types'
+import { handleUpdateBillingAddress } from '@ducks/admin/actions'
+import { userType } from '@constants/types'
 
 const BillingAddressHOC = ({
   onClose,
@@ -17,24 +17,24 @@ const BillingAddressHOC = ({
   companyLegalName,
   country,
   handleUpdateBillingAddress,
-  user,
+  user
 }) => {
-  const onSubmit = (values) => {
+  const onSubmit = values => {
     const data = {
       ...values,
       countryId: values.countryId?.id,
       vatNumber: values.vatNumber || null,
       postZipCode: values.postZipCode || null,
-      legalName: values.companyLegalName,
-    };
+      legalName: values.companyLegalName
+    }
 
-    handleUpdateBillingAddress({ data });
-    onClose();
-  };
+    handleUpdateBillingAddress({ data })
+    onClose()
+  }
 
   useEffect(() => {
-    if (!countries?.length) getCountries();
-  }, [getCountries, countries]);
+    if (!countries?.length) getCountries()
+  }, [getCountries, countries])
 
   return (
     <div>
@@ -54,8 +54,8 @@ const BillingAddressHOC = ({
         isAdmin
       />
     </div>
-  );
-};
+  )
+}
 
 BillingAddressHOC.propTypes = {
   onClose: func.isRequired,
@@ -67,13 +67,13 @@ BillingAddressHOC.propTypes = {
   companyLegalName: string,
   country: object,
   handleUpdateBillingAddress: func.isRequired,
-  user: userType,
-};
+  user: userType
+}
 
 const mapStateToProps = ({ common: { countries, isLoading }, admin }) => {
   const {
-    profile: { retailer, city, country },
-  } = admin;
+    profile: { retailer, city, country }
+  } = admin
 
   return {
     isLoading,
@@ -82,11 +82,11 @@ const mapStateToProps = ({ common: { countries, isLoading }, admin }) => {
     city,
     companyLegalName: retailer.companyLegalName,
     country,
-    user: admin.profile,
-  };
-};
+    user: admin.profile
+  }
+}
 
 export default connect(mapStateToProps, {
   getCountries,
-  handleUpdateBillingAddress,
-})(memo(BillingAddressHOC));
+  handleUpdateBillingAddress
+})(memo(BillingAddressHOC))

@@ -1,1 +1,1 @@
-export { default } from './DocumentItem';
+export { default } from './DocumentItem'

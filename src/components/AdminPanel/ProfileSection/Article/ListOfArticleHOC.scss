@@ -2,19 +2,25 @@
   .sort-section {
     max-width: 1030px;
   }
-}
-.clickable {
-  cursor: pointer;
-}
-.edit-icon-container {
-  position: relative;
+  .no-record {
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .clickable {
+    cursor: pointer;
+  }
+  .edit-icon-container {
+    position: relative;
 
-  .edit-icon {
-    position: absolute;
-    top: 0;
-    right: -20px;
-    &.center {
-      top: 20px;
+    .edit-icon {
+      position: absolute;
+      top: 0;
+      right: -20px;
+      &.center {
+        top: 20px;
+      }
     }
   }
 }

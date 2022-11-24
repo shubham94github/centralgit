@@ -43,7 +43,8 @@ import {
   ADD_PAYMENT_RECEIPTS,
   SET_ALL_PAYMENT_RECEIPTS,
   UPDATED_PAYMENT_RECEIPTS,
-  SET_USER_ARTICLE
+  SET_USER_ARTICLE,
+  UPDATE_ARTICLE
 } from './index'
 import { call, put, all, select, fork } from 'redux-saga/effects'
 import {
@@ -153,7 +154,8 @@ import {
   getPaymentReceipts,
   createPaymentReceipt,
   getAllPaymentReceipts,
-  updatePaymentReceipt
+  updatePaymentReceipt,
+  updateArticle
 } from '@api/subscriptionPansApi'
 import { emptyCategoryImportedError, emptyCategoryIncompleteError } from '@constants/errorCodes'
 
@@ -2030,6 +2032,21 @@ export function* changePaymentPlanStatusWorker({ payload: { id, isHidden } }) {
     yield call(req, id)
 
     yield getSubscriptionPlansWorker()
+  } catch (e) {
+    yield fork(onServerErrorHandler, e)
+  } finally {
+    yield setIsLoading(false)
+  }
+}
+export function* editArticleWorker({ payload }) {
+  try {
+    yield setIsLoading(true)
+
+    const response = yield call(updateArticle, payload)
+    yield put({
+      type: UPDATE_ARTICLE,
+      payload: { response }
+    })
   } catch (e) {
     yield fork(onServerErrorHandler, e)
   } finally {

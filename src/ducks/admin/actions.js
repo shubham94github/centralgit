@@ -71,6 +71,7 @@ import {
   CREATE_PAYMENT_RECEIPTS,
   GET_ALL_PAYMENT_RECEIPTS,
   UPDATE_PAYMENT_RECEIPTS,
+  EDIT_ARTICLE,
   GET_ARTICLES
 } from './index'
 import { checkEmailForExisting } from '@api/auth'
@@ -495,7 +496,10 @@ export const editEnterpriseCode = ({ id, enterpriseCode, onClose }) => ({
   type: EDIT_ENTERPRISE_CODE,
   payload: { id, enterpriseCode, onClose }
 })
-
+export const editArticle = payload => ({
+  type: EDIT_ARTICLE,
+  payload
+})
 export const handleChangePaymentPlanStatus = (id, isHidden) => ({
   type: CHANGE_PAYMENT_PLAN_STATUS,
   payload: { id, isHidden }

@@ -2,171 +2,171 @@
 @import 'src/styles/mixins';
 
 .company-detail-wrapper {
-	padding-right: 20px;
+  padding-right: 20px;
 
-	.company-short-info-wrapper {
-		.tooltip-children {
-			width: fit-content;
-		}
-	}
+  .company-short-info-wrapper {
+    .tooltip-children {
+      width: fit-content;
+    }
+  }
 
-	.text__bold {
-		font-weight: bold;
-	}
+  .text__bold {
+    font-weight: bold;
+  }
 
-	.blue-link {
-		@include textStyle(12px, $blue-50, 16px);
+  .blue-link {
+    @include textStyle(12px, $blue-50, 16px);
 
-		text-decoration: underline;
-		cursor: pointer;
-		position: relative;
+    text-decoration: underline;
+    cursor: pointer;
+    position: relative;
 
-		&.truncate {
-			@include truncate-text(1);
-		}
+    &.truncate {
+      @include truncate-text(1);
+    }
 
-		&::after {
-			display: none;
-		}
-	}
+    &::after {
+      display: none;
+    }
+  }
 
-	.clickable {
-		cursor: pointer;
-	}
+  .clickable {
+    cursor: pointer;
+  }
 
-	.documents {
-		display: flex;
-		flex-wrap: wrap;
-		margin-top: 5px;
-		margin-bottom: 20px;
+  .documents {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-bottom: 20px;
 
-		.document-item {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: start;
-			position: relative;
-			width: 76px;
-			height: 70px;
-			margin-top: 5px;
-			margin-right: 10px;
-			margin-bottom: 5px;
-			border-radius: 8px;
-			cursor: pointer;
-			background: $darkblue-20;
+    .document-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      position: relative;
+      width: 76px;
+      height: 70px;
+      margin-top: 5px;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      background: $darkblue-20;
 
-			.remove-icon {
-				position: absolute;
-				top: 0;
-				right: -5px;
-			}
+      .remove-icon {
+        position: absolute;
+        top: 0;
+        right: -5px;
+      }
 
-			span {
-				color: $white;
-				padding-left: 12px;
-				padding-right: 12px;
-			}
+      span {
+        color: $white;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
 
-			.truncate {
-				@include truncate-text(1);
-			}
-		}
-	}
+      .truncate {
+        @include truncate-text(1);
+      }
+    }
+  }
 
-	.edit-icon-container {
-		position: relative;
+  .edit-icon-container {
+    position: relative;
 
-		.edit-icon {
-			position: absolute;
-			top: 0;
-			right: -20px;
+    .edit-icon {
+      position: absolute;
+      top: 0;
+      right: -20px;
 
-			&.center {
-				top: 20px;
-			}
-		}
-	}
+      &.center {
+        top: 20px;
+      }
+    }
+  }
 
-	.confirm-pop-up {
-		.modal-dialog.modal-container {
-			max-width: 630px !important;
-		}
+  .confirm-pop-up {
+    .modal-dialog.modal-container {
+      max-width: 630px !important;
+    }
 
-		.p16.modal-title {
-			font-weight: 400;
-			text-align: center;
-		}
-	}
+    .p16.modal-title {
+      font-weight: 400;
+      text-align: center;
+    }
+  }
 }
 
 .company-details-pop-up {
-	.modal-dialog.modal-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: none;
-	}
+  .modal-dialog.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+  }
 
-	.modal-content {
-		border: 1px solid $darkblue-20;
-	}
+  .modal-content {
+    border: 1px solid $darkblue-20;
+  }
 
-	.modal-title {
-		@include textStyle(16px, $darkblue-70, 20px);
+  .modal-title {
+    @include textStyle(16px, $darkblue-70, 20px);
 
-		padding-left: 10px;
-	}
+    padding-left: 10px;
+  }
 }
 
 .sector-of-competence-pop-up {
-	.modal-dialog.modal-container {
-		max-width: 915px !important;
-		border: none;
-	}
+  .modal-dialog.modal-container {
+    max-width: 915px !important;
+    border: none;
+  }
 
-	.modal-content {
-		border: 1px solid $darkblue-20;
-	}
+  .modal-content {
+    border: 1px solid $darkblue-20;
+  }
 
-	.form-with-accordion-container {
-		margin: 0 !important;
-	}
+  .form-with-accordion-container {
+    margin: 0 !important;
+  }
 
-	.flex-section {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
+  .flex-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-	.accordion-custom {
-		padding: 0;
-	}
+  .accordion-custom {
+    padding: 0;
+  }
 }
 
 .tags-pop-up {
-	.modal-dialog.modal-container {
-		max-width: 630px !important;
-		border: none;
-	}
+  .modal-dialog.modal-container {
+    max-width: 630px !important;
+    border: none;
+  }
 
-	.modal-content {
-		border: 1px solid $darkblue-20;
+  .modal-content {
+    border: 1px solid $darkblue-20;
 
-		.p14 {
-			width: 525px;
-		}
-	}
+    .p14 {
+      width: 525px;
+    }
+  }
 }
 
 .company-types {
-	.type-title {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: flex-start;
+  .type-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
 
-		svg {
-			margin-left: 5px;
-		}
-	}
+    svg {
+      margin-left: 5px;
+    }
+  }
 }

@@ -1,7 +1,9 @@
 import { client } from './clientApi'
 
 const { ADMIN_SERVER_URL } = process.env
+const { SERVER_URL } = process.env
 
+console.log('server', SERVER_URL)
 export const createPrice = newPrice => client.post(`${ADMIN_SERVER_URL}/v1/admin/payment/prices/create`, newPrice)
 
 export const editPrice = price => client.post(`${ADMIN_SERVER_URL}/v1/admin/payment/prices/update/${price.id}`, price)
@@ -30,6 +32,7 @@ export const getSubscriptionPlans = (memberGroupId = null, paymentPlanPriceIds =
 
 export const deleteSubscriptionPlan = planId =>
   client.delete(`${ADMIN_SERVER_URL}/v1/admin/payment/plans/delete/${planId}`)
+
 export const updateSubscriptionPlan = (uId, planId) =>
   client.post(`${ADMIN_SERVER_URL}/v1/admin/retailer/view/updatePaymentPlan/${uId}/${planId}`)
 
@@ -46,10 +49,20 @@ export const hidePaymentPlan = planId => client.delete(`${ADMIN_SERVER_URL}/v1/a
 export const unHidePaymentPlan = planId => client.delete(`${ADMIN_SERVER_URL}/v1/admin/payment/plans/unhide/${planId}`)
 
 export const getPaymentReceipts = userId => client.get(`${ADMIN_SERVER_URL}/v1/admin/payment/all/${userId}`)
+
 export const getAllPaymentReceipts = () => client.get(`${ADMIN_SERVER_URL}/v1/admin/payment/allPayment`)
+
 export const createPaymentReceipt = payload =>
   client.post(`${ADMIN_SERVER_URL}/v1/admin/payment/insertPayment`, payload)
+
 export const updatePaymentReceipt = payload => {
   const { id } = payload
   return client.post(`${ADMIN_SERVER_URL}/v1/admin/payment/updatePayment/${id}`, payload)
+}
+
+export const updateArticle = payload => {
+  const { title, description, articles_link, id } = payload
+  return client.post(
+    `${SERVER_URL}/v1/startup/article/updatePayment/${id}?title=${title}&description=${description}&link=${articles_link}`
+  )
 }

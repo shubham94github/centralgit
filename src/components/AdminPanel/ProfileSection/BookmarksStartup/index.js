@@ -1,1 +1,1 @@
-export { default } from './ListOfStartupBookmarksHOC';
+export { default } from './ListOfStartupBookmarksHOC'

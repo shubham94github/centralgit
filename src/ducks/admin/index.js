@@ -119,5 +119,7 @@ export const CHANGE_PAYMENT_PLAN_STATUS = `${appName}/${moduleName}/CHANGE_PAYME
 export const SET_UPDATED_PROFILE = `${appName}/${moduleName}/SET_UPDATED_PROFILE`
 export const GET_ARTICLES = `${appName}/${moduleName}/GET_ARTICLES`
 export const SET_USER_ARTICLE = `${appName}/${moduleName}/SET_USER_ARTICLE`
+export const EDIT_ARTICLE = `${appName}/${moduleName}/EDIT_ARTICLE`
+export const UPDATE_ARTICLE = `${appName}/${moduleName}/UPDATE_ARTICLE`
 
 export { default } from './reducer'
