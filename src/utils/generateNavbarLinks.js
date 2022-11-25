@@ -57,6 +57,6 @@ export const generateNavbarLinks = (isStartup, profileRole, idProfile, profile) 
     id: 'article',
     name: 'Article',
     path: `/admin-panel/profile/${profileRole}/${idProfile || profile.id}/article`,
-    roles: ['user', 'startup']
+    roles: ['startup']
   }
 ]

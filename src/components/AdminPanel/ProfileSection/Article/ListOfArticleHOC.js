@@ -26,17 +26,17 @@ const ListOfArticleHOC = ({ getTheArticles, articles }) => {
   }
   return (
     <div className='admin-bookmarks-container'>
-      {articles.length === 0 && (
-        <div className='no-record'>
-          <S16 bold>No record found</S16>
-        </div>
-      )}
       <P14 bold>
         Add New Article{' '}
         <span onClick={() => toggleEditArticle()} className='clickable edit-icon mx-5'>
           {Icons.plus(colors.darkblue70)}
         </span>
       </P14>
+      {articles.length === 0 && (
+        <div className='no-record'>
+          <S16 bold>No record found</S16>
+        </div>
+      )}
       {editArticle && (
         <EditArticle {...updateArticle} update={isEmpty(updateArticle)} show={editArticle} onHide={toggleEditArticle} />
       )}
@@ -54,7 +54,7 @@ const ListOfArticleHOC = ({ getTheArticles, articles }) => {
             <div>{description}</div>
             <div>
               <S12>Open: </S12>
-              <a target='_blank' href={!articles_link?.includes('http') ? 'https://' + articles_link : articles_link}>
+              <a target='_blank' href={!articles_link.includes('http') ? 'https://' + articles_link : articles_link}>
                 {articles_link}
               </a>
             </div>
