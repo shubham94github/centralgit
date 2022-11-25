@@ -44,7 +44,8 @@ import {
   SET_ALL_PAYMENT_RECEIPTS,
   UPDATED_PAYMENT_RECEIPTS,
   SET_USER_ARTICLE,
-  UPDATE_ARTICLE
+  UPDATE_ARTICLE,
+  ADD_ARTICLE
 } from './index'
 import { call, put, all, select, fork } from 'redux-saga/effects'
 import {
@@ -155,7 +156,8 @@ import {
   createPaymentReceipt,
   getAllPaymentReceipts,
   updatePaymentReceipt,
-  updateArticle
+  updateArticle,
+  createArticle
 } from '@api/subscriptionPansApi'
 import { emptyCategoryImportedError, emptyCategoryIncompleteError } from '@constants/errorCodes'
 
@@ -2045,6 +2047,30 @@ export function* editArticleWorker({ payload }) {
     const response = yield call(updateArticle, payload)
     yield put({
       type: UPDATE_ARTICLE,
+      payload: { response }
+    })
+  } catch (e) {
+    yield fork(onServerErrorHandler, e)
+  } finally {
+    yield setIsLoading(false)
+  }
+}
+export function* createArticleWorker({ payload }) {
+  try {
+    yield setIsLoading(true)
+    const startupId = yield select(selectStartupId)
+    const date = new Date()
+    const { articles_link } = payload
+    const response = yield call(createArticle, {
+      ...payload,
+      startupId,
+      created_at: date,
+      updatedAt: date,
+      link: articles_link,
+      date: date.toISOString().slice(0, 10) + ' ' + date.toISOString().slice(11, 19)
+    })
+    yield put({
+      type: ADD_ARTICLE,
       payload: { response }
     })
   } catch (e) {

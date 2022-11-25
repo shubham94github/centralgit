@@ -66,3 +66,4 @@ export const updateArticle = payload => {
     `${SERVER_URL}/v1/startup/article/updatePayment/${id}?title=${title}&description=${description}&link=${articles_link}`
   )
 }
+export const createArticle = payload => client.post(`${SERVER_URL}/v1/startup/article/insertArticle`, payload)

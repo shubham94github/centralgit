@@ -72,7 +72,8 @@ import {
   GET_ALL_PAYMENT_RECEIPTS,
   UPDATE_PAYMENT_RECEIPTS,
   EDIT_ARTICLE,
-  GET_ARTICLES
+  GET_ARTICLES,
+  CREATE_ARTICLE
 } from './index'
 import { checkEmailForExisting } from '@api/auth'
 import { onServerErrorHandler } from '@ducks/common/sagas'
@@ -498,6 +499,10 @@ export const editEnterpriseCode = ({ id, enterpriseCode, onClose }) => ({
 })
 export const editArticle = payload => ({
   type: EDIT_ARTICLE,
+  payload
+})
+export const createArticle = payload => ({
+  type: CREATE_ARTICLE,
   payload
 })
 export const handleChangePaymentPlanStatus = (id, isHidden) => ({

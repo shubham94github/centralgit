@@ -19,7 +19,8 @@ const ListOfArticleHOC = ({ getTheArticles, articles }) => {
   }, [])
   const toggleEditArticle = item => {
     setEditArticle(prevState => {
-      if (!prevState) setUpdateArticle(item)
+      if (!prevState && item) setUpdateArticle(item)
+      else setUpdateArticle({})
       return !prevState
     })
   }
@@ -30,7 +31,15 @@ const ListOfArticleHOC = ({ getTheArticles, articles }) => {
           <S16 bold>No record found</S16>
         </div>
       )}
-      {editArticle && <EditArticle {...updateArticle} show={editArticle} onHide={toggleEditArticle} />}
+      <P14 bold>
+        Add New Article{' '}
+        <span onClick={() => toggleEditArticle()} className='clickable edit-icon mx-5'>
+          {Icons.plus(colors.darkblue70)}
+        </span>
+      </P14>
+      {editArticle && (
+        <EditArticle {...updateArticle} update={isEmpty(updateArticle)} show={editArticle} onHide={toggleEditArticle} />
+      )}
       <GridContainer gap='50px' template='550px 550px'>
         {articles.map(({ id, title, description, articles_link, ...item }) => (
           <div key={id}>
@@ -45,7 +54,7 @@ const ListOfArticleHOC = ({ getTheArticles, articles }) => {
             <div>{description}</div>
             <div>
               <S12>Open: </S12>
-              <a target='_blank' href={!articles_link.includes('http') ? 'https://' + articles_link : articles_link}>
+              <a target='_blank' href={!articles_link?.includes('http') ? 'https://' + articles_link : articles_link}>
                 {articles_link}
               </a>
             </div>

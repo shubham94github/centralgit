@@ -4,12 +4,13 @@ import PrimaryButton from '@components/_shared/buttons/PrimaryButton'
 import { S16 } from '@components/_shared/text'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
-import { editArticle } from '@ducks/admin/actions'
+import { editArticle, createArticle } from '@ducks/admin/actions'
 
 function EditArticle(props) {
   const dispatch = useDispatch()
 
-  const { title, description, articles_link, onHide, updateArticle, id } = props
+  const { title, description, articles_link, onHide, update, id } = props
+  console.log('update ->', update)
   const formik = useFormik({
     initialValues: {
       title,
@@ -17,12 +18,14 @@ function EditArticle(props) {
       articles_link
     },
     onSubmit: (values, action) => {
-      dispatch(editArticle({ ...values, id }))
+      if (update) {
+        dispatch(createArticle({ ...values }))
+      } else dispatch(editArticle({ ...values, id }))
       onHide()
     }
   })
   const { values, handleChange, handleBlur, touched, handleSubmit } = formik
-  console.log('formik->', values)
+
   return (
     <Modal {...props} size='lg' centered>
       <Modal.Header closeButton>
@@ -65,7 +68,7 @@ function EditArticle(props) {
       </Modal.Body>
       <Modal.Footer>
         <PrimaryButton onClick={handleSubmit} isFullWidth>
-          Update
+          {!update ? 'Update' : 'Save'}
         </PrimaryButton>
       </Modal.Footer>
     </Modal>
